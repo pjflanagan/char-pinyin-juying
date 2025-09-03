@@ -2,7 +2,7 @@
 
 import json
 import csv
-
+import re
 
 def loadSourceDictionary():
     with open('data/source/cedict-HanziSimplified-HanziTraditional.json') as f:
@@ -17,13 +17,16 @@ if __name__ == '__main__':
         print("Failed to load cedict")
         exit(1)
 
-    outputMap = [("hanziSimplified", "hanziTraditional")]
+    outputMap = [("hanziSimplified", "tone")]
     
     for entry in cedict:
         if len(entry['traditional']) == 1:
-          newEntry = (entry['simplified'], entry['traditional'])
+          pinyin = entry['pinyin']
+          numbers = re.findall(r'\d+', pinyin)
+          tone = numbers[0] if numbers else None
+          newEntry = (entry['simplified'], tone)
           outputMap.append(newEntry)
           
-    with open("data/maps/HanziSimplified-HanziTraditional.csv", "wt") as fp:
+    with open("data/maps/HanziSimplified-Tone.csv", "wt") as fp:
         writer = csv.writer(fp, delimiter=",")
         writer.writerows(outputMap)

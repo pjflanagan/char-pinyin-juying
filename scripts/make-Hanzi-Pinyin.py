@@ -9,7 +9,6 @@ def loadSourceDictionary():
 
 
 if __name__ == '__main__':
-
     hanziPinyinMap = loadSourceDictionary()
     if hanziPinyinMap is None:
         print("Failed to load hanziPinyinMap")
