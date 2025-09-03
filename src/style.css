@@ -1,0 +1,50 @@
+
+
+body {
+  background: #1c1c1c;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+.character {
+  width: 100px;
+  height: 100px;
+  border: 1px solid #f00;
+  position: relative;
+}
+
+.character .hanzi {
+  font-size: 54px;
+  text-align: center;
+}
+
+.character .pinyin {
+  font-size: 14px;
+  text-align: center;
+  color: #ccc;
+  margin-top: -6px;
+}
+
+.character .zhuyin-holder {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 78px;
+  display: flex;
+  align-items: center;
+}
+
+.character .zhuyin-holder .zhuyin {
+  position: relative;
+  font-size: 18px;
+  color: #999;
+  writing-mode: vertical-lr;
+}
+
+.character .zhuyin-holder .zhuyin .tone {
+  position: absolute;
+  bottom: 0px;
+  left: 24px;
+  writing-mode: lr;
+}
