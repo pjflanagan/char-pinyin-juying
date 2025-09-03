@@ -1,58 +1,26 @@
 
-# TODO: get all the one character lines from cedict
-# match all the traditional to pinyin
-# maybe export it as a CSV?
-
-# trad,simp,juying,pinyin,english
 
 
 import json
+import csv
 
 
-def loadSourceDictionary():
-    with open('data/source/cedict.json') as f:
-        d = json.load(f)
-        return d
-    return None
-
-def loadSourceCharacters():
-    with open('data/source/chars.json') as f:
-        d = json.load(f)
-        return d
+def loadSourceMap(name):
+    with open("data/maps/" + name + ".csv") as fp:
+        reader = csv.reader(fp, delimiter=",", quotechar='"')
+        next(reader, None)  # skip the headers
+        return [row for row in reader]
+    return []
 
 if __name__ == '__main__':
-    chars = loadSourceCharacters()
-    if chars is None:
-        print("Failed to load chars")
-        exit(1)
-    charKeys = chars.keys()
 
-    cedict = loadSourceDictionary()
-    if cedict is None:
-        print("Failed to load cedict")
-        exit(1)
+    # create a set of all the simplified characters
+    hanziSimplifiedSet = set()
 
-    resultArray = []
-    resultDict = {}
-    
-    i = 0
-    for traditionalCharacter in charKeys:
-        entry = next((x for x in cedict if x["traditional"] == traditionalCharacter), None)
+    hanziSimplifiedToHanziTraditionalMap = loadSourceMap("HanziSimplified-HanziTraditional")
 
-        if entry:
+    # add all the simplified characters to the set
+    for row in hanziSimplifiedToHanziTraditionalMap:
+        hanziSimplifiedSet.add(row[0])
 
-          newEntry = {
-              'trad': traditionalCharacter,
-              'simp': entry["simplified"],
-              'juying': chars[traditionalCharacter],
-              'pinyin': entry["pinyin"],
-              'english': entry["english"]
-          }
-
-          resultDict[traditionalCharacter] = newEntry
-          resultArray.append(newEntry)
-
-          print(newEntry)
-          i += 1
-          if (i > 10):
-              break
+    outputRows = []

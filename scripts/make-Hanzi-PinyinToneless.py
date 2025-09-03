@@ -10,7 +10,6 @@ def loadSourceDictionary():
 
 
 if __name__ == '__main__':
-
     hanziPinyinMap = loadSourceDictionary()
     if hanziPinyinMap is None:
         print("Failed to load hanziPinyinMap")
@@ -19,11 +18,8 @@ if __name__ == '__main__':
     outputMap = [("hanzi", "pinyinToneless")]
 
     for char in hanziPinyinMap.keys():
-        # take the first pinyin in the array
-        pinyin = hanziPinyinMap[char][0]
-
+        pinyin = hanziPinyinMap[char][0] # take the first pinyin in the array
         entry = (char, unidecode(pinyin))
-
         outputMap.append(entry)
 
     with open("data/maps/Hanzi-PinyinToneless.csv", "wt") as fp:

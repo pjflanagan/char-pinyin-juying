@@ -1,7 +1,6 @@
 
 import json
 import csv
-from unidecode import unidecode
 
 def loadSourceDictionary():
     with open('data/source/bamboo-Hanzi-Pinyin.json') as f:
@@ -21,9 +20,7 @@ if __name__ == '__main__':
     for char in hanziPinyinMap.keys():
         # take the first pinyin in the array
         pinyin = hanziPinyinMap[char][0]
-
         entry = (char, pinyin)
-
         outputMap.append(entry)
 
     with open("data/maps/Hanzi-Pinyin.csv", "wt") as fp:
