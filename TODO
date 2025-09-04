@@ -1,5 +1,5 @@
 
 
 - [ ] Move the cursor in the text box with click
-- [ ] Move the cursor around while typing and with the arrow keys
+- [x] Move the cursor around while typing and with the arrow keys
 - [ ] show selected characters

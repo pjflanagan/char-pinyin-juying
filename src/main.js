@@ -69,6 +69,7 @@ function getTone(tone) {
 // event handlers
 
 function focusInputEnd() {
+  console.log('focusInputEnd');
   const input = $('#hidden-input');
   input.focus();
   input[0].selectionStart = input[0].selectionEnd = input.val().length;
@@ -77,13 +78,15 @@ function focusInputEnd() {
 
 // focuses the input at a specific character
 function focusInputAt(e) {
+  console.log('focusInputAt');
+  const input = $('#hidden-input')[0];
+  input.focus();
   const characterElement = $(e.target).parents('.character')[0]
   const index = characterElement.getAttribute('data-index');
   const side = e.target.getAttribute('data-hitbox');
   const delta = side === 'left' ? 0 : 1;
-  const input = $('#hidden-input');
-  input.focus();
-  input[0].selectionStart = input[0].selectionEnd = index + delta;
+  const cursorPosition = index + delta;
+  input.setSelectionRange(cursorPosition, cursorPosition);
   renderCursorAtCharacterElement(characterElement, side);
   e.stopPropagation();
 }
@@ -92,13 +95,14 @@ function handleInput(e) {
   renderText(e.target.value);
 }
 
-function handleKeyDown(e) {
-  // TODO: if it is an arrow key, move the cursor
+function handleKeyUp(e) {
+  renderCursorAtInputCursorPosition()
 }
 
 // Gets the position of the cursor
+// TODO:
 function getSelection() {
-  var input = $('#hidden-input')[0]; // Get the DOM element from the jQuery object
+  const input = $('#hidden-input')[0]; // Get the DOM element from the jQuery object
 
   if (input) {
     const start = input.selectionStart;
@@ -120,8 +124,15 @@ function renderCursorAtCharacterElement(elem, side) {
   }
 }
 
-function renderCursorAtCharacterIndex(index) {
-
+function renderCursorAtInputCursorPosition() {
+  const input = $('#hidden-input')[0];
+  const cursorIndex = input.selectionStart;
+  console.log(cursorIndex);
+  const characterElements = $('.character');
+  if (cursorIndex >= characterElements.length) {
+    renderCursorAtEnd();
+  }
+  renderCursorAtCharacterElement(characterElements[cursorIndex], 'left')
 }
 
 function renderText(text) {
@@ -146,7 +157,7 @@ function renderText(text) {
     }
     $('#display-characters').append(html);
   }
-  // TODO: reposition cursor
+  renderCursorAtInputCursorPosition();
 }
 
 // onload

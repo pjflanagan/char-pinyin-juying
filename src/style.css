@@ -32,7 +32,7 @@ body {
 
 #display-characters #cursor {
   height: 60px;
-  margin-top: 20px;
+  margin-top: 12px;
   width: 2px;
   background: #ffffff2e;
   margin-right: -2px;
