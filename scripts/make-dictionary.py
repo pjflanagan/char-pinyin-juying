@@ -1,5 +1,6 @@
 
 import csv
+from util.getAllHanzi import getAllHanzi
 
 def loadSourceMap(name):
     with open("data/maps/" + name + ".csv") as fp:
@@ -24,20 +25,20 @@ if __name__ == '__main__':
 
     # create a set of all the simplified characters
     # add all the simplified characters to the set
-    hanziSimplifiedSet = set()
-    for row in hanziSimplifiedToHanziTraditionalMap:
-        hanziSimplifiedSet.add(row[0])
+    allHanziSet = getAllHanzi()
 
-    outputRows = [('hanziSimplified','hanziTraditional','zhuyin','pinyin','tone','english')]
+    # TODO: TODO: TODO:
+    # hanzi should be a list of all simplified and traditional, one of hanziSimplified and hanziTraditional WILL match
+    outputRows = [('hanzi', 'hanziSimplified','hanziTraditional','zhuyin','pinyin','tone','english')]
 
-    for hanziSimplified in hanziSimplifiedSet:
+    for hanzi in allHanziSet:
         hanziTraditional = findInList(hanziSimplifiedToHanziTraditionalMap, hanziSimplified)
         pinyinToneless = findInList(hanziToPinyinTonelessMap, hanziSimplified)
         zhuyin = findInList(pinyinTonelessToZhuyinMap, pinyinToneless)
         pinyin = findInList(hanziToPinyinMap, hanziSimplified)
         tone = findInList(hanziSimplifiedToTone, hanziSimplified)
         english = findInList(hanziToEnglishMap, hanziSimplified)
-        outputRows.append((hanziSimplified, hanziTraditional, zhuyin, pinyin, tone, english))
+        outputRows.append((hanzi, hanziSimplified, hanziTraditional, zhuyin, pinyin, tone, english))
 
     with open("data/dictionary.csv", "wt") as fp:
         writer = csv.writer(fp, delimiter=",")

@@ -1,27 +1,31 @@
 
-import json
-import csv
-
-def loadSourceDictionary():
-    with open('data/source/bamboo-Hanzi-Pinyin.json') as f:
-        return json.load(f)
-    return None
-
+from unidecode import unidecode
+import re
+import pinyin
+from util.loadJson import loadJson
+from util.writeCsv import writeCsv
+from util.getAllHanzi import getAllHanzi
 
 if __name__ == '__main__':
-    hanziPinyinMap = loadSourceDictionary()
-    if hanziPinyinMap is None:
-        print("Failed to load hanziPinyinMap")
-        exit(1)
+    hanziPinyinMap = loadJson('bamboo-Hanzi-Pinyin')
+    allHanziSet = getAllHanzi()
 
-    outputMap = [("hanzi", "pinyin")]
+    outputMap = [("hanzi", "pinyin", "pinyinToneless", "tone")]
 
-    for char in hanziPinyinMap.keys():
-        # take the first pinyin in the array
-        pinyin = hanziPinyinMap[char][0]
-        entry = (char, pinyin)
-        outputMap.append(entry)
+    for char in allHanziSet:
+        try:
+            pinyinToneless = pinyin.get(char, format="strip")
+            pinyinNumerical = pinyin.get(char, format="numerical")
+            numbers = re.findall(r'\d+', pinyinNumerical)
+            tone = numbers[0] if numbers else None
 
-    with open("data/maps/Hanzi-Pinyin.csv", "wt") as fp:
-        writer = csv.writer(fp, delimiter=",")
-        writer.writerows(outputMap)
+            outputMap.append((
+                char,
+                pinyin.get(char),
+                pinyinToneless,
+                tone
+            ))
+        except:
+            print('Error for char:' + char)
+
+    writeCsv('maps/Hanzi-Pinyin', outputMap)

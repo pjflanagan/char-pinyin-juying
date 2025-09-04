@@ -1,19 +1,9 @@
 
-import json
-import csv
-
-def loadSourceDictionary():
-    with open("data/source/pinyin-zhuyin.csv") as fp:
-        reader = csv.reader(fp, delimiter=",", quotechar='"')
-        next(reader, None)  # skip the headers
-        return [row for row in reader]
-
+from util.loadCsv import loadCsv
+from util.writeCsv import writeCsv
 
 if __name__ == '__main__':
-    pinyinZhuyinMap = loadSourceDictionary()
-    if pinyinZhuyinMap is None:
-        print("Failed to load pinyinZhuyinMap")
-        exit(1)
+    pinyinZhuyinMap = loadCsv('pinyin-zhuyin')
 
     outputMap = [("hanzi", "pinyinToneless")]
 
@@ -21,6 +11,4 @@ if __name__ == '__main__':
         entry = (row[0], row[1])
         outputMap.append(entry)
 
-    with open("data/maps/PinyinToneless-Zhuyin.csv", "wt") as fp:
-        writer = csv.writer(fp, delimiter=",")
-        writer.writerows(outputMap)
+    writeCsv("maps/PinyinToneless-Zhuyin", outputMap)
