@@ -46,7 +46,7 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
 let DICTIONARY;
 
 function loadCSV() {
-  fetch('/data/dictionary.csv')
+  fetch(`${window.location.href}/data/dictionary.csv`)
     .then(response => response.text())
     .then(v => Papa.parse(v, {
       header: true,
