@@ -172,7 +172,7 @@ function renderText(text) {
         html = renderHanziCharacter({
           index: i,
           // always convert to traditional
-          hanzi: entry.hanziTraditional || char,
+          hanzi: entry.trad || char,
           pinyin: entry.pinyin || '',
           zhuyin: entry.zhuyin || '',
           tone: getTone(entry.tone || 0)

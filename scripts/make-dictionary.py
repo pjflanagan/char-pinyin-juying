@@ -1,46 +1,46 @@
 
-import csv
+from unidecode import unidecode
+import re
+import pinyin
+from hanziconv import HanziConv
+from util.loadCsv import loadCsv
+from util.writeCsv import writeCsv
 from util.getAllHanzi import getAllHanzi
 
-def loadSourceMap(name):
-    with open("data/maps/" + name + ".csv") as fp:
-        reader = csv.reader(fp, delimiter=",", quotechar='"')
-        next(reader, None)  # skip the headers
-        return [row for row in reader]
-    return []
-
-def findInList(mapping, key):
+def findInMap(mapping, key):
     for row in mapping:
         if row[0] == key:
             return row[1]
     return None
 
 if __name__ == '__main__':
-    hanziToEnglishMap = loadSourceMap("Hanzi-English")
-    hanziToPinyinMap = loadSourceMap("Hanzi-Pinyin")
-    hanziToPinyinTonelessMap = loadSourceMap("Hanzi-PinyinToneless")
-    hanziSimplifiedToHanziTraditionalMap = loadSourceMap("HanziSimplified-HanziTraditional")
-    pinyinTonelessToZhuyinMap = loadSourceMap("PinyinToneless-Zhuyin")
-    hanziSimplifiedToTone = loadSourceMap("HanziSimplified-Tone")
-
-    # create a set of all the simplified characters
-    # add all the simplified characters to the set
+    tonelessToZhuyinMap = loadCsv('maps/PinyinToneless-Zhuyin')
     allHanziSet = getAllHanzi()
 
-    # TODO: TODO: TODO:
-    # hanzi should be a list of all simplified and traditional, one of hanziSimplified and hanziTraditional WILL match
-    outputRows = [('hanzi', 'hanziSimplified','hanziTraditional','zhuyin','pinyin','tone','english')]
+    outputMap = [("hanzi", "trad", "simp", "pinyin", "toneless", "tone", "zhuyin")]
 
-    for hanzi in allHanziSet:
-        hanziTraditional = findInList(hanziSimplifiedToHanziTraditionalMap, hanziSimplified)
-        pinyinToneless = findInList(hanziToPinyinTonelessMap, hanziSimplified)
-        zhuyin = findInList(pinyinTonelessToZhuyinMap, pinyinToneless)
-        pinyin = findInList(hanziToPinyinMap, hanziSimplified)
-        tone = findInList(hanziSimplifiedToTone, hanziSimplified)
-        english = findInList(hanziToEnglishMap, hanziSimplified)
-        outputRows.append((hanzi, hanziSimplified, hanziTraditional, zhuyin, pinyin, tone, english))
+    for char in allHanziSet:
+        try:
+            trad = HanziConv.toTraditional(char)
+            simp = HanziConv.toSimplified(char)
+            # TODO: this library doesn't always work
+            # it might be good to also make my own map I can check
+            toneless = pinyin.get(char, format="strip")
+            pinyinNumerical = pinyin.get(char, format="numerical")
+            numbers = re.findall(r'\d+', pinyinNumerical)
+            tone = numbers[0] if numbers else None
+            zhuyin = findInMap(tonelessToZhuyinMap, toneless)
 
-    with open("data/dictionary.csv", "wt") as fp:
-        writer = csv.writer(fp, delimiter=",")
-        writer.writerows(outputRows)
+            outputMap.append((
+                char,
+                trad,
+                simp,
+                pinyin.get(char),
+                toneless,
+                tone,
+                zhuyin
+            ))
+        except:
+            print('Error for char:' + char)
 
+    writeCsv('dictionary', outputMap)

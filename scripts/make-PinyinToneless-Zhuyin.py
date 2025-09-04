@@ -3,9 +3,9 @@ from util.loadCsv import loadCsv
 from util.writeCsv import writeCsv
 
 if __name__ == '__main__':
-    pinyinZhuyinMap = loadCsv('pinyin-zhuyin')
+    pinyinZhuyinMap = loadCsv('source/pinyin-zhuyin')
 
-    outputMap = [("hanzi", "pinyinToneless")]
+    outputMap = [("toneless", "zhuyin")]
 
     for row in pinyinZhuyinMap:
         entry = (row[0], row[1])
