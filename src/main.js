@@ -20,13 +20,18 @@ const TONE_MAP = [
 
 let DICTIONARY;
 
-function loadCSV() {
-  fetch(`${window.location.href}/data/dictionary.csv`)
+function getBaseUrl() {
+  return window.location.protocol + '//' + window.location.host + window.location.pathname
+}
+
+async function loadCSV() {
+  fetch(`${getBaseUrl()}/data/dictionary.csv`)
     .then(response => response.text())
     .then(v => Papa.parse(v, {
       header: true,
       complete: (result) => {
         DICTIONARY = result.data;
+        renderInputText();
       }
     }))
     .catch(err => console.error(err))
@@ -53,14 +58,15 @@ function focusInputEnd() {
 
 // focuses the input at a specific character
 function focusInputAt(e) {
-  const input = $('#hidden-input')[0];
-  input.focus();
+  const input = $('#hidden-input');
   const characterElement = $(e.target).parents('.character')[0]
   const index = characterElement.getAttribute('data-index');
   const side = e.target.getAttribute('data-hitbox');
   const delta = side === 'left' ? 0 : 1;
-  const cursorPosition = index + delta;
-  input.setSelectionRange(cursorPosition, cursorPosition);
+  const cursorPosition = parseInt(index) + delta;
+  input.focus();
+  input[0].selectionStart = input[0].selectionEnd = cursorPosition;
+  // input[0].setSelectionRange(cursorPosition, cursorPosition);
   renderCursorAtCharacterElement(characterElement, side);
   e.stopPropagation();
 }
@@ -145,24 +151,32 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
 `
 }
 
+function renderInputText() {
+  const text = $('#hidden-input').val();
+  if (text && text.length > 0) {
+    renderText(text);
+  }
+}
+
 function renderText(text) {
   $('#display-characters').children('.character').remove();
   for (let i = 0; i < text.length; ++i) {
-    // if it is hanzi, then print it with a little display
-    // if it is not hanzi, then display it in an english character
     const char = text[i];
     const isHanzi = !!char.match(IS_MANDARIN_REGEX);
     let html;
     if (isHanzi) {
       const entry = findEntry(char);
-      html = renderHanziCharacter({
-        index: i,
-        hanzi: char,
-        pinyin: entry.pinyin || '',
-        zhuyin: entry.zhuyin || '',
-        tone: getTone(entry.tone || 0)
-      })
-    } else {
+      if (entry) {
+        html = renderHanziCharacter({
+          index: i,
+          hanzi: char,
+          pinyin: entry.pinyin || '',
+          zhuyin: entry.zhuyin || '',
+          tone: getTone(entry.tone || 0)
+        });
+      }
+    }
+    if (!html) {
       html = renderNonHanziCharacter(i, char);
     }
     $('#display-characters').append(html);
@@ -174,7 +188,21 @@ function renderText(text) {
 // Onload --------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+function checkDebugParam() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const debug = urlParams.get('debug');
+  const text = urlParams.get('text');
+
+  if (!!debug) {
+    $('body').addClass('debug');
+  }
+  if (!!text) {
+    $('#hidden-input').val(text);
+  }
+}
+
 (function () {
+  checkDebugParam();
   loadCSV();
 })();
 
