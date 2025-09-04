@@ -38,7 +38,7 @@ async function loadCSV() {
 }
 
 function findEntry(hanzi) {
-  return DICTIONARY.find(entry => entry.hanziTraditional === hanzi || entry.hanziSimplified === hanzi);
+  return DICTIONARY.find(entry => entry.hanzi === hanzi);
 }
 
 function getTone(tone) {

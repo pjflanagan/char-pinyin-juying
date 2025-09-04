@@ -9,6 +9,16 @@ nearby characters. For example, "了" will always be "le", and never "liao."
 
 ## Develop
 
+### Install
+
+There might be libraries missing from here.
+
+```
+$ python3 -m pip install csv pinyin
+```
+
+### Serve
+
 ```
 $ python3 -m http.server
 ```
