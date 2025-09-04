@@ -155,3 +155,7 @@ body.debug #hidden-input {
   width: 100%;
   gap: 64px;
 }
+
+#settings a {
+  cursor: pointer;
+}

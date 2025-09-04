@@ -13,15 +13,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
-    <input id="hidden-input" oninput="handleInput(event);" onkeyup="handleKeyUp(event);" />
+    <input
+      id="hidden-input"
+      oninput="handleInput(event);"
+      onkeyup="handleKeyUp(event);"
+      value="輸入短語"
+    />
     <div id="display-characters">
       <div id="cursor"></div>
     </div>
-    <!-- <div id="settings">
-      <div>Traditional | Simplified</div>
-      <div>Pinyin | Zhuyin</div>
-      <div>English</div>
-    </div> -->
+    <div id="settings">
+      <!-- <div>Traditional | Simplified</div> -->
+      <div>
+        <a onclick="handleToggleVisibility('pinyin')">Pinyin</a> |
+        <a onclick="handleToggleVisibility('zhuyin')">Zhuyin</a>
+      </div>
+      <!-- <div>English</div> -->
+    </div>
   </body>
   <script src="./src/lib/papaparse.min.js"></script>
   <script src="./src/main.js"></script>

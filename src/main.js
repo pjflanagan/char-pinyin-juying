@@ -66,7 +66,6 @@ function focusInputAt(e) {
   const cursorPosition = parseInt(index) + delta;
   input.focus();
   input[0].selectionStart = input[0].selectionEnd = cursorPosition;
-  // input[0].setSelectionRange(cursorPosition, cursorPosition);
   renderCursorAtCharacterElement(characterElement, side);
   e.stopPropagation();
 }
@@ -79,8 +78,11 @@ function handleKeyUp(e) {
   renderCursorAtInputCursorPosition()
 }
 
-// Gets the position of the cursor
-// TODO:
+function handleToggleVisibility(type) {
+  $(`.${type}`).toggle();
+}
+
+// TODO: display the selection highlight over the selected characters
 function getSelection() {
   const input = $('#hidden-input')[0]; // Get the DOM element from the jQuery object
 
@@ -169,7 +171,8 @@ function renderText(text) {
       if (entry) {
         html = renderHanziCharacter({
           index: i,
-          hanzi: char,
+          // always convert to traditional
+          hanzi: entry.hanziTraditional || char,
           pinyin: entry.pinyin || '',
           zhuyin: entry.zhuyin || '',
           tone: getTone(entry.tone || 0)
