@@ -42,12 +42,12 @@ body {
 /* character */
 
 #display-characters .character {
-  width: 100px;
   height: 100px;
   position: relative;
-  padding-right: 16px;
   box-sizing: border-box;
 }
+
+/* hitbox */
 
 #display-characters .character .hitbox-holder {
   height: 100%;
@@ -61,19 +61,37 @@ body {
   height: 100%;
 }
 
-#display-characters .character .hanzi {
+/* non-hanzi */
+
+#display-characters .character.non-hanzi {
+  width: fit-content;
+}
+
+#display-characters .character.non-hanzi .text {
+  font-size: 54px;
+  text-align: left;
+}
+
+/* hanzi */
+
+#display-characters .character.hanzi {
+  width: 100px;
+  padding-right: 16px;
+}
+
+#display-characters .character.hanzi .hanzi {
   font-size: 54px;
   text-align: center;
 }
 
-#display-characters .character .pinyin {
+#display-characters .character.hanzi .pinyin {
   font-size: 14px;
   text-align: center;
   color: #999;
   margin-top: -6px;
 }
 
-#display-characters .character .zhuyin-holder {
+#display-characters .character.hanzi .zhuyin-holder {
   position: absolute;
   top: 0;
   right: 10px;
@@ -82,14 +100,14 @@ body {
   align-items: center;
 }
 
-#display-characters .character .zhuyin-holder .zhuyin {
+#display-characters .character.hanzi .zhuyin-holder .zhuyin {
   position: relative;
   font-size: 18px;
   color: #999;
   writing-mode: vertical-lr;
 }
 
-#display-characters .character .zhuyin-holder .zhuyin .tone {
+#display-characters .character.hanzi .zhuyin-holder .zhuyin .tone {
   position: absolute;
   bottom: 0px;
   left: 22px;

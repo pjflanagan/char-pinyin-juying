@@ -15,20 +15,6 @@
   <body onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
     <input id="hidden-input" class="" oninput="handleInput(event);" />
     <div id="display-characters">
-      <!-- <div class="character" data-index="0">
-        <div class="hitbox-holder">
-          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
-          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
-        </div>
-        <div class="hanzi no-pointer">我</div>
-        <div class="pinyin no-pointer">wǒ</div>
-        <div class="zhuyin-holder no-pointer">
-          <div class="zhuyin">
-            ㄨㄛ
-            <div class="tone">ˇ</div>
-          </div>
-        </div>
-      </div> -->
       <div id="cursor"></div>
     </div>
     <div id="settings">
@@ -37,5 +23,6 @@
       <div>English</div>
     </div>
   </body>
+  <script src="./src/lib/papaparse.min.js"></script>
   <script src="./src/main.js"></script>
 </html>

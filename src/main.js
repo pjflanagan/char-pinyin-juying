@@ -41,21 +41,29 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
 `
 }
 
+// dictionary
+
 let DICTIONARY;
 
 function loadCSV() {
-  $.ajax({
-    type: "GET",
-    url: "./data/dictionary.csv",
-    dataType: "csv",
-    headers: {
-      'Content-Type': 'text/plain; charset=utf-8'
-    },
-    success: function (data) {
-      console.log(data);
-      DICTIONARY = data;
-    }
-  });
+  fetch('/data/dictionary.csv')
+    .then(response => response.text())
+    .then(v => Papa.parse(v, {
+      header: true,
+      complete: (result) => {
+        DICTIONARY = result.data;
+        console.log(DICTIONARY);
+      }
+    }))
+    .catch(err => console.log(err))
+}
+
+function findEntry(hanzi) {
+  return DICTIONARY.find(entry => entry.hanziTraditional === hanzi || entry.hanziSimplified === hanzi);
+}
+
+function getTone(tone) {
+  return TONE_MAP[typeof tone === 'number' ? tone : parseInt(tone)];
 }
 
 // event handlers
@@ -102,16 +110,13 @@ function getSelection() {
 
 function renderCursorAtEnd() {
   $('#display-characters').append($("#cursor"));
-  // $('#display-characters').append($("#hidden-input"));
 }
 
 function renderCursorAtCharacterElement(elem, side) {
   if (side === 'left') {
     $("#cursor").insertBefore(elem);
-    // $("#hidden-input").insertBefore(elem);
   } else {
     $("#cursor").insertAfter(elem);
-    // $("#hidden-input").insertAfter(elem);
   }
 }
 
@@ -120,7 +125,6 @@ function renderCursorAtCharacterIndex(index) {
 }
 
 function renderText(text) {
-  console.log(text);
   $('#display-characters').children('.character').remove();
   for (let i = 0; i < text.length; ++i) {
     // if it is hanzi, then print it with a little display
@@ -129,12 +133,13 @@ function renderText(text) {
     const isHanzi = !!char.match(IS_MANDARIN_REGEX);
     let html;
     if (isHanzi) {
+      const entry = findEntry(char);
       html = renderHanziCharacter({
         index: i,
         hanzi: char,
-        pinyin: '',
-        zhuyin: '',
-        tone: ''
+        pinyin: entry.pinyin || '',
+        zhuyin: entry.zhuyin || '',
+        tone: getTone(entry.tone || 0)
       })
     } else {
       html = renderNonHanziCharacter(i, char);
