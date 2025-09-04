@@ -1,5 +1,6 @@
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Mandarin Pronunciation Assistant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -29,7 +30,7 @@
         </div>
       </div>
       <div id="cursor"></div>
-      <input id="hidden-input" value="我們" />
+      <input id="hidden-input" oninput="handleInput(event);" />
     </div>
     <div id="settings">
       <div>

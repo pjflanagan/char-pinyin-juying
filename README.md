@@ -1,5 +1,13 @@
 
 
+## Develop
+
+```
+$ python3 -m http.server
+```
+
+## Notes
+
 TODO: 
 
 https://github.com/guoyunhe/pinyin-json

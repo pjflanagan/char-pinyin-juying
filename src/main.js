@@ -17,6 +17,9 @@ function loadCSV() {
     type: "GET",
     url: "./data/dictionary.csv",
     dataType: "csv",
+    headers: {
+      'Content-Type': 'text/plain; charset=utf-8'
+    },
     success: function (data) {
       console.log(data);
       DICTIONARY = data;
@@ -24,8 +27,9 @@ function loadCSV() {
   });
 }
 
+// event handlers
+
 function focusInputEnd() {
-  console.log('focusInputEnd');
   const input = $('#hidden-input');
   input.focus();
   input[0].selectionStart = input[0].selectionEnd = input.val().length;
@@ -41,16 +45,16 @@ function focusInputAt(e) {
   const input = $('#hidden-input');
   input.focus();
   input[0].selectionStart = input[0].selectionEnd = index + delta;
-  renderCursorAtCharacter(characterElement, side);
+  renderCursorAtCharacterElement(characterElement, side);
   e.stopPropagation();
 }
 
-function onChange() {
-  console.log()
+function handleInput(e) {
+  renderText(e.target.value);
 }
 
-function onKeyDown() {
-
+function handleKeyDown(e) {
+  // TODO: if it is an arrow key, move the cursor
 }
 
 // Gets the position of the cursor
@@ -69,7 +73,7 @@ function renderCursorAtEnd() {
   $("#cursor").insertBefore('#hidden-input');
 }
 
-function renderCursorAtCharacter(elem, side) {
+function renderCursorAtCharacterElement(elem, side) {
   if (side === 'left') {
     $("#cursor").insertBefore(elem);
   } else {
@@ -77,10 +81,18 @@ function renderCursorAtCharacter(elem, side) {
   }
 }
 
-function renderText() {
-  const text = $('#hidden-input').text();
-  const hanzi = SELECT_MANDARIN_REGEX.exec(text);
-  console.log(hanzi);
+function renderCursorAtCharacterIndex(index) {
+
+}
+
+function renderText(text) {  
+  for (let i = 0; i < text.length; ++i) {
+    // if it is hanzi, then print it with a little display
+    // if it is not hanzi, then display it in an english character
+    const char = text[i];
+    // const hanzi = SELECT_MANDARIN_REGEX.exec(text);
+    console.log(char);
+  }
 }
 
 // onload
