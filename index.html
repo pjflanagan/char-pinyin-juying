@@ -11,32 +11,36 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
-  <body>
+  <body onclick="focusInputEnd(event);">
     <div id="display-characters">
       <!-- TODO: character template -->
-      <div class="character">
-        <div class="hanzi">我</div>
-        <div class="pinyin">wǒ</div>
-        <div class="zhuyin-holder">
+      <div class="character" data-index="0">
+        <div class="hitbox-holder">
+          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
+          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
+        </div>
+        <div class="hanzi no-pointer">我</div>
+        <div class="pinyin no-pointer">wǒ</div>
+        <div class="zhuyin-holder no-pointer">
           <div class="zhuyin">
             ㄨㄛ
             <div class="tone">ˇ</div>
           </div>
         </div>
       </div>
-       <div id="cursor"></div>
-      <div class="character">
-        <div class="hanzi">們</div>
-        <div class="pinyin">men</div>
-        <div class="zhuyin-holder">
-          <div class="zhuyin">
-            ㄨㄛ
-            <div class="tone">ˇ</div>
-          </div>
-        </div>
+      <div id="cursor"></div>
+      <input id="hidden-input" value="我們" />
+    </div>
+    <div id="settings">
+      <div>
+        Traditional | Simplified
       </div>
-       <!-- TODO: the hidden input moves with where the next character will be -->
-      <input id="hidden-input" />
+      <div>
+        Pinyin | Zhuyin
+      </div>
+      <div>
+        English
+      </div>
     </div>
   </body>
   <script src="./src/main.js"></script>

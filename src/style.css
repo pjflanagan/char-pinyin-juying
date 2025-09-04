@@ -1,3 +1,12 @@
+
+/* utils */
+
+.no-pointer {
+  pointer-events: none;
+}
+
+/* body */
+
 body {
   background: #1c1c1c;
   color: #fff;
@@ -8,7 +17,10 @@ body {
 #display-characters {
   display: flex;
   flex-wrap: wrap;
+  padding: 48px;
 }
+
+/* cursor */
 
 @keyframes blink {
   0% {
@@ -28,12 +40,26 @@ body {
   animation: blink 0.7s infinite alternate;
 }
 
+/* character */
+
 #display-characters .character {
   width: 100px;
   height: 100px;
   position: relative;
   padding-right: 16px;
   box-sizing: border-box;
+}
+
+#display-characters .character .hitbox-holder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+}
+
+#display-characters .character .hitbox-holder .hitbox {
+  width: 50%;
+  height: 100%;
 }
 
 #display-characters .character .hanzi {
@@ -69,4 +95,22 @@ body {
   bottom: 0px;
   left: 22px;
   writing-mode: lr;
+}
+
+#hidden-input {
+  background: none;
+  color: #fff;
+  margin-left: 12px;
+  outline: none;
+  border: none;
+}
+
+#settings {
+  position: fixed;
+  display: flex;
+  bottom: 16px;
+  justify-content: center;
+  opacity: 0.2;
+  width: 100%;
+  gap: 64px;
 }
