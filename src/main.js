@@ -1,5 +1,5 @@
 
-const SELECT_MANDARIN_REGEX = /[\p{Han}]/gm;
+const IS_MANDARIN_REGEX = /[\p{Script=Han}]/u;
 
 const TONE_MAP = [
   '',   // 0 -> not a real tone
@@ -9,6 +9,37 @@ const TONE_MAP = [
   'ˋ',  // 4 -> falling
   '˙'   // 5 -> neutral
 ];
+
+function renderNonHanziCharacter(index, char) {
+  return `
+      <div class="character non-hanzi" data-index=${index}>
+        <div class="hitbox-holder">
+          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
+          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
+        </div>
+        <div class="text">${char}</div>
+      </div>
+  `;
+}
+
+function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
+  return `
+      <div class="character hanzi" data-index=${index}>
+        <div class="hitbox-holder">
+          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
+          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
+        </div>
+        <div class="hanzi no-pointer">${hanzi}</div>
+        <div class="pinyin no-pointer">${pinyin}</div>
+        <div class="zhuyin-holder no-pointer">
+          <div class="zhuyin">
+            ${zhuyin}
+            <div class="tone">${tone}</div>
+          </div>
+        </div>
+      </div>
+`
+}
 
 let DICTIONARY;
 
@@ -70,14 +101,17 @@ function getSelection() {
 // Render methods
 
 function renderCursorAtEnd() {
-  $("#cursor").insertBefore('#hidden-input');
+  $('#display-characters').append($("#cursor"));
+  // $('#display-characters').append($("#hidden-input"));
 }
 
 function renderCursorAtCharacterElement(elem, side) {
   if (side === 'left') {
     $("#cursor").insertBefore(elem);
+    // $("#hidden-input").insertBefore(elem);
   } else {
     $("#cursor").insertAfter(elem);
+    // $("#hidden-input").insertAfter(elem);
   }
 }
 
@@ -85,14 +119,29 @@ function renderCursorAtCharacterIndex(index) {
 
 }
 
-function renderText(text) {  
+function renderText(text) {
+  console.log(text);
+  $('#display-characters').children('.character').remove();
   for (let i = 0; i < text.length; ++i) {
     // if it is hanzi, then print it with a little display
     // if it is not hanzi, then display it in an english character
     const char = text[i];
-    // const hanzi = SELECT_MANDARIN_REGEX.exec(text);
-    console.log(char);
+    const isHanzi = !!char.match(IS_MANDARIN_REGEX);
+    let html;
+    if (isHanzi) {
+      html = renderHanziCharacter({
+        index: i,
+        hanzi: char,
+        pinyin: '',
+        zhuyin: '',
+        tone: ''
+      })
+    } else {
+      html = renderNonHanziCharacter(i, char);
+    }
+    $('#display-characters').append(html);
   }
+  // TODO: reposition cursor
 }
 
 // onload

@@ -1,6 +1,6 @@
 <html>
   <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Mandarin Pronunciation Assistant</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -12,10 +12,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
-  <body onclick="focusInputEnd(event);">
+  <body onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
+    <input id="hidden-input" class="" oninput="handleInput(event);" />
     <div id="display-characters">
-      <!-- TODO: character template -->
-      <div class="character" data-index="0">
+      <!-- <div class="character" data-index="0">
         <div class="hitbox-holder">
           <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
           <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
@@ -28,20 +28,13 @@
             <div class="tone">ˇ</div>
           </div>
         </div>
-      </div>
+      </div> -->
       <div id="cursor"></div>
-      <input id="hidden-input" oninput="handleInput(event);" />
     </div>
     <div id="settings">
-      <div>
-        Traditional | Simplified
-      </div>
-      <div>
-        Pinyin | Zhuyin
-      </div>
-      <div>
-        English
-      </div>
+      <div>Traditional | Simplified</div>
+      <div>Pinyin | Zhuyin</div>
+      <div>English</div>
     </div>
   </body>
   <script src="./src/main.js"></script>

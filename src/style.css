@@ -1,4 +1,3 @@
-
 /* utils */
 
 .no-pointer {
@@ -17,7 +16,7 @@ body {
 #display-characters {
   display: flex;
   flex-wrap: wrap;
-  padding: 48px;
+  padding: 62px;
 }
 
 /* cursor */
@@ -99,10 +98,19 @@ body {
 
 #hidden-input {
   background: none;
-  color: #fff;
-  margin-left: 12px;
+  color: #0000;
+  border-radius: 4px;
   outline: none;
   border: none;
+  left: 50%;
+  margin-left: -240px;
+  position: fixed;
+  text-align: center;
+}
+
+#hidden-input.debug {
+  background: #fff2;
+  color: #fff;
 }
 
 #settings {
