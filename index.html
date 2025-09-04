@@ -9,9 +9,9 @@
     />
     <link rel="stylesheet" href="./src/style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body>
-    <input id="hidden-input" />
     <div id="display-characters">
       <!-- TODO: character template -->
       <div class="character">
@@ -24,7 +24,19 @@
           </div>
         </div>
       </div>
-      <!-- TODO: cursor -->
+       <div id="cursor"></div>
+      <div class="character">
+        <div class="hanzi">們</div>
+        <div class="pinyin">men</div>
+        <div class="zhuyin-holder">
+          <div class="zhuyin">
+            ㄨㄛ
+            <div class="tone">ˇ</div>
+          </div>
+        </div>
+      </div>
+       <!-- TODO: the hidden input moves with where the next character will be -->
+      <input id="hidden-input" />
     </div>
   </body>
   <script src="./src/main.js"></script>
