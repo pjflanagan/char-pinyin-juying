@@ -1,8 +1,9 @@
 
+- [ ] highlight multiple characters
 - [ ] toggle pinyin and zhuyin on and off statefully
 - [ ] mobile sizing (larger, no page zoom allowed)
 - [ ] when english enabled display vertically with english to the right of each character
-- [ ] highlight multiple characters
 - [ ] popup menu with info and links to other helpful tools (bopomofo soundboard and the zhuyin diagram)
+- [ ] button to open in Google translate
 - [x] Move the cursor in the text box with click
 - [x] Move the cursor around while typing and with the arrow keys

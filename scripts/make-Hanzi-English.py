@@ -1,15 +1,10 @@
 
-import json
-import csv
-
-def loadSourceDictionary():
-    with open('data/source/bamboo-Hanzi-English.json') as f:
-        return json.load(f)
-    return None
-
+from util.loadJson import loadJson
+from util.writeCsv import writeCsv
 
 if __name__ == '__main__':
-    hanziEnglishMap = loadSourceDictionary()
+    # TODO: this is not a very comprehensive map, find a new one
+    hanziEnglishMap = loadJson('source/bamboo-Hanzi-English')
     if hanziEnglishMap is None:
         print("Failed to load hanziEnglishMap")
         exit(1)
@@ -21,6 +16,4 @@ if __name__ == '__main__':
         entry = (char, english)
         outputMap.append(entry)
 
-    with open("data/maps/Hanzi-English.csv", "wt") as fp:
-        writer = csv.writer(fp, delimiter=",")
-        writer.writerows(outputMap)
+    writeCsv("maps/Hanzi-English", outputMap)
