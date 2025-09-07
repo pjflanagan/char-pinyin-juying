@@ -24,7 +24,7 @@ if __name__ == '__main__':
     for char in allHanziSet:
         try:
             # TODO: this does NOT work for some characters like 了
-            # I need to create a function for this
+            # check the manual entries map and use the values there instead
             trad = HanziConv.toTraditional(char)
             simp = HanziConv.toSimplified(char)
             # TODO: this library doesn't always work, it might be good to also make my own map I can check
