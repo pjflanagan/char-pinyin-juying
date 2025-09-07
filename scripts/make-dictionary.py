@@ -13,6 +13,12 @@ def findInMap(mapping, key):
             return row[1]
     return None
 
+def convertPinyin(char):
+    return pinyin.get(char).replace('v̌', 'ǔ')
+
+def convertTonelessPinyin(char):
+    return pinyin.get(char, format="strip").replace('v', 'u')
+
 if __name__ == '__main__':
     tonelessToZhuyinMap = loadCsv('maps/PinyinToneless-Zhuyin')
     allHanziSet = getAllHanzi()
@@ -28,7 +34,7 @@ if __name__ == '__main__':
             trad = HanziConv.toTraditional(char)
             simp = HanziConv.toSimplified(char)
             # TODO: this library doesn't always work, it might be good to also make my own map I can check
-            toneless = pinyin.get(char, format="strip")
+            toneless = convertTonelessPinyin(char)
             pinyinNumerical = pinyin.get(char, format="numerical")
             numbers = re.findall(r'\d+', pinyinNumerical)
             tone = numbers[0] if numbers else None
@@ -38,7 +44,7 @@ if __name__ == '__main__':
                 char,
                 trad,
                 simp,
-                pinyin.get(char),
+                convertPinyin(char),
                 toneless,
                 tone,
                 zhuyin
