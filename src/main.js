@@ -135,6 +135,8 @@ function renderNonHanziCharacter(index, char) {
 }
 
 function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
+  const displayTone = tone === 5 ? '' : getTone(tone);
+  const fifthTone = tone === 5 ? getTone(tone) : '';
   return `
       <div class="character hanzi" data-index=${index}>
         <div class="hitbox-holder">
@@ -144,9 +146,8 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
         <div class="hanzi no-pointer">${hanzi}</div>
         <div class="pinyin no-pointer">${pinyin}</div>
         <div class="zhuyin-holder no-pointer">
-          <div class="zhuyin">
-            ${zhuyin}
-            <div class="tone">${tone}</div>
+          <div class="zhuyin">${fifthTone}${zhuyin}
+            <div class="tone">${displayTone}</div>
           </div>
         </div>
       </div>
@@ -175,7 +176,7 @@ function renderText(text) {
           hanzi: entry.trad || char,
           pinyin: entry.pinyin || '',
           zhuyin: entry.zhuyin || '',
-          tone: getTone(entry.tone || 0)
+          tone: parseInt(entry.tone) || 0
         });
       }
     }

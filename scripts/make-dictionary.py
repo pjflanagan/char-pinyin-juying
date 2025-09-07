@@ -17,12 +17,14 @@ if __name__ == '__main__':
     tonelessToZhuyinMap = loadCsv('maps/PinyinToneless-Zhuyin')
     allHanziSet = getAllHanzi()
 
-    # out map has hanzi, traditional, and simplified
+    # our map has all unicode hanzi, traditional, and simplified
     # at least one of traditional or simplified WILL match hanzi
     outputMap = [("hanzi", "trad", "simp", "pinyin", "toneless", "tone", "zhuyin")]
 
     for char in allHanziSet:
         try:
+            # TODO: this does NOT work for some characters like 了
+            # I need to create a function for this
             trad = HanziConv.toTraditional(char)
             simp = HanziConv.toSimplified(char)
             # TODO: this library doesn't always work, it might be good to also make my own map I can check
