@@ -75,21 +75,12 @@ function handleInput(e) {
 }
 
 function handleKeyUp(e) {
+  renderHighlighAtSelection();
   renderCursorAtInputCursorPosition()
 }
 
 function handleToggleVisibility(type) {
   $(`.${type}`).toggle();
-}
-
-// TODO: display the selection highlight over the selected characters
-function getSelection() {
-  const input = $('#hidden-input')[0]; // Get the DOM element from the jQuery object
-
-  if (input) {
-    const start = input.selectionStart;
-    const end = input.selectionEnd;
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -107,6 +98,17 @@ function renderCursorAtCharacterElement(elem, side) {
     $("#cursor").insertBefore(elem);
   } else {
     $("#cursor").insertAfter(elem);
+  }
+}
+
+function renderHighlighAtSelection() {
+  const input = $('#hidden-input')[0];
+  const start = input.selectionStart;
+  const end = input.selectionEnd;
+  $('.character .highlight').removeClass('selected');
+
+  for (let i = start; i < end; i++) {
+    $(`.character[data-index="${i}"] .highlight`).addClass('selected');
   }
 }
 
@@ -129,6 +131,7 @@ function renderNonHanziCharacter(index, char) {
           <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
           <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
         </div>
+        <div class="highlight"></div>
         <div class="text">${char}</div>
       </div>
   `;
@@ -143,6 +146,7 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
           <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
           <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
         </div>
+        <div class="highlight"></div>
         <div class="hanzi no-pointer">${hanzi}</div>
         <div class="pinyin no-pointer">${pinyin}</div>
         <div class="zhuyin-holder no-pointer">

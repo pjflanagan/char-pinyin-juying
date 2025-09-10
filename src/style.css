@@ -46,8 +46,8 @@ body {
 }
 
 #display-characters #cursor {
-  height: 60px;
-  margin-top: 12px;
+  height: 62px;
+  margin-top: 8px;
   width: 2px;
   background: #ffffff9a;
   margin-right: -2px;
@@ -75,6 +75,19 @@ body {
 #display-characters .character .hitbox-holder .hitbox {
   width: 50%;
   height: 100%;
+}
+
+/* highlight */
+
+#display-characters .character .highlight {
+  position: absolute;
+  height: 62px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+#display-characters .character .highlight.selected {
+  background: #ffffff2f;
 }
 
 /* non-hanzi */
