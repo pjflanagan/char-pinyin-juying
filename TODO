@@ -1,6 +1,6 @@
 
 ## Basic UI changes
-- [ ] highlight multiple characters
+- [x] highlight multiple characters
 - [ ] toggle pinyin and zhuyin on and off statefully
 - [x] mobile sizing (larger, no page zoom allowed)
 
