@@ -13,7 +13,6 @@ body {
   font-optical-sizing: auto;
 }
 
-
 /* base ui */
 
 div {
@@ -38,4 +37,95 @@ a {
 
 li {
   margin-bottom: 10px;
+}
+
+/* CHARACTER */
+
+/* character */
+
+.character {
+  height: 100px;
+  position: relative;
+  box-sizing: border-box;
+  min-width: 30px;
+}
+
+/* hitbox */
+
+.character .hitbox-holder {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  position: absolute;
+}
+
+.character .hitbox-holder .hitbox {
+  width: 50%;
+  height: 100%;
+}
+
+/* highlight */
+
+.character .highlight {
+  position: absolute;
+  height: 62px;
+  margin-top: 8px;
+  width: 100%;
+}
+
+.character .highlight.selected {
+  background: #ffffff2f;
+}
+
+/* non-hanzi */
+
+.character.non-hanzi {
+  width: fit-content;
+}
+
+.character.non-hanzi .text {
+  font-size: 54px;
+  text-align: left;
+}
+
+/* hanzi */
+
+.character.hanzi {
+  width: 100px;
+  padding-right: 16px;
+}
+
+.character.hanzi .hanzi {
+  font-size: 54px;
+  text-align: center;
+}
+
+.character.hanzi .pinyin {
+  font-size: 14px;
+  text-align: center;
+  color: #999;
+  margin-top: -6px;
+}
+
+.character.hanzi .zhuyin-holder {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  height: 78px;
+  display: flex;
+  align-items: center;
+}
+
+.character.hanzi .zhuyin-holder .zhuyin {
+  position: relative;
+  font-size: 18px;
+  color: #999;
+  writing-mode: vertical-lr;
+}
+
+.character.hanzi .zhuyin-holder .zhuyin .tone {
+  position: absolute;
+  bottom: 0px;
+  left: 22px;
+  writing-mode: lr;
 }

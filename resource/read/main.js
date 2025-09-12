@@ -1,4 +1,5 @@
 
+let DICTIONARY = [];
 
 // ---------------------------------------------------------------------------
 // Event handlers ------------------------------------------------------------
@@ -77,42 +78,6 @@ function renderCursorAtInputCursorPosition() {
   renderCursorAtCharacterElement(characterElements[cursorIndex], 'left')
 }
 
-// Characters
-
-function renderNonHanziCharacter(index, char) {
-  return `
-      <div class="character non-hanzi" data-index=${index}>
-        <div class="hitbox-holder">
-          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
-          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
-        </div>
-        <div class="highlight"></div>
-        <div class="text">${char}</div>
-      </div>
-  `;
-}
-
-function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
-  const displayTone = tone === 5 ? '' : getTone(tone);
-  const fifthTone = tone === 5 ? getTone(tone) : '';
-  return `
-      <div class="character hanzi" data-index=${index}>
-        <div class="hitbox-holder">
-          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
-          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
-        </div>
-        <div class="highlight"></div>
-        <div class="hanzi no-pointer">${hanzi}</div>
-        <div class="pinyin no-pointer">${pinyin}</div>
-        <div class="zhuyin-holder no-pointer">
-          <div class="zhuyin">${fifthTone}${zhuyin}
-            <div class="tone">${displayTone}</div>
-          </div>
-        </div>
-      </div>
-`
-}
-
 function renderInputText() {
   const text = $('#hidden-input').val();
   if (text && text.length > 0) {
@@ -127,7 +92,7 @@ function renderText(text) {
     const isHanzi = !!char.match(IS_MANDARIN_REGEX);
     let html;
     if (isHanzi) {
-      const entry = findEntry(char);
+      const entry = findEntry(DICTIONARY, char);
       if (entry) {
         html = renderHanziCharacter({
           index: i,
@@ -164,8 +129,9 @@ function checkDebugParam() {
   }
 }
 
-(function () {
+(async function () {
   checkDebugParam();
-  loadCSV(renderInputText);
+  DICTIONARY = await loadCsv('data/dictionary');
+  renderInputText();
 })();
 

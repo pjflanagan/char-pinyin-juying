@@ -1,43 +1,32 @@
+// GLOBALS
 
-// LOAD
-
-
+let BASIC_FLASHCARDS;
 
 // GET RANDOM ENTRY
 
-function getRandomEntry(currentLessonIdx) {
-  const learnedWords = [];
-  WORDS.forEach((word) => {
-    if(word.lesson <= currentLessonIdx) {
-      learnedWords.push(word);
-    }
-  });
+function getRandomEntry() {
 
-  const idx = Math.floor(Math.random() * learnedWords.length);
-  return learnedWords[idx];
+}
+
+// LISTENERS
+
+function shuffle() {
+  display(getRandomEntry());
 }
 
 // DISPLAY
 
-function display({ entry }) {
-  $('#container').click(() => {
-    // window.location = `https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.word}`;
-    // TODO: switch to a new entry
-    // TODO: make a link somewhere else on the page that goes to google
+function display(entry) {
+  $('#google-translate').click(() => {
+    window.open(`https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.word}`, '_blank', 'noreferrer');
   });
-  $('#character').text(entry.word);
-  $('#pinyin').text(entry.pinyin);
-  $('#english').text(entry.english);
-  $('#lesson').text(lessonTitle);
-  $('#splash').addClass('hidden');
 }
 
 // MAIN
 
-(function() {
-  load.then((currentLessonIdx) => {
-    display({
-      entry: getRandomEntry(currentLessonIdx)
-    });
-  });
+(async function () {
+  DICTIONARY = await loadCsv('data/dictionary');
+  BASIC_FLASHCARDS = await loadCsv('data/basic-flashcard');
+  shuffle();
 })();
+

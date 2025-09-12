@@ -18,11 +18,12 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body>
-    <div id="container" class="no-select">
+    <!-- TODO: reuse the character class, make that across pages -->
+    <div id="container" class="no-select" onclick="shuffle();">
       <h1 id="character"></h1>
       <h2 id="pinyin"></h2>
       <p id="english"></p>
-      <p id="lesson"></p>
+      <p id="google-translate">Open in Google Translate</p>
     </div>
   </body>
   <script src="../../lib/papaparse.min.js"></script>

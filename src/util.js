@@ -19,30 +19,73 @@ const TONE_MAP = [
 // Dictionary ----------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-let DICTIONARY;
-
 function getBaseUrl() {
   const pathBase = window.location.host.includes('flanny.app') ? '/study-mandarin/' : '/';
   return window.location.protocol + '//' + window.location.host + pathBase;
 }
 
-async function loadCSV(callback) {
-  fetch(`${getBaseUrl()}data/dictionary.csv`)
-    .then(response => response.text())
-    .then(v => Papa.parse(v, {
+async function loadCsv(file) {
+  const response = await fetch(`${getBaseUrl()}${file}.csv`);
+  const data = await response.text();
+  try {
+    return new Promise((resolve) => {
+    Papa.parse(data, {
       header: true,
       complete: (result) => {
-        DICTIONARY = result.data;
-        callback();
+        resolve(result.data);
       }
-    }))
-    .catch(err => console.error(err))
+    });
+
+    });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
-function findEntry(hanzi) {
-  return DICTIONARY.find(entry => entry.hanzi === hanzi);
+function findEntry(dictionary, hanzi) {
+  return dictionary.find(entry => entry.hanzi === hanzi);
 }
 
 function getTone(tone) {
   return TONE_MAP[typeof tone === 'number' ? tone : parseInt(tone)];
+}
+
+
+// ---------------------------------------------------------------------------
+// COMMON COMPONENTS ---------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+function renderNonHanziCharacter(index, char) {
+  return `
+      <div class="character non-hanzi" data-index=${index}>
+        <div class="hitbox-holder">
+          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
+          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
+        </div>
+        <div class="highlight"></div>
+        <div class="text">${char}</div>
+      </div>
+  `;
+}
+
+function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
+  const displayTone = tone === 5 ? '' : getTone(tone);
+  const fifthTone = tone === 5 ? getTone(tone) : '';
+  return `
+      <div class="character hanzi" data-index=${index}>
+        <div class="hitbox-holder">
+          <div class="hitbox" data-hitbox="left" onclick="focusInputAt(event);"></div>
+          <div class="hitbox" data-hitbox="right" onclick="focusInputAt(event);"></div>
+        </div>
+        <div class="highlight"></div>
+        <div class="hanzi no-pointer">${hanzi}</div>
+        <div class="pinyin no-pointer">${pinyin}</div>
+        <div class="zhuyin-holder no-pointer">
+          <div class="zhuyin">${fifthTone}${zhuyin}
+            <div class="tone">${displayTone}</div>
+          </div>
+        </div>
+      </div>
+`
 }
