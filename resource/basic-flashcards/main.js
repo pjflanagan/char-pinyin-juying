@@ -56,9 +56,7 @@ function renderText(text) {
 function display(entry) {
   renderText(entry.phrase);
   $('#english').text(entry.english);
-  $('#google-translate').click(() => {
-    window.open(`https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.phrase}`, '_blank', 'noreferrer');
-  });
+  $('#google-translate').attr('href', `https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.phrase}`);
 }
 
 // MAIN
