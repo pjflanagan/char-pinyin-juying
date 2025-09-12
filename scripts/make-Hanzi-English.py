@@ -4,7 +4,7 @@ from util.writeCsv import writeCsv
 
 if __name__ == '__main__':
     # TODO: this is not a very comprehensive map, find a new one
-    hanziEnglishMap = loadJson('source/bamboo-Hanzi-English')
+    hanziEnglishMap = loadJson('data/source/bamboo-Hanzi-English')
     if hanziEnglishMap is None:
         print("Failed to load hanziEnglishMap")
         exit(1)
@@ -16,4 +16,4 @@ if __name__ == '__main__':
         entry = (char, english)
         outputMap.append(entry)
 
-    writeCsv("maps/Hanzi-English", outputMap)
+    writeCsv("data/maps/Hanzi-English", outputMap)

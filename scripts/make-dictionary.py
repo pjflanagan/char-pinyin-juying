@@ -20,7 +20,7 @@ def convertTonelessPinyin(char):
     return pinyin.get(char, format="strip").replace('v', 'u')
 
 if __name__ == '__main__':
-    tonelessToZhuyinMap = loadCsv('maps/PinyinToneless-Zhuyin')
+    tonelessToZhuyinMap = loadCsv('data/maps/PinyinToneless-Zhuyin')
     allHanziSet = getAllHanzi()
 
     # our map has all unicode hanzi, traditional, and simplified
@@ -52,4 +52,4 @@ if __name__ == '__main__':
         except:
             print('Error for char:' + char)
 
-    writeCsv('dictionary', outputMap)
+    writeCsv('../public/data/dictionary', outputMap)
