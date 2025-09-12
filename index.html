@@ -1,7 +1,10 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <title>Study Mandarin</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -9,9 +12,41 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./src/base.css" />
   </head>
   <body onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
-    <a href="./resource/read">Reading Tool</a>
+    <div class="container">
+      <h1>Study Mandarin</h1>
+      <p>
+        Hi, I'm Peter and I've been studying mandarin for a few years now. Every
+        now and again I find it helpful to build a little web tool to help me
+        practice something. These tools are free for anyone to use.
+      </p>
+      <p style="font-size: 0.8em">
+        <i>
+          * Keep in mind, these were built by a student, not a native speaker.
+          There may be errors.
+        </i>
+      </p>
+      <ul>
+        <li>
+          <a href="./resource/read">Reading Tool</a> - Copy and paste text you
+          find to see pinyin and zhuyin, reformats to traditional.
+        </li>
+        <li>
+          <a href="#">Zhuyin Flashcards</a> - Coming soon, randomly pick a
+          character and display only the zhuyin to practice reading.
+        </li>
+      </ul>
+      <h2>See more</h2>
+      <ul>
+        <li>
+          <a href="//pjflanagan.me">Personal Website</a>
+        </li>
+        <li>
+          <a href="//github.com/pjflanagan/study-mandarin">Github Repository</a>
+        </li>
+      </ul>
+    </div>
   </body>
 </html>

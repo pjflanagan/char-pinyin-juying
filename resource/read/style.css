@@ -1,10 +1,6 @@
-/* utils */
 
-.no-pointer {
-  pointer-events: none;
-}
 
-/* global */
+/* hide selection */
 
 ::selection {
   color: #0000;
@@ -16,14 +12,6 @@ body.debug ::selection {
   background: #fff4;
 }
 
-/* body */
-
-body {
-  background: #1c1c1c;
-  color: #fff;
-  font-family: "Noto Sans", sans-serif;
-  font-optical-sizing: auto;
-}
 
 #display-characters {
   display: flex;

@@ -1,2 +1,41 @@
+/* utils */
 
-/* TODO: make base styles */
+.no-pointer {
+  pointer-events: none;
+}
+
+/* body */
+
+body {
+  background: #1c1c1c;
+  color: #fff;
+  font-family: "Noto Sans", sans-serif;
+  font-optical-sizing: auto;
+}
+
+
+/* base ui */
+
+div {
+  box-sizing: border-box;
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 720px;
+  padding: 20px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: #fff;
+}
+
+li {
+  margin-bottom: 10px;
+}

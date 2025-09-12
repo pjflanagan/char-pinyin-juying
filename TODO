@@ -3,6 +3,7 @@
 - [x] highlight multiple characters
 - [ ] toggle pinyin and zhuyin on and off statefully
 - [x] mobile sizing (larger, no page zoom allowed)
+- [ ] Allow font toggle so I can see characters in different fonts
 
 ## Admin and more
 - [ ] when english enabled display vertically with english to the right of each character
