@@ -1,7 +1,39 @@
-
-
 #container {
-  position: absolute;
+  margin: 140px auto;
+  width: 80%;
+}
+
+#container #display-characters {
+  display: flex;
+  justify-content: center;
+}
+
+#container #english {
   text-align: center;
-  top: 50%;
+  width: 100%;
+  color: #999;
+}
+
+#actions {
+  position: fixed;
+  bottom: 140px;
+  width: 100%;
+}
+
+.action {
+  width: 100%;
+  text-align: center;
+  padding: 12px;
+}
+
+/* Character mod */
+
+.pinyin {
+  color: #0000 !important;
+}
+
+.hidden {
+  color: #0000 !important;
+  visibility: hidden;
+  opacity: 0;
 }

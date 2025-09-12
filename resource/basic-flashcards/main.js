@@ -1,21 +1,49 @@
-// GLOBALS
+// global and state
 
 let DICTIONARY = [];
 let BASIC_FLASHCARDS = [];
 
-// GET RANDOM ENTRY
+let isHidden = true;
 
-function getRandomEntry() {
-  return BASIC_FLASHCARDS[Math.floor(Math.random() * BASIC_FLASHCARDS.length)];
-}
-
-// LISTENERS
+// listeners
 
 function shuffle() {
-  display(getRandomEntry());
+  const newEntry = BASIC_FLASHCARDS[Math.floor(Math.random() * BASIC_FLASHCARDS.length)];
+  display(newEntry);
+}
+
+function next() {
+  shuffle();
+  hide();
+}
+
+function revealOrNext() {
+  if (isHidden) {
+    reveal();
+  } else {
+    next();
+  }
 }
 
 // DISPLAY
+
+function hide() {
+  $('.zhuyin-holder').each(function() {
+    $(this).addClass('hidden');
+  });
+  $('#english').addClass('hidden');
+  $('#reveal-or-next-button').text('Reveal');
+  isHidden = true;
+}
+
+function reveal() {
+  $('.zhuyin-holder').each(function() {
+    $(this).removeClass('hidden');
+  });
+  $('#english').removeClass('hidden');
+  $('#reveal-or-next-button').text('Next');
+  isHidden = false;
+}
 
 function renderText(text) {
   $('#display-characters').children('.character').remove();
@@ -26,7 +54,6 @@ function renderText(text) {
 }
 
 function display(entry) {
-  console.log(entry);
   renderText(entry.phrase);
   $('#english').text(entry.english);
   $('#google-translate').click(() => {
@@ -39,6 +66,6 @@ function display(entry) {
 (async function () {
   DICTIONARY = await loadCsv('data/dictionary');
   BASIC_FLASHCARDS = await loadCsv('data/basic-flashcards');
-  shuffle();
+  next();
 })();
 

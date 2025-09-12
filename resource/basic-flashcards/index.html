@@ -18,13 +18,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body>
-    <div id="container" class="no-select" onclick="shuffle();">
+    <div id="container" class="no-select">
       <div id="display-characters"></div>
       <div id="english"></div>
-      <div id="actions">
-        <!-- TODO: this button Reveals the card, once revealed it changes to Next -->
-        <a onclick="revealOrNext()">Reveal</a> |
-        <a id="google-translate">Open in Google Translate</a>
+    </div>
+    <div id="actions">
+      <div class="action">
+        <a id="reveal-or-next-button" onclick="revealOrNext()">Reveal</a>
+      </div>
+      <div class="action">
+        <a id="google-translate" style="color: #999"
+          >Open in Google Translate</a
+        >
       </div>
     </div>
   </body>
