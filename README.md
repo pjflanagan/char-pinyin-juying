@@ -14,21 +14,25 @@ as well as character by character english definitions. This version displays onl
 
 This repo is made up of a few parts.
 - `scripts` creates our dictionary, any changes to how the dictionary would be done in here
-- `data` this is our source dictionaries and our output dictionary
+  - `data` source dictionaries and generated maps
 - `pages` these are public webpages with tools that use the dictionary
+  - `data` output dictionary
+
 
 ### Build the Dictionary
 
 There might be libraries missing from here.
 
 ```
+$ cd scripts
 $ python3 -m pip install requirements.txt
-$ python3 ./scripts/make-*.py
+$ python3 ./make-*.py
 ```
 
 ### Serve the webpage
 
 ```
+$ cd public
 $ python3 -m http.server
 ```
 
