@@ -1,0 +1,58 @@
+
+
+/* CONTAINER */
+
+#container {
+  text-align: center;
+  height: 220px;
+  top: 50%;
+  position: absolute;
+  width: 100%;
+  margin-top: -110px;
+  color: #FFF0;
+  -webkit-transition: .4s;
+}
+
+#container:hover {
+  color: #FFF;
+  cursor: pointer;
+}
+
+#character {
+  font-family: 'Noto Sans SC', sans-serif;
+  font-size: 140px;
+  margin: 0;
+  color: #FFFB;
+  margin-top: -36px;
+  -webkit-transition: .4s;
+}
+
+#container:hover #character {
+  color: #FFF;
+}
+
+#pinyin {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
+  margin-top: -18px;
+}
+
+#english {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 1.5em;
+  margin-top: -16px;
+}
+
+#lesson {
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 10px;
+  margin: -14px 0 0 0;
+  padding: 3px 6px;
+  border-radius: 2px;
+  color: #FFF0;
+  -webkit-transition: .4s;
+}
+
+#container:hover #lesson {
+  color: #FFF4;
+}

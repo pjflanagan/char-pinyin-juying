@@ -1,5 +1,4 @@
 
-from unidecode import unidecode
 import re
 import pinyin
 from hanziconv import HanziConv
