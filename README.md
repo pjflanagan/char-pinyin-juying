@@ -17,15 +17,15 @@ This repo is made up of a few parts.
   - `data` source dictionaries and generated maps
 - `pages` these are public webpages with tools that use the dictionary
   - `data` output dictionary
-
+  - `lib` minified libraries
+  - `src` shared source code for theme styles and utils
+  - `resource` this is the bulk of it, where we will actually build little apps for studying
 
 ### Build the Dictionary
 
-There might be libraries missing from here.
-
 ```
 $ cd scripts
-$ python3 -m pip install requirements.txt
+$ python3 -m pip install -r requirements.txt
 $ python3 ./make-*.py
 ```
 
