@@ -5,7 +5,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <title>Study Mandarin: Reading Tool</title>
+    <title>Study Mandarin: Basic Flashcards</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -18,12 +18,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body>
-    <!-- TODO: reuse the character class, make that across pages -->
     <div id="container" class="no-select" onclick="shuffle();">
-      <h1 id="character"></h1>
-      <h2 id="pinyin"></h2>
-      <p id="english"></p>
-      <p id="google-translate">Open in Google Translate</p>
+      <div id="display-characters"></div>
+      <div id="english"></div>
+      <div id="actions">
+        <!-- TODO: this button Reveals the card, once revealed it changes to Next -->
+        <a onclick="revealOrNext()">Reveal</a> |
+        <a id="google-translate">Open in Google Translate</a>
+      </div>
     </div>
   </body>
   <script src="../../lib/papaparse.min.js"></script>

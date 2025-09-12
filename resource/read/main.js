@@ -88,25 +88,7 @@ function renderInputText() {
 function renderText(text) {
   $('#display-characters').children('.character').remove();
   for (let i = 0; i < text.length; ++i) {
-    const char = text[i];
-    const isHanzi = !!char.match(IS_MANDARIN_REGEX);
-    let html;
-    if (isHanzi) {
-      const entry = findEntry(DICTIONARY, char);
-      if (entry) {
-        html = renderHanziCharacter({
-          index: i,
-          // always convert to traditional
-          hanzi: entry.trad || char,
-          pinyin: entry.pinyin || '',
-          zhuyin: entry.zhuyin || '',
-          tone: parseInt(entry.tone) || 0
-        });
-      }
-    }
-    if (!html) {
-      html = renderNonHanziCharacter(i, char);
-    }
+    const html = getCharacterHtml(DICTIONARY, text[i], i);
     $('#display-characters').append(html);
   }
   renderCursorAtInputCursorPosition();

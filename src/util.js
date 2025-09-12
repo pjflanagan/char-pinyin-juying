@@ -29,12 +29,12 @@ async function loadCsv(file) {
   const data = await response.text();
   try {
     return new Promise((resolve) => {
-    Papa.parse(data, {
-      header: true,
-      complete: (result) => {
-        resolve(result.data);
-      }
-    });
+      Papa.parse(data, {
+        header: true,
+        complete: (result) => {
+          resolve(result.data);
+        }
+      });
 
     });
   } catch (err) {
@@ -55,6 +55,27 @@ function getTone(tone) {
 // COMMON COMPONENTS ---------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+function getCharacterHtml(dictionary, char, i) {
+  const isHanzi = !!char.match(IS_MANDARIN_REGEX);
+  let html;
+  if (isHanzi) {
+    const entry = findEntry(dictionary, char);
+    if (entry) {
+      html = renderHanziCharacter({
+        index: i,
+        // always convert to traditional
+        hanzi: entry.trad || char,
+        pinyin: entry.pinyin || '',
+        zhuyin: entry.zhuyin || '',
+        tone: parseInt(entry.tone) || 0
+      });
+    }
+  }
+  if (!html) {
+    html = renderNonHanziCharacter(i, char);
+  }
+  return html;
+}
 
 function renderNonHanziCharacter(index, char) {
   return `
