@@ -21,7 +21,7 @@ const TONE_MAP = [
 let DICTIONARY;
 
 function getBaseUrl() {
-  const pathBase = window.location.host.includes('github') ? '/study-mandarin/' : '/';
+  const pathBase = window.location.host.includes('flanny.app') ? '/study-mandarin/' : '/';
   return window.location.protocol + '//' + window.location.host + pathBase;
 }
 
