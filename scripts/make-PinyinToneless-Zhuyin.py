@@ -5,7 +5,7 @@ from util.writeCsv import writeCsv
 # this function simply copies some of the data from
 # this existing map to a new one
 if __name__ == '__main__':
-    pinyinZhuyinMap = loadCsv('source/pinyin-zhuyin')
+    pinyinZhuyinMap = loadCsv('data/source/pinyin-zhuyin')
 
     outputMap = [("toneless", "zhuyin")]
 
@@ -13,4 +13,4 @@ if __name__ == '__main__':
         entry = (row[0], row[1])
         outputMap.append(entry)
 
-    writeCsv("maps/PinyinToneless-Zhuyin", outputMap)
+    writeCsv("data/maps/PinyinToneless-Zhuyin", outputMap)

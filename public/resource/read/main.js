@@ -21,17 +21,18 @@ const TONE_MAP = [
 let DICTIONARY;
 
 function getBaseUrl() {
-  return window.location.protocol + '//' + window.location.host + window.location.pathname
+  const pathBase = window.location.host.includes('github') ? '/study-mandarin/' : '/';
+  return window.location.protocol + '//' + window.location.host + pathBase;
 }
 
-async function loadCSV() {
-  fetch(`${getBaseUrl()}/data/dictionary.csv`)
+async function loadCSV(callback) {
+  fetch(`${getBaseUrl()}data/dictionary.csv`)
     .then(response => response.text())
     .then(v => Papa.parse(v, {
       header: true,
       complete: (result) => {
         DICTIONARY = result.data;
-        renderInputText();
+        callback();
       }
     }))
     .catch(err => console.error(err))
@@ -211,6 +212,6 @@ function checkDebugParam() {
 
 (function () {
   checkDebugParam();
-  loadCSV();
+  loadCSV(renderInputText);
 })();
 
