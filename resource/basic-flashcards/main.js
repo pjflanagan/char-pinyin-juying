@@ -5,7 +5,7 @@ const FLASHCARD_STORAGE_KEY = 'flanny-sm-basic-flashcards';
 // global and state
 
 let DICTIONARY = [];
-let BASIC_FLASHCARDS = undefined;
+let BASIC_FLASHCARDS = [];
 
 let isHidden = true;
 let currentIndex = 0;
@@ -38,6 +38,11 @@ function markAsKnown() {
   BASIC_FLASHCARDS.splice(currentIndex, 1);
   Storage.save(FLASHCARD_STORAGE_KEY, BASIC_FLASHCARDS);
   next();
+}
+
+function reset() {
+  Storage.remove(FLASHCARD_STORAGE_KEY);
+  window.location.reload();
 }
 
 // DISPLAY
@@ -77,9 +82,11 @@ function display(entry) {
 // MAIN
 
 (async function () {
-  BASIC_FLASHCARDS = Storage.load(FLASHCARD_STORAGE_KEY);
+  const storageFlashcards = Storage.load(FLASHCARD_STORAGE_KEY);
   DICTIONARY = await loadCsv('data/dictionary');
-  if (!BASIC_FLASHCARDS) {
+  if (storageFlashcards && storageFlashcards.length > 0) {
+    BASIC_FLASHCARDS = storageFlashcards;
+  } else {
     BASIC_FLASHCARDS = await loadCsv('data/basic-flashcards');
   }
   shuffle();

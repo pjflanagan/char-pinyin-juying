@@ -14,13 +14,25 @@
   color: #999;
 }
 
+#settings {
+  position: fixed;
+  top: 0;
+    left: 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 10px;
+  text-align: right;
+}
+
 #actions {
   position: fixed;
   bottom: 140px;
   width: 100%;
   display: flex;
   justify-content: space-between;
-  left: 0;
+  left: 50%;
+  max-width: 800px;
+  transform: translateX(-50%);
 }
 
 #actions .action {

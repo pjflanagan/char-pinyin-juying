@@ -131,5 +131,8 @@ const Storage = {
       console.error('Error parsing local storage data');
     }
     return undefined;
+  },
+  remove: function (storageKey) {
+    window.localStorage.removeItem(storageKey);
   }
 }
