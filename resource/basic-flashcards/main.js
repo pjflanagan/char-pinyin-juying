@@ -52,6 +52,9 @@ function hide() {
   $('.zhuyin-holder').each(function() {
     $(this).addClass('hidden');
   });
+  $('.pinyin').each(function() {
+    $(this).addClass('hidden');
+  });
   $('#english').addClass('hidden');
   $('#reveal-or-next-button').text('Reveal');
   isHidden = true;
@@ -59,6 +62,9 @@ function hide() {
 
 function reveal() {
   $('.zhuyin-holder').each(function() {
+    $(this).removeClass('hidden');
+  });
+  $('.pinyin').each(function() {
     $(this).removeClass('hidden');
   });
   $('#english').removeClass('hidden');
