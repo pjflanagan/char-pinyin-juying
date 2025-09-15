@@ -16,6 +16,7 @@ function shuffle() {
   BASIC_FLASHCARDS = BASIC_FLASHCARDS.sort(() => Math.random() - 0.5);
   currentIndex = 0;
   display(BASIC_FLASHCARDS[currentIndex]);
+  hide();
 }
 
 function next() {
