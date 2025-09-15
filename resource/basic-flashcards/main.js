@@ -1,21 +1,30 @@
+// const
+
+const FLASHCARD_STORAGE_KEY = 'flanny-sm-basic-flashcards';
+
 // global and state
 
 let DICTIONARY = [];
 let BASIC_FLASHCARDS = [];
 
 let isHidden = true;
+let currentIndex = 0;
 
-// listeners
+// helpers
 
 function shuffle() {
-  const newEntry = BASIC_FLASHCARDS[Math.floor(Math.random() * BASIC_FLASHCARDS.length)];
-  display(newEntry);
+  BASIC_FLASHCARDS = BASIC_FLASHCARDS.sort(() => Math.random() - 0.5);
+  currentIndex = 0;
+  display(BASIC_FLASHCARDS[currentIndex]);
 }
 
 function next() {
-  shuffle();
+  currentIndex = (currentIndex + 1) % BASIC_FLASHCARDS.length;
+  display(BASIC_FLASHCARDS[currentIndex]);
   hide();
 }
+
+// listeners
 
 function revealOrNext() {
   if (isHidden) {
@@ -23,6 +32,12 @@ function revealOrNext() {
   } else {
     next();
   }
+}
+
+function markAsKnown() {
+  BASIC_FLASHCARDS.splice(currentIndex, 1);
+  Storage.save(FLASHCARD_STORAGE_KEY, BASIC_FLASHCARDS);
+  next();
 }
 
 // DISPLAY
@@ -62,8 +77,10 @@ function display(entry) {
 // MAIN
 
 (async function () {
+  BASIC_FLASHCARDS = Storage.load(FLASHCARD_STORAGE_KEY);
   DICTIONARY = await loadCsv('data/dictionary');
-  BASIC_FLASHCARDS = await loadCsv('data/basic-flashcards');
-  next();
+  if (!BASIC_FLASHCARDS) {
+    BASIC_FLASHCARDS1 = await loadCsv('data/basic-flashcards');
+  }
+  shuffle();
 })();
-

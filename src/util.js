@@ -110,3 +110,26 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
       </div>
 `
 }
+
+// ---------------------------------------------------------------------------
+// Storage -------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+const Storage = {
+  save: function (storageKey, data) {
+    window.localStorage.setItem(
+      storageKey, JSON.stringify(data)
+    );
+  },
+  load: function (storageKey) {
+    const data = window.localStorage.getItem(storageKey);
+    try {
+      if (data) {
+        return JSON.parse(data);
+      }
+    } catch {
+      console.error('Error parsing local storage data');
+    }
+    return undefined;
+  }
+}

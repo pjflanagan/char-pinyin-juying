@@ -18,10 +18,13 @@
   position: fixed;
   bottom: 140px;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
 }
 
-.action {
-  width: 100%;
+#actions .action {
+  width: 33%;
   text-align: center;
   padding: 12px;
 }
