@@ -3,6 +3,14 @@
   width: 80%;
 }
 
+#container #count {
+  width: 100%;
+  font-size: 12px;
+  text-align: center;
+  color: #999;
+  margin-bottom: 12px;
+}
+
 #container #display-characters {
   display: flex;
   justify-content: center;

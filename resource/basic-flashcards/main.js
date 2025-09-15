@@ -76,6 +76,7 @@ function renderText(text) {
 
 function display(entry) {
   renderText(entry.phrase);
+  $('#count').text(`${currentIndex + 1} / ${BASIC_FLASHCARDS.length}`);
   $('#english').text(entry.english);
   $('#google-translate').attr('href', `https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.phrase}`);
 }
