@@ -80,7 +80,7 @@ function display(entry) {
   BASIC_FLASHCARDS = Storage.load(FLASHCARD_STORAGE_KEY);
   DICTIONARY = await loadCsv('data/dictionary');
   if (!BASIC_FLASHCARDS) {
-    BASIC_FLASHCARDS1 = await loadCsv('data/basic-flashcards');
+    BASIC_FLASHCARDS = await loadCsv('data/basic-flashcards');
   }
   shuffle();
 })();
