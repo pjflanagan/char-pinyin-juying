@@ -5,7 +5,7 @@ const FLASHCARD_STORAGE_KEY = 'flanny-sm-basic-flashcards';
 // global and state
 
 let DICTIONARY = [];
-let BASIC_FLASHCARDS = [];
+let BASIC_FLASHCARDS = undefined;
 
 let isHidden = true;
 let currentIndex = 0;
