@@ -1,0 +1,46 @@
+#container {
+  margin: 140px auto;
+  width: 80%;
+}
+
+#container #display-characters {
+  display: flex;
+  justify-content: center;
+}
+
+#actions {
+  position: fixed;
+  bottom: 140px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  left: 50%;
+  max-width: 800px;
+  transform: translateX(-50%);
+}
+
+#actions .action {
+  width: 33%;
+  text-align: center;
+  padding: 12px;
+}
+
+/* Character mod */
+
+.character {
+  transform: scale(1.6);
+}
+
+.zhuyin {
+  color: #fff !important;
+}
+
+.tone {
+  color: #fff !important;
+}
+
+.hidden {
+  color: #0000 !important;
+  visibility: hidden;
+  opacity: 0;
+}
