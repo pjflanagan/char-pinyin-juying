@@ -6,6 +6,7 @@ const FLASHCARD_STORAGE_KEY = 'flanny-sm-basic-flashcards';
 
 let DICTIONARY = [];
 let BASIC_FLASHCARDS = [];
+let ALL_FLASHCARDS = [];
 
 let isHidden = true;
 let currentIndex = 0;
@@ -83,6 +84,8 @@ function renderText(text) {
 function display(entry) {
   renderText(entry.phrase);
   $('#count').text(`${currentIndex + 1} / ${BASIC_FLASHCARDS.length}`);
+  console.log(ALL_FLASHCARDS.length - BASIC_FLASHCARDS.length);
+  $('#known-button').text(`Known (${ALL_FLASHCARDS.length - BASIC_FLASHCARDS.length})`);
   $('#english').text(entry.english);
   $('#google-translate').attr('href', `https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.phrase}`);
 }
@@ -90,12 +93,23 @@ function display(entry) {
 // MAIN
 
 (async function () {
+
+  // load data
   const storageFlashcards = Storage.load(FLASHCARD_STORAGE_KEY);
-  DICTIONARY = await loadCsv('data/dictionary');
+  const [dictionary, allFlashcards] = await Promise.all([
+    loadCsv('data/dictionary'),
+    loadCsv('data/basic-flashcards')
+  ]);
+  DICTIONARY = dictionary;
+  ALL_FLASHCARDS = allFlashcards;
+
+  // decide which flashcards to use
   if (storageFlashcards && storageFlashcards.length > 0) {
     BASIC_FLASHCARDS = storageFlashcards;
   } else {
-    BASIC_FLASHCARDS = await loadCsv('data/basic-flashcards');
+    BASIC_FLASHCARDS = ALL_FLASHCARDS;
   }
+
+  // shuffle and display first card
   shuffle();
 })();
