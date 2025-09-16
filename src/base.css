@@ -47,6 +47,10 @@ li {
   margin-bottom: 10px;
 }
 
+p {
+  color: #ccc;
+}
+
 /* HEADER */
 
 #header {
