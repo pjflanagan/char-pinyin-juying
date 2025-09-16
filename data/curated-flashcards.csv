@@ -1,5 +1,5 @@
-phrase,english
-直接,straight;direct (used to say are you eating in)
-扔了,throw away
-打包,to pack;to wrap (used to say are you eating in)
-外帶,for takeout
+phrase,category,english
+直接,dining,straight;direct (used to say are you eating in)
+打包,dining,to pack;to wrap (used to say are you eating in)
+外帶,dining,for takeout
+扔了,general,throw away

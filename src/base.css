@@ -41,6 +41,19 @@ li {
   margin-bottom: 10px;
 }
 
+/* HEADER */
+
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 12px;
+  font-size: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
 /* CHARACTER */
 
 /* character */
@@ -59,6 +72,7 @@ li {
   width: 100%;
   display: flex;
   position: absolute;
+  z-index: 100;
 }
 
 .character .hitbox-holder .hitbox {
