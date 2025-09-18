@@ -1,6 +1,5 @@
 
-from util.loadCsv import loadCsv
-from util.writeCsv import writeCsv
+from util.file import loadCsv, writeCsv
 
 # this function simply copies some of the data from
 # this existing map to a new one

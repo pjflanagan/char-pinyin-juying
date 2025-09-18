@@ -1,7 +1,6 @@
 
 from hanziconv import HanziConv
-from util.loadJson import loadJson
-from util.writeCsv import writeCsv    
+from util.file import loadJson, writeCsv    
 
 def findInMap(mapping, key):
     for row in mapping:

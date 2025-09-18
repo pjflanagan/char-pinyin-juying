@@ -1,6 +1,5 @@
 
-from util.loadJson import loadJson
-from util.writeCsv import writeCsv
+from util.file import loadJson, writeCsv
 
 if __name__ == '__main__':
     # TODO: this is not a very comprehensive map, find a new one
