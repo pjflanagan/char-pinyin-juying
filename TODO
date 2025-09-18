@@ -3,6 +3,10 @@
 - [x] mobile sizing (larger, no page zoom allowed)
 - [x] home link on every page
 
+# Printable
+- [ ] write code that takes a csv and makes a pdf
+- [ ] csv takes override pinyin and makes override zhuyin
+
 # Home
 - [x] links to other helpful tools (bopomofo soundboard, my songs)
 - [ ] links to other helpful tools (podcasts, youtube, playlists, and the zhuyin diagram)
@@ -11,7 +15,7 @@
 - [x] highlight multiple characters
 - [x] Move the cursor in the text box with click
 - [x] Move the cursor around while typing and with the arrow keys
-- [ ] toggle pinyin and zhuyin on and off statefully
+- [ ] toggle pinyin and zhuyin statefully
 - [ ] Allow font toggle so I can see characters in different fonts
 - [ ] when english enabled display vertically with english to the right of each character
 - [ ] button to open in Google translate

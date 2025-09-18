@@ -1,6 +1,6 @@
 
 import re
-import pinyin
+import pinyin as PinyinConv
 from hanziconv import HanziConv
 from util.loadCsv import loadCsv
 from util.writeCsv import writeCsv
@@ -12,11 +12,26 @@ def findInMap(mapping, key):
             return row[1]
     return None
 
+REPLACE_PINYIN = [
+    # [], can't find a first tone v
+    ['v̀', 'ù'],
+    ['v̌', 'ǔ'],
+    ['v́', 'ú'],
+    ['v', 'u'],
+]
+
 def convertPinyin(char):
-    return pinyin.get(char).replace('v̌', 'ǔ')
+    pinyin = PinyinConv.get(char)
+    for replacement in REPLACE_PINYIN:
+        pinyin.replace(replacement[0], replacement[1])
 
 def convertTonelessPinyin(char):
-    return pinyin.get(char, format="strip").replace('v', 'u')
+    return PinyinConv.get(char, format="strip").replace('v', 'u')
+
+def getTone(char):
+    pinyinNumerical = PinyinConv.get(char, format="numerical")
+    numbers = re.findall(r'\d+', pinyinNumerical)
+    return numbers[0] if numbers else None
 
 if __name__ == '__main__':
     tonelessToZhuyinMap = loadCsv('data/maps/PinyinToneless-Zhuyin')
@@ -34,9 +49,8 @@ if __name__ == '__main__':
             simp = HanziConv.toSimplified(char)
             # TODO: this library doesn't always work, it might be good to also make my own map I can check
             toneless = convertTonelessPinyin(char)
-            pinyinNumerical = pinyin.get(char, format="numerical")
-            numbers = re.findall(r'\d+', pinyinNumerical)
-            tone = numbers[0] if numbers else None
+            tone = getTone(char)
+
             zhuyin = findInMap(tonelessToZhuyinMap, toneless)
 
             outputMap.append((
