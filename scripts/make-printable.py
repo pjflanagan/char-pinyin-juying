@@ -1,6 +1,7 @@
 
 import math
 from fpdf import FPDF
+from util.file import loadCsv
 
 deck_name = 'basic-flashcards'
 
@@ -25,14 +26,14 @@ CARD_HEIGHT = PAGE_HEIGHT / CARD_ROWS
 # def makeCard():
 
 def getEmptyPage():
-  return [["" for _ in range(CARD_ROWS)] for _ in range(CARD_COLUMNS)]
+  return [[None for _ in range(CARD_COLUMNS)] for _ in range(CARD_ROWS)]
 
 # Front   Back
 # 0 1 2 | 2 1 0
 # 3 4 5 | 5 4 3
 # orders a set of 15 or less cards into 5 rows of 3
 # returns the front page and the back page
-def fillPagePair(cards):
+def makePagePair(cards):
   front = getEmptyPage()
   back = getEmptyPage()
   for index, card in enumerate(cards):
@@ -40,7 +41,7 @@ def fillPagePair(cards):
     frontCol = index % CARD_COLUMNS
     backCol = CARD_COLUMNS - 1 - frontCol
     front[row][frontCol] = card
-    back[row][backCol]
+    back[row][backCol] = card
   return [front, back]
 
 # ---------------------------------------------------------
@@ -62,9 +63,7 @@ def drawBackCard(pdf, card, x, y):
   # pdf.set_font('noto', '', 22)
   return
 
-
-def drawPage(pdf, pageModel, isFront=True):
-  pdf.add_page()
+def drawPageBorders(pdf):
   pdf.set_line_width(0.008)
   pdf.set_draw_color(r=200, g=200, b=200)
   # lines up and down
@@ -78,20 +77,41 @@ def drawPage(pdf, pageModel, isFront=True):
     pdf.line(x1=0, y1=row*CARD_HEIGHT, x2=PAGE_WIDTH, y2=row*CARD_HEIGHT)
     row += 1
 
+def drawPage(pdf, pageModel, isFront=True):
+  pdf.add_page()
+  drawPageBorders(pdf)
+
+  row = 0
+  col = 0
+  while row < len(pageModel):
+    while col < len(pageModel[row]):
+      card = pageModel[row][col]
+      if (card != None):
+        if (isFront):
+          drawFrontCard(pdf, card[0], col * CARD_WIDTH, row * CARD_HEIGHT)
+        else:
+          # TODO: draw the back card
+          drawFrontCard(pdf, card[1], col * CARD_WIDTH, row * CARD_HEIGHT)
+      col += 1
+    col = 0
+    row += 1
+
 
 if __name__ == "__main__":
   pdf = FPDF('P', 'in', 'Letter')
   pdf.add_font('noto', '', 'scripts/font/NotoSansTC-Regular.ttf', uni=True)
   pdf.set_auto_page_break(False)
 
-  # TODO: load a CSV
-  # TODO: for each set of (CARD_COLUMNS * CARD_ROWS) cards in the CSV, fillPagePair
-  # TODO: drawPage(front) and drawPage(back)
+  flashcards = loadCsv('data/' + deck_name)
 
-  drawPage(pdf, False)
-  drawFrontCard(pdf, '我們', 0, 0)
-  drawFrontCard(pdf, '他們不能說中文', CARD_WIDTH, 0)
-  drawFrontCard(pdf, '妳好', 2 * CARD_WIDTH, 4 * CARD_HEIGHT)
+  pageCardSet = []
+  for entry in flashcards:
+    pageCardSet.append(entry)
+    if (len(pageCardSet) == CARD_COLUMNS * CARD_ROWS):
+      [front, back] = makePagePair(pageCardSet)
+      drawPage(pdf, front)
+      drawPage(pdf, back, False)
+      pageCardSet = []
 
   pdf.output('print/' + deck_name + '.pdf', 'F')
 
