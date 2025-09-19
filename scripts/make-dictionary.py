@@ -1,7 +1,6 @@
-
 from hanziconv import HanziConv
 from util.file import writeCsv, loadCsv
-from util.mandarin import getAllHanzi, getTonelessPinyin, getTone, getPinyin
+from util.mandarin import getAllHanzi, getTonelessPinyin, getTone, getPinyin, getTraditional
 
 def findInMap(mapping, key):
     for row in mapping:
@@ -19,11 +18,8 @@ if __name__ == '__main__':
 
     for char in allHanziSet:
         try:
-            # TODO: this does NOT work for some characters like 了
-            # check the manual entries map and use the values there instead
-            trad = HanziConv.toTraditional(char)
+            trad = getTraditional(char)
             simp = HanziConv.toSimplified(char)
-            # TODO: this library doesn't always work, it might be good to also make my own map I can check
             toneless = getTonelessPinyin(char)
             tone = getTone(char)
 
@@ -41,4 +37,4 @@ if __name__ == '__main__':
         except:
             print('Error for char:' + char)
 
-    writeCsv('../public/data/dictionary', outputMap)
+    writeCsv('data/dictionary', outputMap)

@@ -16,13 +16,12 @@ def getAllHanzi():
     return hanzi
 
 REPLACE_PINYIN = [
-    # [], can't find a first tone v
+    # can't find a first tone v
     ['v̀', 'ù'],
     ['v̌', 'ǔ'],
     ['v́', 'ú'],
     ['v', 'u'],
 ]
-
 
 def getPinyin(char):
     pinyin = PinyinConv.get(char)
@@ -44,3 +43,17 @@ def getTone(char):
     pinyinNumerical = PinyinConv.get(char, format="numerical")
     numbers = re.findall(r'\d+', pinyinNumerical)
     return numbers[0] if numbers else None
+
+IGNORE_CHARACTERS = [
+    '了', '出'
+]
+
+def getTraditional(phrase):
+    traditional = []
+    for char in phrase:
+        if char in IGNORE_CHARACTERS:
+            traditional.append(char)
+        else:
+            traditional.append(HanziConv.toTraditional(char))
+    separator = ""
+    return separator.join(traditional)

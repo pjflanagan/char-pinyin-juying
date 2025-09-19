@@ -2,9 +2,9 @@
 import math
 from fpdf import FPDF
 from util.file import loadCsv
-from util.mandarin import getPinyinPhrase
+from util.mandarin import getPinyinPhrase, getTraditional
 
-deck_name = 'basic-flashcards'
+deck_name = 'curated/foods'
 
 # ---------------------------------------------------------
 # CONST ---------------------------------------------------
@@ -109,7 +109,7 @@ def drawPage(pdf, pageModel, isFront):
 
 def makeCard(entry):
   return {
-    'phrase': entry[0],
+    'phrase': getTraditional(entry[0]),
     'english': entry[1],
     'pinyin': getPinyinPhrase(entry[0])
   }
@@ -123,7 +123,7 @@ if __name__ == "__main__":
   pdf.add_font('noto', '', 'scripts/font/NotoSansTC-Regular.ttf', uni=True)
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv('data/' + deck_name)
+  flashcards = loadCsv('data/flashcards/' + deck_name)
 
   pageCardSet = []
   for entry in flashcards:

@@ -1,11 +1,8 @@
 <html>
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
-    />
-    <title>Study Mandarin: Zhuyin Flashcards</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <title>Study Mandarin: Reading Tool</title>
     <link rel="apple-touch-icon" sizes="180x180" href="../../src/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../src/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../src/img/favicon-16x16.png">
@@ -20,20 +17,31 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
-  <body>
+  <body onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
     <div id="header">
       <a id="home-link">Home</a>
     </div>
-    <div id="container" class="no-select">
-      <div id="display-characters"></div>
+    <input
+      id="hidden-input"
+      oninput="handleInput(event);"
+      onkeyup="handleKeyUp(event);"
+      value="輸入短語"
+    />
+    <div id="display-characters">
+      <div id="cursor"></div>
     </div>
-    <div id="actions" class="no-select">
-      <div class="action">
-        <a id="reveal-or-next-button" onclick="revealOrNext()">Reveal</a>
+    <div id="settings">
+      <!-- <div>Traditional | Simplified</div> -->
+      <div>
+        <a onclick="handleToggleVisibility('pinyin')">Pinyin</a>
+        |
+        <a onclick="handleToggleVisibility('zhuyin')">Zhuyin</a>
+        <!-- | -->
+        <!-- TODO: <a onclick="handleToggleDisplayEnglish()">English</a> -->
       </div>
     </div>
   </body>
-  <script src="../../lib/papaparse.min.js"></script>
+  <script src="../../../src/lib/papaparse.min.js"></script>
   <script src="../../src/util.js"></script>
   <script src="./main.js"></script>
 </html>

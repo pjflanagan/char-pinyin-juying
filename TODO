@@ -4,7 +4,7 @@
 - [x] home link on every page
 
 # Printable
-- [ ] write code that takes a csv and makes a pdf
+- [x] write code that takes a csv and makes a pdf
 - [ ] csv takes override pinyin and makes override zhuyin
 
 # Home
