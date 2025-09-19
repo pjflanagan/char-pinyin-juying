@@ -23,10 +23,19 @@ REPLACE_PINYIN = [
     ['v', 'u'],
 ]
 
+
 def getPinyin(char):
     pinyin = PinyinConv.get(char)
     for replacement in REPLACE_PINYIN:
         pinyin.replace(replacement[0], replacement[1])
+    return pinyin
+
+def getPinyinPhrase(phrase):
+    pinyin = []
+    for char in phrase:
+        pinyin.append(getPinyin(char))
+    separator = " "
+    return separator.join(pinyin)
 
 def getTonelessPinyin(char):
     return PinyinConv.get(char, format="strip").replace('v', 'u')

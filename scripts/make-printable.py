@@ -2,6 +2,7 @@
 import math
 from fpdf import FPDF
 from util.file import loadCsv
+from util.mandarin import getPinyinPhrase
 
 deck_name = 'basic-flashcards'
 
@@ -51,16 +52,22 @@ def makePagePair(cards):
 PADDING = 0.2
 
 # x, y are the top left corner
-def drawFrontCard(pdf, text, x, y):
-  marginTop = 0.2 if len(text) <= 5 else 0.45
+def drawFrontCard(pdf, card, x, y):
+  marginTop = 0.2 if len(card['phrase']) <= 5 else 0.45
   pdf.set_xy(x + PADDING, y + CARD_HEIGHT / 2 - marginTop)
   pdf.set_font('noto', '', 32)
-  pdf.multi_cell(CARD_WIDTH - PADDING, 0.6, text, 0, 'C') 
+  pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.6, card['phrase'], 0, 'C') 
   return
 
 def drawBackCard(pdf, card, x, y):
-  # pdf.multi_cell(2.2, 2.833, "definition", 1, 'C') 
-  # pdf.set_font('noto', '', 22)
+  # top
+  pdf.set_xy(x + PADDING, y + PADDING)
+  pdf.set_font('noto', '', 8)
+  pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.16, card['pinyin'], 0, 'C') 
+  # bottom
+  pdf.set_xy(x + PADDING, y + CARD_HEIGHT - 0.6)
+  pdf.set_font('noto', '', 8)
+  pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.16, card['english'], 0, 'C') 
   return
 
 def drawPageBorders(pdf):
@@ -77,7 +84,7 @@ def drawPageBorders(pdf):
     pdf.line(x1=0, y1=row*CARD_HEIGHT, x2=PAGE_WIDTH, y2=row*CARD_HEIGHT)
     row += 1
 
-def drawPage(pdf, pageModel, isFront=True):
+def drawPage(pdf, pageModel, isFront):
   pdf.add_page()
   drawPageBorders(pdf)
 
@@ -88,14 +95,28 @@ def drawPage(pdf, pageModel, isFront=True):
       card = pageModel[row][col]
       if (card != None):
         if (isFront):
-          drawFrontCard(pdf, card[0], col * CARD_WIDTH, row * CARD_HEIGHT)
+          drawFrontCard(pdf, card, col * CARD_WIDTH, row * CARD_HEIGHT)
         else:
-          # TODO: draw the back card
-          drawFrontCard(pdf, card[1], col * CARD_WIDTH, row * CARD_HEIGHT)
+          drawBackCard(pdf, card, col * CARD_WIDTH, row * CARD_HEIGHT)
       col += 1
     col = 0
     row += 1
 
+
+# ---------------------------------------------------------
+# MANDARIN ------------------------------------------------
+# ---------------------------------------------------------
+
+def makeCard(entry):
+  return {
+    'phrase': entry[0],
+    'english': entry[1],
+    'pinyin': getPinyinPhrase(entry[0])
+  }
+  
+# ---------------------------------------------------------
+# MAIN ----------------------------------------------------
+# ---------------------------------------------------------
 
 if __name__ == "__main__":
   pdf = FPDF('P', 'in', 'Letter')
@@ -106,13 +127,16 @@ if __name__ == "__main__":
 
   pageCardSet = []
   for entry in flashcards:
-    pageCardSet.append(entry)
+    card = makeCard(entry)
+    if card == None:
+      pass
+    pageCardSet.append(card)
     if (len(pageCardSet) == CARD_COLUMNS * CARD_ROWS):
       [front, back] = makePagePair(pageCardSet)
-      drawPage(pdf, front)
+      drawPage(pdf, front, True)
       drawPage(pdf, back, False)
       pageCardSet = []
 
-  pdf.output('print/' + deck_name + '.pdf', 'F')
+  pdf.output('print/' + deck_name + '.pdf')
 
 
