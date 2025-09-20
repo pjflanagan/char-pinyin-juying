@@ -2,6 +2,7 @@
 # General
 - [x] mobile sizing (larger, no page zoom allowed)
 - [x] home link on every page
+- [ ] Add Google Translate python
 
 # Printable
 - [x] write code that takes a csv and makes a pdf
