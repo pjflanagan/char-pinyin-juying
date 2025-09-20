@@ -1,6 +1,7 @@
 
 from hanziconv import HanziConv
-from util.file import loadJson, writeCsv    
+from util.file import loadJson, writeCsv
+from util.mandarin import getTraditional
 
 def findInMap(mapping, key):
     for row in mapping:
@@ -15,15 +16,14 @@ if __name__ == '__main__':
 
     for phrase in chromeExtensionPhrases:
         try:
-            # TODO: this does NOT work for some characters like 了
-            # check the manual entries map and use the values there instead
-            trad = HanziConv.toTraditional(phrase['simplified'])
+            trad = getTraditional(phrase['simplified'])
+            english = phrase['english'] if len(trad) == 1 else ''
 
             outputMap.append((
                 trad,
-                phrase['english']
+                english
             ))
         except:
             print('Error for char:' + phrase['simplified'])
 
-    writeCsv('data/flashcards/basic', outputMap)
+    writeCsv('data/sets/basic', outputMap)

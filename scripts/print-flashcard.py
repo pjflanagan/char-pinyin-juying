@@ -3,8 +3,7 @@ import math
 from fpdf import FPDF
 from util.file import loadCsv
 from util.mandarin import getPinyinPhrase, getTraditional
-
-deck_name = 'curated/foods'
+import sys
 
 # ---------------------------------------------------------
 # CONST ---------------------------------------------------
@@ -119,11 +118,20 @@ def makeCard(entry):
 # ---------------------------------------------------------
 
 if __name__ == "__main__":
+
+  if len(sys.argv) > 1:
+    print("First argument:", sys.argv[1])
+  else:
+    print("No arguments provided.")
+    exit(1)
+
+  flashcardsName = sys.argv[1]
+
   pdf = FPDF('P', 'in', 'Letter')
-  pdf.add_font('noto', '', 'scripts/font/NotoSansTC-Regular.ttf', uni=True)
+  pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv('data/flashcards/' + deck_name)
+  flashcards = loadCsv('data/flashcards/' + flashcardsName)
 
   pageCardSet = []
   for entry in flashcards:
@@ -137,6 +145,6 @@ if __name__ == "__main__":
       drawPage(pdf, back, False)
       pageCardSet = []
 
-  pdf.output('print/' + deck_name + '.pdf')
+  pdf.output('print/' + flashcardsName + '.pdf')
 
 

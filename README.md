@@ -3,6 +3,14 @@
 
 These are a few pages with helpful tools for learning mandarin.
 
+## Study
+
+To add a flashcard set follow these steps:
+
+1. Write a `set.csv` file with the phrases you want
+2. Run `scripts/set-___.py` on your new set to generate flashcards
+3. See your flashcards available on a page or run `print-flashcard.py` to generate printable flashcards
+
 ## Repository Setup
 
 This repo is made up of a few parts.
