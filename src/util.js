@@ -112,10 +112,10 @@ function renderHanziCharacter({ index, hanzi, pinyin, zhuyin, tone }) {
 }
 
 // ---------------------------------------------------------------------------
-// Storage -------------------------------------------------------------------
+// StorageUtil ---------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-const Storage = {
+const StorageUtil = {
   save: function (storageKey, data) {
     window.localStorage.setItem(
       storageKey, JSON.stringify(data)

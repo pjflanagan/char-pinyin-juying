@@ -6,9 +6,23 @@
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
     <title>Study Mandarin Resources</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="./src/img/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="./src/img/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="./src/img/favicon-16x16.png">
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./src/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./src/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./src/img/favicon-16x16.png"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,10 +30,72 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./src/base.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body>
     <div class="container">
-      <h1>Mandarin Study Resources</h1>
+      <h1>Mandarin Study Planner</h1>
+      <p>
+        你好, welcome to my mandarin study guide. These are the daily tasks I do
+        to help myself study mandarin.
+      </p>
+
+      <!-- To Do List -->
+      <h2>Daily To Do's</h2>
+      <div
+        style="display: flex; justify-content: space-between; flex-wrap: wrap"
+      >
+        <div style="min-width: 260px">
+          <p>Do 3 of these:</p>
+          <ul style="list-style-type: none; padding-inline-start: 20px">
+            <li>
+              <input type="checkbox" data-checklist="duolingo" />
+              <label>Duolingo</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="duchinese" />
+              <label>DuChinese</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="flashcards" />
+              <label>Flashcards</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="podcast" />
+              <label>Listen to a podcast</label>
+            </li>
+          </ul>
+        </div>
+        <div style="min-width: 260px">
+          <p>Do 1 of these:</p>
+          <ul style="list-style-type: none; padding-inline-start: 20px">
+            <li>
+              <input type="checkbox" data-checklist="song" />
+              <label>Translate a song</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="make-flashcards" />
+              <label>Make flashcards</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="tv-show" />
+              <label>Watch a children's Chinese show</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="write-characters" />
+              <label>Write characters</label>
+            </li>
+            <li>
+              <input type="checkbox" data-checklist="read-book" />
+              <label>Read a book</label>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- List of study resources -->
+      <h2>Study Resources</h2>
       <p style="font-size: 0.8em">
         <i style="color: #999">
           * These were built by a student, not a native speaker. There may be
@@ -61,6 +137,8 @@
           </span>
         </li>
       </ul>
+
+      <!-- Other Resources -->
       <h2>Other Resources</h2>
       <ul>
         <li>
@@ -76,13 +154,24 @@
           </span>
         </li>
       </ul>
+
+      <!-- External Resources -->
       <h2>External Resources</h2>
-      <p>
-        I've also studied using Duolingo, Memrise, DuChinese, and HelloChinese.
-      </p>
       <ul>
+        <li>DuChinese - <span style="color: #999">Good for reading</span></li>
+        <li>Duolingo - <span style="color: #999">Good for grammar</span></li>
         <li>
-          <a href="https://www.reddit.com/r/ChineseLanguage/comments/okonc2/the_ultimate_chinese_phrasebook_56000_phrases/" target="_blank">
+          Memrise - <span style="color: #999">Good for basic phrases</span>
+        </li>
+        <li>
+          HelloChinese -
+          <span style="color: #999">Good for a change of pace</span>
+        </li>
+        <li>
+          <a
+            href="https://www.reddit.com/r/ChineseLanguage/comments/okonc2/the_ultimate_chinese_phrasebook_56000_phrases/"
+            target="_blank"
+          >
             More Flashcards
           </a>
         </li>
@@ -105,6 +194,8 @@
           <a href="https://www.chineasy.com" target="_blank">Chineasy</a>
         </li>
       </ul>
+
+      <!-- About me -->
       <hr style="margin-top: 80px" />
       <h4>About me</h4>
       <p>
@@ -121,5 +212,7 @@
         </li>
       </ul>
     </div>
+    <script src="src/util.js"></script>
+    <script src="src/todo.js"></script>
   </body>
 </html>

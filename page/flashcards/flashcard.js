@@ -14,7 +14,7 @@ class FlashcardPage {
 
   async init() {
     // load data
-    this.knownFlashcards = Storage.load(this.storageKey) || [];
+    this.knownFlashcards = StorageUtil.load(this.storageKey) || [];
     const [dictionary, allFlashcards] = await Promise.all([
       loadCsv('data/dictionary'),
       loadCsv(this.libraryKey)
@@ -35,13 +35,13 @@ class FlashcardPage {
     const { phrase } = this.flashcards[this.currentIndex];
     this.knownFlashcards.push(phrase)
     this.flashcards = this.flashcards.filter(card => card.phrase !== phrase);
-    Storage.save(this.storageKey, this.knownFlashcards);
+    StorageUtil.save(this.storageKey, this.knownFlashcards);
     this.display();
     this.hide();
   }
 
   reset() {
-    Storage.remove(this.storageKey);
+    StorageUtil.remove(this.storageKey);
     window.location.reload();
   }
 
