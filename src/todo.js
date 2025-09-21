@@ -6,8 +6,6 @@ const TODO_STORAGE_KEY = 'flanny-sm-todo';
   const storageChecklist = StorageUtil.load(TODO_STORAGE_KEY);
   let checklist;
 
-  console.log(storageChecklist);
-
   // on load check the storage
   if (storageChecklist && storageChecklist.day !== today) {
     StorageUtil.remove(TODO_STORAGE_KEY);

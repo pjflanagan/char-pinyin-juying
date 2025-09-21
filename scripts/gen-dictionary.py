@@ -1,6 +1,6 @@
 from hanziconv import HanziConv
 from util.file import writeCsv, loadCsv
-from util.mandarin import getAllHanzi, getTonelessPinyin, getTone, getPinyin, getTraditional
+from util.mandarin import Hanzi
 
 def findInMap(mapping, key):
     for row in mapping:
@@ -10,7 +10,7 @@ def findInMap(mapping, key):
 
 if __name__ == '__main__':
     tonelessToZhuyinMap = loadCsv('data/maps/PinyinToneless-Zhuyin')
-    allHanziSet = getAllHanzi()
+    allHanziSet = Hanzi.getAll()
 
     # our map has all unicode hanzi, traditional, and simplified
     # at least one of traditional or simplified WILL match hanzi
@@ -18,10 +18,10 @@ if __name__ == '__main__':
 
     for char in allHanziSet:
         try:
-            trad = getTraditional(char)
+            trad = Hanzi.getTraditional(char)
             simp = HanziConv.toSimplified(char)
-            toneless = getTonelessPinyin(char)
-            tone = getTone(char)
+            toneless = Hanzi.getTonelessPinyin(char)
+            tone = Hanzi.getTone(char)
 
             zhuyin = findInMap(tonelessToZhuyinMap, toneless)
 
@@ -29,7 +29,7 @@ if __name__ == '__main__':
                 char,
                 trad,
                 simp,
-                getPinyin(char),
+                Hanzi.getPinyin(char),
                 toneless,
                 tone,
                 zhuyin

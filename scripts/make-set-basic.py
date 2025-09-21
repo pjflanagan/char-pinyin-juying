@@ -1,7 +1,6 @@
 
-from hanziconv import HanziConv
 from util.file import loadJson, writeCsv
-from util.mandarin import getTraditional
+from util.mandarin import Phrase
 
 def findInMap(mapping, key):
     for row in mapping:
@@ -16,7 +15,9 @@ if __name__ == '__main__':
 
     for phrase in chromeExtensionPhrases:
         try:
-            trad = getTraditional(phrase['simplified'])
+            trad = Phrase.getTraditional(phrase['simplified'])
+
+            # only keep the english if it is a single character
             english = phrase['english'] if len(trad) == 1 else ''
 
             outputMap.append((
