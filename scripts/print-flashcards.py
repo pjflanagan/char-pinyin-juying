@@ -111,8 +111,6 @@ def makeCard(entry):
     'phrase': entry[0],
     'english': entry[1],
     'pinyin': entry[2],
-    'tone': entry[3],
-    'zhuyin': entry[4]
   }
   
 # ---------------------------------------------------------
@@ -122,7 +120,7 @@ def makeCard(entry):
 if __name__ == "__main__":
 
   if len(sys.argv) > 1:
-    print("First argument:", sys.argv[1])
+    print("Flashcard set:", sys.argv[1])
   else:
     print("No arguments provided.")
     exit(1)

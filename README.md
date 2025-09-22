@@ -7,17 +7,16 @@ These are a few pages with helpful tools for learning mandarin.
 
 To add a flashcard set follow these steps:
 
-1. Write a `set.csv` file with the phrases you want
-2. Run `scripts/set-___.py` on your new set to generate flashcards
-3. See your flashcards available on a page or run `print-flashcard.py` to generate printable flashcards
+1. Write a `data/flashcards.csv` file with the phrases you want, you can omit english and pinyin
+2. Run `scripts/gen-flashcard.py "setName"` on your new set to update missing data and convert to traditional 
+3. Add a link to see your flashcards on web or run `print-flashcard.py "setName"` to generate printable flashcards
 
 ## Repository Setup
 
 This repo is made up of a few parts.
 - `data` - input/output data
-  - `flashcards` - csv's containing complete information
+  - `flashcards` - csv's containing flashcards
   - `maps`
-  - `sets` - csv's that get turned into flashcards
   - `source`
 - `page` - public pages, these are apps for typing and doing flashcards
 - `print` - printable pdfs of flashcards
@@ -27,34 +26,9 @@ This repo is made up of a few parts.
   - `lib` minified libraries
   - `img` public images
 
-## Process
+## Develop
 
-### Add Data
-
-`sets` are csv files that are processed into flashcards
-They do NOT need an `english` definition or `pinyin`, unless you want to
-override the values returned by google.
-
-```
-phrase,english,pinyin
-```
-
-`flashcards` are processed sets that contain a phrase and the english
-definition of that phrase. It can also contain pinyin if it is not
-simply the default pinyin.
-
-```
-phrase,english,pinyin,zhuyin,tone
-```
-
-### Build the Dictionary
-
-```
-$ python3 -m pip install -r requirements.txt
-$ python3 ./scripts/make-*.py
-```
-
-### Serve the webpage
+Serve the webpage using:
 
 ```
 $ python3 -m http.server

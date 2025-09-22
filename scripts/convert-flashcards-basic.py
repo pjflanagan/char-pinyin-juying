@@ -2,12 +2,6 @@
 from util.file import loadJson, writeCsv
 from util.mandarin import Phrase
 
-def findInMap(mapping, key):
-    for row in mapping:
-        if row[0] == key:
-            return row[1]
-    return None
-
 if __name__ == '__main__':
     chromeExtensionPhrases = loadJson('data/source/chrome-extension-phrases')
 

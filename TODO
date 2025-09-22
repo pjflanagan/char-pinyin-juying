@@ -6,7 +6,7 @@
 
 # Printable
 - [x] write code that takes a csv and makes a pdf
-- [ ] csv just prints exactly what is on the flashcard
+- [x] csv just prints exactly what is on the flashcard
 
 # Home
 - [x] links to other helpful tools (bopomofo soundboard, my songs)
@@ -20,7 +20,7 @@
 - [ ] Allow font toggle so I can see characters in different fonts
 
 # Flashcards
-- [ ] One flashcard page with a popup to switch, link to open popup in header
-- [ ] Flashcard page uses the data in a flashcard (no zhuyin anymore)
-- [ ] header link to reverse flashcards (show english, hide character and pinyin)
+- [x] header link to reverse flashcards (show english, hide character and pinyin)
+- [x] One flashcard page with a popup to switch, link to open popup in header
+- [x] Flashcard page uses the data in a flashcard (no zhuyin anymore)
 - [x] storage for flashcards

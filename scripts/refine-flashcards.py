@@ -6,7 +6,7 @@ from util.mandarin import Phrase, Hanzi
 if __name__ == '__main__':
     
     if len(sys.argv) > 1:
-      print("First argument:", sys.argv[1])
+      print("Flashcard set:", sys.argv[1])
     else:
       print("No arguments provided.")
       exit(1)

@@ -10,8 +10,12 @@ class FlashcardPage {
     this.currentIndex = 0;
     this.setName = null;
 
-    // TODO:
     this.reverseMode = false;
+  }
+
+  toggleReverseMode() {
+    this.reverseMode = !this.reverseMode;
+    this.hide();
   }
 
   openModal() {
@@ -68,15 +72,25 @@ class FlashcardPage {
   }
 
   hide() {
+    if (this.reverseMode) {
+      $("#hanzi").addClass('hidden');
+      $('#english').removeClass('hidden');
+    } else {
+      $("#hanzi").removeClass('hidden');
+      $('#english').addClass('hidden');
+    }
     $('#pinyin').addClass('hidden');
-    $('#english').addClass('hidden');
     $('#reveal-or-next-button').text('Reveal');
     this.isHidden = true;
   }
 
   reveal() {
+    if (this.reverseMode) {
+      $('#hanzi').removeClass('hidden');
+    } else {
+      $('#english').removeClass('hidden');
+    }
     $('#pinyin').removeClass('hidden');
-    $('#english').removeClass('hidden');
     $('#reveal-or-next-button').text('Next');
     this.isHidden = false;
   }

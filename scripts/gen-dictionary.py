@@ -1,7 +1,8 @@
 from hanziconv import HanziConv
 from util.file import writeCsv
 from util.mandarin import Hanzi
-from util.map import findInMap
+
+# NOTE: this requires both maps to have been created in order to work
 
 if __name__ == '__main__':
     allHanziSet = Hanzi.getAll()
