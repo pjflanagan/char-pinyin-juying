@@ -1,13 +1,8 @@
 
 import sys
 from util.file import writeCsv, loadCsv
-from util.mandarin import Hanzi, Phrase, Pinyin
-
-def findInMap(mapping, key):
-    for row in mapping:
-        if row[0] == key:
-            return row[1]
-    return None
+from util.mandarin import Phrase, Pinyin
+from util.map import findInMap
 
 if __name__ == '__main__':
     
@@ -26,8 +21,8 @@ if __name__ == '__main__':
         # TODO: get the overrides from the entry
         try:
             phrase = Phrase.getTraditional(entry[0])
-            translation = {}
 
+            translation = {}
             english = ''
             if len(entry) > 1 and entry[1] != '':
                 english = entry[1]
@@ -39,7 +34,8 @@ if __name__ == '__main__':
             if len(entry) > 2 and entry[2] != '':
                 pinyin = entry[2]
             else:
-                # TOOD: get the pinyin from the translation
+                # TODO: get the pinyin from the translation
+                # if no translation, then get a translation
                 print()
 
             toneless = Pinyin.stripTones(pinyin)

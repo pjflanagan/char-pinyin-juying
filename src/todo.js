@@ -7,9 +7,9 @@ const TODO_STORAGE_KEY = 'flanny-sm-todo';
   let checklist;
 
   // on load check the storage
-  if (storageChecklist && storageChecklist.day !== today) {
+  if (storageChecklist && (!('day' in checklist) || storageChecklist.day !== today)) {
     StorageUtil.remove(TODO_STORAGE_KEY);
-  } else if (storageChecklist) {
+  } else if (storageChecklist && 'tasks' in checklist) {
     checklist = storageChecklist;
   } else {
     checklist = {
@@ -17,7 +17,7 @@ const TODO_STORAGE_KEY = 'flanny-sm-todo';
       tasks: []
     }
   }
-  
+
   // init all the checkboxes
   $('input[type="checkbox"]').each(function () {
     const task = $(this).attr('data-checklist');
