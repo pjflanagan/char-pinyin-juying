@@ -5,7 +5,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <title>Study Mandarin: Reddit Flashcards</title>
+    <title>Study Mandarin: Zhuyin Trainer</title>
     <link rel="apple-touch-icon" sizes="180x180" href="../../src/img/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="../../src/img/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="../../src/img/favicon-16x16.png">
@@ -15,49 +15,25 @@
       href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../../../src/base.css" />
-    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="../../src/base.css" />
+    <link rel="stylesheet" href="./style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
   <body>
     <div id="header">
       <a id="home-link">Home</a>
-      <a onclick="flashcardPage.reset()" style="color: #666">Reset Progress</a>
     </div>
-    <div id="container">
-      <div id="count"></div>
+    <div id="container" class="no-select">
       <div id="display-characters"></div>
-      <div id="english"></div>
     </div>
     <div id="actions" class="no-select">
       <div class="action">
-        <a id="known-button" onclick="flashcardPage.markAsKnown()" style="color: #999">Known</a>
-      </div>
-      <div class="action">
-        <a id="reveal-or-next-button" onclick="flashcardPage.revealOrNext()">Reveal</a>
-      </div>
-      <div class="action">
-        <a id="google-translate" target="_blank" style="color: #999"
-          >Translate</a
-        >
+        <a id="reveal-or-next-button" onclick="revealOrNext()">Reveal</a>
       </div>
     </div>
   </body>
-  <script src="../../../src/lib/papaparse.min.js"></script>
-  <script src="../../../src/util.js"></script>
-  <script src="../flashcard.js"></script>
-  <script>
-    let DICTIONARY = [];
-
-    const flashcardPage = new FlashcardPage({
-      storageKey: 'flanny-sm-reddit-flashcards',
-      libraryKey: 'data/flashcards/reddit'
-    });
-
-    (async function () {
-      await flashcardPage.init();
-      flashcardPage.shuffle();
-    })();
-  </script>
+  <script src="../../src/lib/papaparse.min.js"></script>
+  <script src="../../src/util.js"></script>
+  <script src="./main.js"></script>
 </html>

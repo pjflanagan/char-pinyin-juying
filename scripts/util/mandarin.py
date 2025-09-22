@@ -7,7 +7,8 @@ from util.map import findInMap
 from util.file import loadCsv
 
 
-ENGLISH_MAP = loadCsv('data/maps/Hanzi-English')
+HANZI_TO_ENGLISH_MAP = loadCsv('data/maps/Hanzi-English')
+PINYIN_TONELESS_TO_ZHUYIN_MAP = loadCsv('data/maps/PinyinToneless-Zhuyin')
 
 REPLACE_PINYIN = [
     # can't find a first tone v
@@ -56,9 +57,11 @@ class Hanzi:
         
     # find the english definition of a single char
     def getEnglish(char):
-        return findInMap(ENGLISH_MAP, char)
+        return findInMap(HANZI_TO_ENGLISH_MAP, char)
     
-    # def getZhuyin(char):
+    def getZhuyin(char):
+        toneless = Hanzi.getTonelessPinyin(char)
+        return findInMap(PINYIN_TONELESS_TO_ZHUYIN_MAP, toneless)
         
     
 class Pinyin:

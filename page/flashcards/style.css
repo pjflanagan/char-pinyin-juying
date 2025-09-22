@@ -11,10 +11,17 @@
   margin-bottom: 12px;
 }
 
-#container #display-characters {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
+#container #hanzi {
+  text-align: center;
+  width: 100%;
+  font-size: 48px;
+}
+
+#container #pinyin {
+  text-align: center;
+  width: 100%;
+  font-size: 24px;
+  color: #aaa;
 }
 
 #container #english {

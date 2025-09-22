@@ -4,18 +4,17 @@ const TODO_STORAGE_KEY = 'flanny-sm-todo';
 (function () {
   const today = (new Date()).toISOString().split('T')[0];
   const storageChecklist = StorageUtil.load(TODO_STORAGE_KEY);
-  let checklist;
+  let checklist = {
+    day: today,
+    tasks: []
+  }
 
-  // on load check the storage
-  if (storageChecklist && (!('day' in checklist) || storageChecklist.day !== today)) {
-    StorageUtil.remove(TODO_STORAGE_KEY);
-  } else if (storageChecklist && 'tasks' in checklist) {
+  if (storageChecklist && 'day' in storageChecklist && storageChecklist.day === today && 'tasks' in checklist) {
+    // if the checklist is today then use it
     checklist = storageChecklist;
   } else {
-    checklist = {
-      day: today,
-      tasks: []
-    }
+    // otherwise remove the stored data
+    StorageUtil.remove(TODO_STORAGE_KEY);
   }
 
   // init all the checkboxes

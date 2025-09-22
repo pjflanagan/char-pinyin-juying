@@ -61,15 +61,3 @@ body.debug #hidden-input {
   background: #fff2;
   color: #fff;
 }
-
-/* settings */
-
-#settings {
-  position: fixed;
-  display: flex;
-  bottom: 16px;
-  justify-content: center;
-  opacity: 0.2;
-  width: 100%;
-  gap: 64px;
-}
