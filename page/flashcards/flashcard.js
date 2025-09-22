@@ -1,8 +1,8 @@
 
 class FlashcardPage {
   constructor() {
-    this.storageKey = config.storageKey;
-    this.libraryKey = config.libraryKey;
+    this.storageKey = '';
+    this.libraryKey = '';
 
     // state
     this.flashcards = [];
@@ -15,12 +15,14 @@ class FlashcardPage {
     this.reverseMode = false;
   }
 
-  toggleModal() {
-    // TODO: open the modal that shows all the flashcard sets
+  openModal() {
+    $('#modal').removeClass('hidden');
   }
 
   chooseSet(setName) {
     this.setName = setName;
+    this.flashcards = [];
+    $('#modal').addClass('hidden');
     this.loadFlashcards();
   }
 

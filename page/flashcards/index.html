@@ -37,23 +37,25 @@
   <body>
     <div id="header">
       <a id="home-link">Home</a>
-      <a onclick="flashcardPage.changeFlashcardSet()">Change Set</a>
+      <a onclick="flashcardPage.openModal()">Change Set</a>
       <a onclick="flashcardPage.reset()" style="color: #666">Reset Progress</a>
     </div>
     <div id="modal">
-      <p>Curated</p>
-      <ul>
-        <li>Coming soon</li>
-      </ul>
-      <p>Sourced</p>
-      <ul>
-        <li>
-          <a onclick="flashcardPage.chooseSet('basic')">Basic</a>
-        </li>
-        <li>
-          <a onclick="flashcardPage.chooseSet('reddit')">Reddit</a>
-        </li>
-      </ul>
+      <div class="modal-content">
+        <p>Curated</p>
+        <ul>
+          <li>Coming soon</li>
+        </ul>
+        <p>Sourced</p>
+        <ul>
+          <li>
+            <a onclick="flashcardPage.chooseSet('basic')">Basic</a>
+          </li>
+          <li>
+            <a onclick="flashcardPage.chooseSet('reddit')">Reddit</a>
+          </li>
+        </ul>
+      </div>
     </div>
     <div id="container">
       <div id="count"></div>
@@ -63,12 +65,17 @@
     </div>
     <div id="actions" class="no-select">
       <div class="action">
-        <a id="known-button" onclick="flashcardPage.markAsKnown()" style="color: #999"
+        <a
+          id="known-button"
+          onclick="flashcardPage.markAsKnown()"
+          style="color: #999"
           >Known</a
         >
       </div>
       <div class="action">
-        <a id="reveal-or-next-button" onclick="flashcardPage.revealOrNext()">Reveal</a>
+        <a id="reveal-or-next-button" onclick="flashcardPage.revealOrNext()"
+          >Reveal</a
+        >
       </div>
       <div class="action">
         <a id="google-translate" target="_blank" style="color: #999"
