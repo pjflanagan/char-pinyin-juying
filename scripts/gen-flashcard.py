@@ -1,8 +1,7 @@
 
 import sys
 from util.file import writeCsv, loadCsv
-from util.mandarin import Phrase, Pinyin
-from util.map import findInMap
+from util.mandarin import Phrase, Hanzi
 
 if __name__ == '__main__':
     
@@ -15,42 +14,39 @@ if __name__ == '__main__':
     setName = sys.argv[1]
     set = loadCsv('data/set/' + setName)
 
-    outputMap = [("phrase", "english", "pinyin", "tone", "zhuyin")]
+    outputMap = [("phrase", "english", "pinyin")]
 
     for entry in set:
-        # TODO: get the overrides from the entry
         try:
             phrase = Phrase.getTraditional(entry[0])
 
-            translation = {}
+            translation = None
             english = ''
             if len(entry) > 1 and entry[1] != '':
                 english = entry[1]
+            elif len(phrase) == 1:
+                english = Hanzi.getEnglish(phrase)
             else:
-                # TODO: get english from google
-                print()
+                translation = Phrase.translate(phrase)
+                english = translation.english
             
             pinyin = ''
             if len(entry) > 2 and entry[2] != '':
                 pinyin = entry[2]
+            elif len(phrase) == 1:
+                pinyin = Hanzi.getPinyin(phrase)
+            elif translation != None:
+                pinyin = translation.pinyin
             else:
-                # TODO: get the pinyin from the translation
-                # if no translation, then get a translation
-                print()
-
-            toneless = Pinyin.stripTones(pinyin)
-            tone = getTone(char)
-
-            zhuyin = findInMap(tonelessToZhuyinMap, toneless)
+                translation = Phrase.translate(phrase)
+                pinyin = translation.pinyin
 
             outputMap.append((
                 phrase,
-                getPinyin(char),
-                toneless,
-                tone,
-                zhuyin
+                english,
+                pinyin
             ))
         except:
-            print('Error for phrase:' + char)
+            print('Error for phrase:' + phrase)
 
     writeCsv('data/dictionary', outputMap)

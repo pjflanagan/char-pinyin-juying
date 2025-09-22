@@ -92,6 +92,11 @@ function renderText(text) {
     $('#display-characters').append(html);
   }
   renderCursorAtInputCursorPosition();
+  setGoogleTranslateLink(text);
+}
+
+function setGoogleTranslateLink(text) {
+    $('#google-translate').attr('href', `https://translate.google.com?sl=zh-TW&tl=en&text=${text}&op=translate`);
 }
 
 // ---------------------------------------------------------------------------

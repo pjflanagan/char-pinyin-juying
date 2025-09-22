@@ -1,12 +1,7 @@
 from hanziconv import HanziConv
 from util.file import writeCsv, loadCsv
 from util.mandarin import Hanzi
-
-def findInMap(mapping, key):
-    for row in mapping:
-        if row[0] == key:
-            return row[1]
-    return None
+from util.map import findInMap
 
 if __name__ == '__main__':
     tonelessToZhuyinMap = loadCsv('data/maps/PinyinToneless-Zhuyin')

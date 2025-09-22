@@ -22,10 +22,7 @@
 - [ ] button to open in Google translate
 
 # Flashcards
+- [ ] One flashcard page with a popup to switch, link to open popup in header
+- [ ] Flashcard page uses the data in a flashcard (no zhuyin anymore)
+- [ ] header link to reverse flashcards (show english, hide character and pinyin)
 - [x] storage for flashcards
-
-# Flashcards Reddit
-- [ ] 
-
-# Curated
-- [ ] Make curated flashcards pull

@@ -3,6 +3,11 @@ import unicodedata
 import pinyin as PinyinConv
 from hanziconv import HanziConv
 from googletrans import Translator
+from util.map import findInMap
+from util.file import loadCsv
+
+
+ENGLISH_MAP = loadCsv('data/maps/Hanzi-English')
 
 REPLACE_PINYIN = [
     # can't find a first tone v
@@ -48,35 +53,24 @@ class Hanzi:
             return char
         else:
             return HanziConv.toTraditional(char)
+        
+    # find the english definition of a single char
+    def getEnglish(char):
+        return findInMap(ENGLISH_MAP, char)
+    
+    # def getZhuyin(char):
+        
     
 class Pinyin:
-    # TODO: return [pinyin, Array<number>]
     def stripTones(pinyin):
         nfkd_form = unicodedata.normalize('NFKD', pinyin)
         return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
-
-class Zhuyin:
-    def fromPinyin(pinyin):
-        toneless = Pinyin.stripTones(pinyin)
-        # TODO: work backward through each pinyin block
-        # TODO: get zhuyin separated by spaces
-        return ''
-
 
 translator = Translator(service_urls=[
       'translate.googleapis.com'
     ])
 
 class Phrase:
-    # TODO: remove this, translate should return
-    # pinyin and english
-    def getPinyin(phrase):
-        pinyin = []
-        for char in phrase:
-            pinyin.append(Hanzi.getPinyin(char))
-        separator = " "
-        return separator.join(pinyin)
-
     def getTraditional(phrase):
         traditional = []
         for char in phrase:
@@ -86,5 +80,12 @@ class Phrase:
 
     # TODO: this should use google
     async def translate(phrase):
+        if len(phrase) == 1:
+            english = Hanzi.getEnglish(phrase)
+            pinyin = Hanzi.getPinyin(phrase)
+            return {
+                "english": english,
+                "pinyin": pinyin
+            }
         return await translator.translate(phrase)
 
