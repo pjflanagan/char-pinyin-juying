@@ -8,7 +8,8 @@ These are a few pages with helpful tools for learning mandarin.
 To add a flashcard set follow these steps:
 
 1. Write a `data/flashcards.csv` file with the phrases you want, you can omit english and pinyin
-2. Run `scripts/gen-flashcard.py "setName"` on your new set to update missing data and convert to traditional 
+2. Run `scripts/refine-flashcard.py "setName"` on your new set to update missing data and convert to traditional 
+  - Flashcards are refined in place to limit the usage of the google translate api
 3. Add a link to see your flashcards on web or run `print-flashcard.py "setName"` to generate printable flashcards
 
 ## Repository Setup

@@ -131,7 +131,7 @@ if __name__ == "__main__":
   pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv('data/flashcards/' + flashcardsName)
+  flashcards = loadCsv(f"data/flashcards/{flashcardsName}")
 
   pageCardSet = []
   for entry in flashcards:
@@ -145,6 +145,6 @@ if __name__ == "__main__":
       drawPage(pdf, back, False)
       pageCardSet = []
 
-  pdf.output('print/' + flashcardsName + '.pdf')
+  pdf.output(f"print/{flashcardsName}.pdf")
 
 

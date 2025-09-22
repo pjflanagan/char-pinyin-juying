@@ -1,6 +1,6 @@
 
 from util.file import loadJson, writeCsv
-from util.mandarin import Phrase
+from util.mandarin import Phrase, Hanzi
 
 if __name__ == '__main__':
     chromeExtensionPhrases = loadJson('data/source/chrome-extension-phrases')
@@ -13,11 +13,16 @@ if __name__ == '__main__':
 
             # only keep the english if it is a single character
             english = phrase['english'] if len(trad) == 1 else ''
+            
+            # the pinyin for multiple characters is wrong
+            pinyin  = ''
+            if len(trad) == 1:
+                pinyin = Hanzi.getPinyin(trad)
 
             outputMap.append((
                 trad,
                 english,
-                phrase["pinyin"]
+                pinyin
             ))
         except:
             print('Error for char:' + phrase['simplified'])

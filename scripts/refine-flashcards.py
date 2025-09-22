@@ -12,34 +12,28 @@ if __name__ == '__main__':
       exit(1)
 
     setName = sys.argv[1]
-    set = loadCsv('data/flashcards/' + setName)
+    set = loadCsv(f"data/flashcards/{setName}")
 
     outputMap = [("phrase", "english", "pinyin")]
 
     for entry in set:
         try:
             phrase = Phrase.getTraditional(entry[0])
+            print(phrase)
 
-            translation = None
             english = ''
             if len(entry) > 1 and entry[1] != '':
                 english = entry[1]
             elif len(phrase) == 1:
                 english = Hanzi.getEnglish(phrase)
             else:
-                translation = Phrase.translate(phrase)
-                english = translation.english
+                english = Phrase.translateEnglish(phrase)
             
             pinyin = ''
             if len(entry) > 2 and entry[2] != '':
                 pinyin = entry[2]
-            elif len(phrase) == 1:
-                pinyin = Hanzi.getPinyin(phrase)
-            elif translation != None:
-                pinyin = translation.pinyin
             else:
-                translation = Phrase.translate(phrase)
-                pinyin = translation.pinyin
+                pinyin = Phrase.getPinyin(phrase)
 
             outputMap.append((
                 phrase,
@@ -49,4 +43,4 @@ if __name__ == '__main__':
         except:
             print('Error for phrase:' + phrase)
 
-    writeCsv('data/flashcards/' + setName, outputMap)
+    writeCsv(f"data/flashcards/{setName}", outputMap)

@@ -1,11 +1,17 @@
+
+import os
 import re
 import unicodedata
 import pinyin as PinyinConv
 from hanziconv import HanziConv
-from googletrans import Translator
-from util.map import findInMap
-from util.file import loadCsv
+from .map import findInMap
+from .file import loadCsv
+from dotenv import load_dotenv
+from google.cloud import translate_v2 as translate
 
+# .env
+# GOOGLE_APPLICATION_CREDENTIALS=/path/to/your/service-account.json
+load_dotenv()
 
 HANZI_TO_ENGLISH_MAP = loadCsv('data/maps/Hanzi-English')
 PINYIN_TONELESS_TO_ZHUYIN_MAP = loadCsv('data/maps/PinyinToneless-Zhuyin')
@@ -69,9 +75,9 @@ class Pinyin:
         nfkd_form = unicodedata.normalize('NFKD', pinyin)
         return "".join([c for c in nfkd_form if not unicodedata.combining(c)])
 
-translator = Translator(service_urls=[
-      'translate.googleapis.com'
-    ])
+
+    
+googleTranslateClient = translate.Client()
 
 class Phrase:
     def getTraditional(phrase):
@@ -80,15 +86,21 @@ class Phrase:
             traditional.append(Hanzi.getTraditional(char))
         separator = ""
         return separator.join(traditional)
-
-    # TODO: this should use google
-    async def translate(phrase):
-        if len(phrase) == 1:
-            english = Hanzi.getEnglish(phrase)
-            pinyin = Hanzi.getPinyin(phrase)
-            return {
-                "english": english,
-                "pinyin": pinyin
-            }
-        return await translator.translate(phrase)
+        
+    # NOTE: this pinyin will not always be correct
+    # as pronunciation changes contextually
+    def getPinyin(phrase):
+        pinyin = []
+        for char in phrase:
+            pinyin.append(Hanzi.getPinyin(char))
+        separator = ' '
+        return separator.join(pinyin)
+    
+    def translateEnglish(phrase):
+        results = googleTranslateClient.translate(
+            values=phrase,
+            target_language="en",
+            source_language="zh-TW"
+        )
+        return results['translatedText']
 
