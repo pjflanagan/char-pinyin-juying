@@ -12,7 +12,7 @@ if __name__ == '__main__':
       exit(1)
 
     setName = sys.argv[1]
-    set = loadCsv('data/sets/' + setName)
+    set = loadCsv('data/flashcards/' + setName)
 
     outputMap = [("phrase", "english", "pinyin")]
 

@@ -11,7 +11,7 @@ def findInMap(mapping, key):
 if __name__ == '__main__':
     chromeExtensionPhrases = loadJson('data/source/chrome-extension-phrases')
 
-    outputMap = [("phrase", "english")]
+    outputMap = [("phrase", "english", "pinyin")]
 
     for phrase in chromeExtensionPhrases:
         try:
@@ -22,9 +22,10 @@ if __name__ == '__main__':
 
             outputMap.append((
                 trad,
-                english
+                english,
+                phrase["pinyin"]
             ))
         except:
             print('Error for char:' + phrase['simplified'])
 
-    writeCsv('data/sets/basic', outputMap)
+    writeCsv('data/flashcards/basic', outputMap)

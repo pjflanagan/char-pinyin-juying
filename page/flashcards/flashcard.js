@@ -2,7 +2,6 @@
 class FlashcardPage {
   constructor() {
     this.storageKey = '';
-    this.libraryKey = '';
 
     // state
     this.flashcards = [];
@@ -28,9 +27,9 @@ class FlashcardPage {
 
   async loadFlashcards() {
     this.storageKey = `flanny-sm-${this.setName}-flashcards`,
-    this.libraryKey = `data/flashcards/${this.setName}`;
     this.knownFlashcards = StorageUtil.load(this.storageKey) || [];
-    const allFlashcards = await loadCsv(this.libraryKey);
+
+    const allFlashcards = await loadCsv(`data/flashcards/${this.setName}`);
     this.flashcards = allFlashcards.filter(card => !this.knownFlashcards.includes(card.phrase));
 
     // shuffle and display
