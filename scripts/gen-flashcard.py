@@ -12,7 +12,7 @@ if __name__ == '__main__':
       exit(1)
 
     setName = sys.argv[1]
-    set = loadCsv('data/set/' + setName)
+    set = loadCsv('data/sets/' + setName)
 
     outputMap = [("phrase", "english", "pinyin")]
 
@@ -49,4 +49,4 @@ if __name__ == '__main__':
         except:
             print('Error for phrase:' + phrase)
 
-    writeCsv('data/dictionary', outputMap)
+    writeCsv('data/flashcards/' + setName, outputMap)
