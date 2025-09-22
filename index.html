@@ -38,24 +38,30 @@
       <h1>Mandarin Study Planner</h1>
       <p>
         你好, welcome to my mandarin study guide. These are the daily tasks I do
-        to help myself study mandarin.
+        to help improve my skills.
       </p>
 
       <!-- To Do List -->
       <h2>Daily To Do's</h2>
-      <div
-        style="display: flex; justify-content: space-between; flex-wrap: wrap"
-      >
+      <div style="display: flex; flex-wrap: wrap">
         <div style="min-width: 260px">
           <p>Do 3 of these:</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
-              <input type="checkbox" data-checklist="duolingo" />
-              <label>Duolingo</label>
+              <input type="checkbox" data-checklist="duchinese" />
+              <label
+                ><a href="https://duchinese.net/" target="_blank"
+                  >DuChinese</a
+                ></label
+              >
             </li>
             <li>
-              <input type="checkbox" data-checklist="duchinese" />
-              <label>DuChinese</label>
+              <input type="checkbox" data-checklist="duolingo" />
+              <label
+                ><a href="https://duolingo.com/" target="_blank"
+                  >Duolingo</a
+                ></label
+              >
             </li>
             <li>
               <input type="checkbox" data-checklist="flashcards" />
@@ -96,14 +102,13 @@
 
       <!-- List of study resources -->
       <h2>Study Resources</h2>
-      <p style="font-size: 0.8em">
-        <i style="color: #999">
-          * These were built by a student, not a native speaker. There may be
-          errors. Characters default to the most common pronunciation which may
-          not be correct in all contexts.
-        </i>
-      </p>
       <ul>
+        <li>
+          <a href="./page/flashcards">Flashcards</a> -
+          <span style="color: #999">
+            Sets I've found online that I've turned to flashcards. (Curated sets coming soon)
+          </span>
+        </li>
         <li>
           <a href="./page/read">Reading Tool</a> -
           <span style="color: #999">
@@ -112,35 +117,12 @@
           </span>
         </li>
         <li>
-          <a href="./page/flashcards/basic">Basic Flashcards</a> -
-          <span style="color: #999">
-            These flashcards are some of the most common characters, typically
-            taught in beginner lessons.
-          </span>
-        </li>
-        <li>
-          <a href="./page/flashcards/reddit">Reddit Flashcards</a> -
-          <span style="color: #999">
-            Flashcards sourced from a Reddit post (I do not remember the
-            source).
-          </span>
-        </li>
-        <li style="opacity: 0.4">
-          <a href="#">Curated Flashcards</a> - Coming soon, categorized
-          flashcards that I curated myself.
-        </li>
-        <li>
-          <a href="./page/zhuyin-flashcards">Zhuyin Flashcards</a> -
+          <a href="./page/zhuyin-trainer">Zhuyin Trainer</a> -
           <span style="color: #999">
             Randomly pick a character and display only the zhuyin to practice
             reading.
           </span>
         </li>
-      </ul>
-
-      <!-- Other Resources -->
-      <h2>Other Resources</h2>
-      <ul>
         <li>
           <a
             href="https://drive.google.com/drive/folders/1axMQBMYX7Rk4quZHPtHFPWvlqEIqbFyj?usp=share_link"
@@ -154,12 +136,17 @@
           </span>
         </li>
       </ul>
-
-      <!-- External Resources -->
-      <h2>External Resources</h2>
+      <h3>External Resources</h3>
+      <h4>Learning Apps</h4>
       <ul>
-        <li>DuChinese - <span style="color: #999">Good for reading</span></li>
-        <li>Duolingo - <span style="color: #999">Good for grammar</span></li>
+        <li>
+          <a href="https://duchinese.net/" target="_blank">DuChinese</a> -
+          <span style="color: #999">Good for reading</span>
+        </li>
+        <li>
+          <a href="https://duolingo.com/" target="_blank">Duolingo</a> -
+          <span style="color: #999">Good for grammar</span>
+        </li>
         <li>
           Memrise - <span style="color: #999">Good for basic phrases</span>
         </li>
@@ -167,6 +154,12 @@
           HelloChinese -
           <span style="color: #999">Good for a change of pace</span>
         </li>
+      </ul>
+      <!-- TODO: throw some links in here -->
+      <!-- <h4>Podcasts</h4>
+      <h4>TV Shows</h4> -->
+      <h4>Other</h4>
+      <ul>
         <li>
           <a
             href="https://www.reddit.com/r/ChineseLanguage/comments/okonc2/the_ultimate_chinese_phrasebook_56000_phrases/"
@@ -196,12 +189,19 @@
       </ul>
 
       <!-- About me -->
-      <hr style="margin-top: 80px" />
+      <hr style="margin-top: 80px; border-color: #999" />
       <h4>About me</h4>
       <p>
         Hi, I'm Peter and I've been studying mandarin for a few years now. Every
         now and again I find it helpful to build a little web tool to help me
         practice something. These tools are free for anyone to use.
+      </p>
+      <p style="font-size: 0.8em">
+        <i style="color: #999">
+          * Many of these tools were built by a student, not a native speaker.
+          There may be errors. Characters often default to the most common
+          pronunciation which may not be correct in all contexts.
+        </i>
       </p>
       <ul style="font-size: 12px">
         <li>

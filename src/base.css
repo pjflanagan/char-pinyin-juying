@@ -33,8 +33,13 @@ div {
   padding: 20px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  margin: 0;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 18px 0 12px;
   padding: 0;
 }
 
@@ -62,6 +67,11 @@ p {
   font-size: 10px;
   display: flex;
   justify-content: space-between;
+}
+
+#header a {
+  min-width: 64px;
+  text-align: center;
 }
 
 /* CHARACTER */
@@ -154,4 +164,13 @@ p {
   bottom: 0px;
   left: 22px;
   writing-mode: lr;
+}
+
+input[type="checkbox"] {
+  accent-color: #999;
+}
+
+input[type="checkbox"]:checked + label {
+  text-decoration: line-through;
+  color: #999;
 }

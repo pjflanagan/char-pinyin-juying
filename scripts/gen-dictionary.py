@@ -1,16 +1,10 @@
 from hanziconv import HanziConv
-from util.file import writeCsv, loadCsv
-from util.mandarin import getAllHanzi, getTonelessPinyin, getTone, getPinyin, getTraditional
-
-def findInMap(mapping, key):
-    for row in mapping:
-        if row[0] == key:
-            return row[1]
-    return None
+from util.file import writeCsv
+from util.mandarin import Hanzi
+from util.map import findInMap
 
 if __name__ == '__main__':
-    tonelessToZhuyinMap = loadCsv('data/maps/PinyinToneless-Zhuyin')
-    allHanziSet = getAllHanzi()
+    allHanziSet = Hanzi.getAll()
 
     # our map has all unicode hanzi, traditional, and simplified
     # at least one of traditional or simplified WILL match hanzi
@@ -18,21 +12,14 @@ if __name__ == '__main__':
 
     for char in allHanziSet:
         try:
-            trad = getTraditional(char)
-            simp = HanziConv.toSimplified(char)
-            toneless = getTonelessPinyin(char)
-            tone = getTone(char)
-
-            zhuyin = findInMap(tonelessToZhuyinMap, toneless)
-
             outputMap.append((
                 char,
-                trad,
-                simp,
-                getPinyin(char),
-                toneless,
-                tone,
-                zhuyin
+                Hanzi.getTraditional(char),
+                HanziConv.toSimplified(char),
+                Hanzi.getPinyin(char),
+                Hanzi.getTonelessPinyin(char),
+                Hanzi.getTone(char),
+                Hanzi.getZhuyin(char)
             ))
         except:
             print('Error for char:' + char)

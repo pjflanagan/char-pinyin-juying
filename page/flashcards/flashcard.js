@@ -1,26 +1,43 @@
 
 class FlashcardPage {
-  constructor(config) {
-    // config
-    this.storageKey = config.storageKey;
-    this.libraryKey = config.libraryKey;
+  constructor() {
+    this.storageKey = '';
+    this.libraryKey = '';
 
     // state
     this.flashcards = [];
     this.knownFlashcards = [];
     this.isHidden = [];
     this.currentIndex = 0;
+    this.setName = null;
+
+    // TODO:
+    this.reverseMode = false;
   }
 
-  async init() {
-    // load data
+  openModal() {
+    $('#modal').removeClass('hidden');
+  }
+
+  chooseSet(setName) {
+    this.setName = setName;
+    this.flashcards = [];
+    $('#modal').addClass('hidden');
+    this.loadFlashcards();
+  }
+
+  async loadFlashcards() {
+    this.storageKey = `flanny-sm-${this.setName}-flashcards`,
+    this.libraryKey = `data/flashcards/${this.setName}`;
     this.knownFlashcards = StorageUtil.load(this.storageKey) || [];
-    const [dictionary, allFlashcards] = await Promise.all([
-      loadCsv('data/dictionary'),
-      loadCsv(this.libraryKey)
-    ]);
-    DICTIONARY = dictionary;
+    const allFlashcards = await loadCsv(this.libraryKey);
     this.flashcards = allFlashcards.filter(card => !this.knownFlashcards.includes(card.phrase));
+
+    // shuffle and display
+    this.flashcards = this.flashcards.sort(() => Math.random() - 0.5);
+    this.currentIndex = 0;
+    this.display();
+    this.hide();
   }
 
   revealOrNext() {
@@ -42,15 +59,7 @@ class FlashcardPage {
 
   reset() {
     StorageUtil.remove(this.storageKey);
-    window.location.reload();
-  }
-
-
-  shuffle() {
-    this.flashcards = this.flashcards.sort(() => Math.random() - 0.5);
-    this.currentIndex = 0;
-    this.display();
-    this.hide();
+    this.loadFlashcards();
   }
 
   next() {
@@ -60,42 +69,25 @@ class FlashcardPage {
   }
 
   hide() {
-    $('.zhuyin-holder').each(function () {
-      $(this).addClass('hidden');
-    });
-    $('.pinyin').each(function () {
-      $(this).addClass('hidden');
-    });
+    $('#pinyin').addClass('hidden');
     $('#english').addClass('hidden');
     $('#reveal-or-next-button').text('Reveal');
     this.isHidden = true;
   }
 
   reveal() {
-    $('.zhuyin-holder').each(function () {
-      $(this).removeClass('hidden');
-    });
-    $('.pinyin').each(function () {
-      $(this).removeClass('hidden');
-    });
+    $('#pinyin').removeClass('hidden');
     $('#english').removeClass('hidden');
     $('#reveal-or-next-button').text('Next');
     this.isHidden = false;
   }
 
-  renderText(text) {
-    $('#display-characters').children('.character').remove();
-    for (let i = 0; i < text.length; ++i) {
-      const html = getCharacterHtml(DICTIONARY, text[i], i);
-      $('#display-characters').append(html);
-    }
-  }
-
   display() {
     const entry = this.flashcards[this.currentIndex];
-    this.renderText(entry.phrase);
     $('#count').text(`${this.currentIndex + 1} / ${this.flashcards.length}`);
     $('#known-button').text(`Known (${this.knownFlashcards.length})`);
+    $('#hanzi').text(entry.phrase);
+    $('#pinyin').text(entry.pinyin);
     $('#english').text(entry.english);
     $('#google-translate').attr('href', `https://translate.google.com?sl=zh-TW&tl=en&text=${entry.phrase}&op=translate`);
   }

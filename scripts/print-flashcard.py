@@ -2,7 +2,6 @@
 import math
 from fpdf import FPDF
 from util.file import loadCsv
-from util.mandarin import getPinyinPhrase, getTraditional
 import sys
 
 # ---------------------------------------------------------
@@ -106,11 +105,14 @@ def drawPage(pdf, pageModel, isFront):
 # MANDARIN ------------------------------------------------
 # ---------------------------------------------------------
 
+# All this does is take each col of the csv and label them
 def makeCard(entry):
   return {
-    'phrase': getTraditional(entry[0]),
+    'phrase': entry[0],
     'english': entry[1],
-    'pinyin': getPinyinPhrase(entry[0])
+    'pinyin': entry[2],
+    'tone': entry[3],
+    'zhuyin': entry[4]
   }
   
 # ---------------------------------------------------------
