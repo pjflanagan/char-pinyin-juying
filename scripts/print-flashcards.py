@@ -54,6 +54,7 @@ def drawFrontCard(pdf, card, x, y):
   marginTop = 0.2 if len(card['phrase']) <= 5 else 0.45
   pdf.set_xy(x + PADDING, y + CARD_HEIGHT / 2 - marginTop)
   pdf.set_font('noto', '', 32)
+  pdf.set_text_color(r=0, g=0, b=0)
   pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.6, card['phrase'], 0, 'C') 
   return
 
@@ -61,11 +62,18 @@ def drawBackCard(pdf, card, x, y):
   # top
   pdf.set_xy(x + PADDING, y + PADDING)
   pdf.set_font('noto', '', 8)
+  pdf.set_text_color(r=0, g=0, b=0)
   pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.16, card['pinyin'], 0, 'C') 
   # bottom
-  pdf.set_xy(x + PADDING, y + CARD_HEIGHT - 0.6)
+  pdf.set_xy(x + PADDING, y + CARD_HEIGHT - 0.8)
   pdf.set_font('noto', '', 8)
+  pdf.set_text_color(r=0, g=0, b=0)
   pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.16, card['english'], 0, 'C') 
+  # set and index
+  pdf.set_xy(x + PADDING, y + CARD_HEIGHT - 0.18)
+  pdf.set_font('noto', '', 6)
+  pdf.set_text_color(r=150, g=150, b=150)
+  pdf.multi_cell(CARD_WIDTH - 2 * PADDING, 0.16, card['set'], 0, 'C') 
   return
 
 def drawPageBorders(pdf):
@@ -106,11 +114,13 @@ def drawPage(pdf, pageModel, isFront):
 # ---------------------------------------------------------
 
 # All this does is take each col of the csv and label them
-def makeCard(entry):
+def makeCard(index, entry, setName):
   return {
+    'index': index,
     'phrase': entry[0],
     'english': entry[1],
     'pinyin': entry[2],
+    'set': setName
   }
   
 # ---------------------------------------------------------
@@ -134,17 +144,24 @@ if __name__ == "__main__":
   flashcards = loadCsv(f"data/flashcards/{flashcardsName}")
 
   pageCardSet = []
-  for entry in flashcards:
-    card = makeCard(entry)
+  for index, entry in enumerate(flashcards, start=1):
+    card = makeCard(index, entry, flashcardsName)
+
     if card == None:
       pass
     pageCardSet.append(card)
+
     if (len(pageCardSet) == CARD_COLUMNS * CARD_ROWS):
       [front, back] = makePagePair(pageCardSet)
       drawPage(pdf, front, True)
       drawPage(pdf, back, False)
       pageCardSet = []
-
+  
+  if len(pageCardSet) > 0:
+    [front, back] = makePagePair(pageCardSet)
+    drawPage(pdf, front, True)
+    drawPage(pdf, back, False)
+  
   pdf.output(f"print/{flashcardsName}.pdf")
 
 
