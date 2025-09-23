@@ -16,11 +16,12 @@
   z-index: 100;
   position: fixed;
   top: 0;
+  padding: 24px;
 }
 
 #modal .modal-content {
   margin: 64px auto;
-  width: 420px;
+  max-width: 420px;
 }
 
 #modal .modal-content a {
