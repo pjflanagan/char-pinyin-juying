@@ -123,7 +123,6 @@ phrase,english,pinyin
 早安,good morning,zǎo ān
 晚安,good evening,wǎn ān
 一會兒,a while,yī hùi ér
-見,"see, observe, behold; perceive",jiàn
 會,"assemble, meet together; meeting",hùi
 安,"peaceful, tranquil, quiet",ān
 最近,recent,zùi jìn
@@ -151,12 +150,10 @@ phrase,english,pinyin
 館,public building,guǎn
 年,year; new-years; person's age,nián
 月,moon; month; KangXi radical 74,yuè
-號,"mark, sign; symbol; number",hào
 幾,small table,jǐ
 〇,zero,〇
 星期,Week,xīng qī
 明天,tomorrow,míng tiān
-天,"sky, heaven; god, celestial",tiān
 日,sun; day; daytime,rì
 星,"a star, planet; any point of light",xīng
 孩子,child,hái zǐ
@@ -167,7 +164,6 @@ phrase,english,pinyin
 兒子,son,ér zǐ
 歲,year; age; harvest,sùi
 女,"woman, girl; feminine; rad. 38",nv̌
-兒,"son, child; KangXi radical 10",ér
 妻子,wife,qī zǐ
 喂,interjection to call attention,wèi
 慢,"slow(ly), leisurely, sluggish",màn
@@ -177,7 +173,6 @@ phrase,english,pinyin
 明白,clear,míng bái
 白,"white; pure, unblemished; bright",bái
 漂亮,pretty,piāo liàng
-高,"high, tall; lofty, elevated",gāo
 漂,"float, drift; tossed about",piāo
 亮,"bright, brilliant, radiant, light",liàng
 朋友,friend,péng yǒu
@@ -185,7 +180,6 @@ phrase,english,pinyin
 矮,"short, dwarf; low",ǎi
 朋,"friend, pal, acquaintance",péng
 友,"friend, companion; fraternity",yǒu
-女,"woman, girl; feminine; rad. 38",nv̌
 上午,morning,shàng wǔ
 分,divide; small unit of time etc.,fēn
 下午,afternoon,xià wǔ
@@ -209,19 +203,16 @@ phrase,english,pinyin
 喜歡,like,xǐ huān
 看,"look, see; examine, scrutinize",kàn
 書,"book, letter, document; writings",shū
-在,"be at, in, on; consist in, rest",zài
 喜,"like, love, enjoy; joyful thing",xǐ
 歡,"happy, pleased, glad; joy; enjoy",huān
 玩,"play with, joke, enjoy",wán
 電腦,computer,diàn nǎo
 遊戲,game,yóu xì
-最,"most, extremely, exceedingly",zùi
 起床,get up,qǐ chuáng
 上學,go to school,shàng xué
 上班,work,shàng bān
 早飯,breakfast,zǎo fàn
 做,"work, make; act",zuò
-起,"rise, stand up; go up; begin",qǐ
 床,"bed, couch; framework, chassis",chuáng
 班,"class, group, grade; squad; job",bān
 從,"from, by, since, whence, through",cóng
@@ -232,7 +223,6 @@ phrase,english,pinyin
 買,"buy, purchase; bribe, persuade",mǎi
 一共,Total,yī gòng
 毛,"hair, fur, feathers; coarse",máo
-分,divide; small unit of time etc.,fēn
 共,"together with, all, total; to share",gòng
 信用卡,credit card,xìn yòng qiǎ
 收,"gather together, collect; harvest",shōu
@@ -249,10 +239,7 @@ phrase,english,pinyin
 桌,"table, desk, stand",zhuō
 找,"search, seek, look for; find",zhǎo
 桌子,table,zhuō zǐ
-上,"top; superior, highest; go up, send up",shàng
 椅子,Chair,yǐ zǐ
-下,"under, underneath, below; down; inferior; bring down",xià
-見,"see, observe, behold; perceive",jiàn
 椅,"chair, seat",yǐ
 房間,Room,fáng jiān
 冰箱,refrigerator,bīng xiāng
@@ -265,7 +252,6 @@ phrase,english,pinyin
 英文,English,yīng wén
 菜,"vegetables; dish, order; food",cài
 單,"single, individual, only; lone",dān
-英,"petal, flower, leaf; brave, a hero; England, English",yīng
 些,"little, few; rather, somewhat",xiē
 西,"west(ern); westward, occident",xī
 東,"east, eastern, eastward",dōng
@@ -290,14 +276,12 @@ phrase,english,pinyin
 本,"root, origin, source; basis",běn
 還,"still, yet, also, besides",huán
 上海,Shanghai,shàng hǎi
-菜,"vegetables; dish, order; food",cài
 還是,still,huán shì
 日本,Japan,rì běn
 肉,flesh; meat; KangXi radical 130,ròu
 米飯,rice,mǐ fàn
 麵條,Noodle,miàn tiáo
 作,"make; work; compose, write; act, perform",zuò
-得,"obtain, get, gain, acquire",dé
 覺,to wake up from sleep; conscious,jué
 工,"labor, work; worker, laborer",gōng
 纍,"tired; implicate, involve; bother",léi
@@ -312,7 +296,6 @@ phrase,english,pinyin
 酒,"wine, spirits, liquor, alcoholic beverage",jǐu
 酒店,hotel,jǐu diàn
 地鐵,subway,dì tiě
-坐,"sit; seat; ride, travel by",zuò
 不準,Not allowed,bù zhǔn
 準,"approve, allow, permit; in accord",zhǔn
 出租車,taxi,chū zū chē
@@ -322,13 +305,10 @@ phrase,english,pinyin
 商店,shop,shāng diàn
 衣服,clothing,yī fú
 開,"open; initiate, begin, start",kāi
-關,frontier pass; close; relation,guān
 門,"gate, door, entrance, opening",mén
 歡迎,welcome,huān yíng
 迎,"receive, welcome, greet",yíng
-字,"letter, character, simplified",zì
 讀,"read, study; pronounce",dú
-一點兒,a little,yī diǎn ér
 意思,mean,yì sī
 寫,"write; draw, sketch; compose",xiě
 錯,"error, blunder, mistake; wrong",cuò
@@ -343,7 +323,6 @@ phrase,english,pinyin
 時,"time, season; era, age, period",shí
 鍾,clock; bell,zhōng
 整,"orderly, neat, tidy; whole",zhěng
-早,early; soon; morning,zǎo
 杯,"cup, glass",bēi
 啤,beer,pí
 德,"ethics, morality, virtue",dé
@@ -353,14 +332,11 @@ phrase,english,pinyin
 汁,"juice, liquor, fluid, sap, gravy, sauce",zhī
 香蕉,banana,xiāng jiāo
 蛋糕,cake,dàn gāo
-塊,"piece, lump; dollar",kuài
 室,"room, home, house, chamber",shì
 辦,"manage, do, handle; deal with",bàn
 輛,numerary adjunct for vehicles,liàng
 辦公室,office,bàn gōng shì
-本,"root, origin, source; basis",běn
 瓶子,bottle,píng zǐ
-張,"stretch, extend, expand; sheet",zhāng
 照片,photo,zhào piàn
 瓶,"jug, pitcher, vase, jar, bottle",píng
 片,"slice, splinter, strip; rad. 91",piàn
@@ -379,7 +355,6 @@ phrase,english,pinyin
 時間,time,shí jiān
 時候,when,shí hòu
 空,"empty, hollow, bare, deserted",kōng
-請,"ask, request; invite; please",qǐng
 來,"come, coming; return, returning",lái
 候,wait; expect; visit; greet,hòu
 過,"pass, pass through, go across",guò
@@ -409,7 +384,6 @@ phrase,english,pinyin
 經,classic works; pass through,jīng
 已,already; finished; stop,yǐ
 已經,already,yǐ jīng
-請,"ask, request; invite; please",qǐng
 小費,tip,xiǎo fèi
 飽,eat heartily; eat one's fill,bǎo
 好吃,tasty,hǎo chī
@@ -420,7 +394,6 @@ phrase,english,pinyin
 裙,"skirt, apron, petticoat",qún
 裙子,skirt,qún zǐ
 雙,"set of two, pair, couple; both",shuāng
-還,"still, yet, also, besides",huán
 鞋子,shoe,xié zǐ
 意大利,Italy,yì dà lì
 色,"color, tint, hue, shade; form, body; beauty, desire for beauty",sè
@@ -450,10 +423,9 @@ phrase,english,pinyin
 雨,rain; rainy; KangXi radical 173,yǔ
 雪,"snow; wipe away shame, avenge",xuě
 陰,'female' principle; dark; secret,yīn
-下,"under, underneath, below; down; inferior; bring down",xià
 著,"make move, take action",zhù
 傘,"umbrella, parasol, parachute",sǎn
-帶,"to bring",dài
+帶,to bring,dài
 然,"yes, certainly; pledge, promise",rán
 但,"only; but, however, yet, still",dàn
 雖,"although, even if",sūi
@@ -470,7 +442,6 @@ phrase,english,pinyin
 帥,"commander, commander-in-chief",shuài
 笑,"smile, laugh, giggle; snicker",xiào
 說話,say,shuō huà
-話,"speech, talk, language; dialect",huà
 聰明,clever,cōng míng
 彆人,other people,biè rén
 不但,Not only,bù dàn
@@ -482,7 +453,6 @@ phrase,english,pinyin
 禮物,Gift,lǐ wù
 送,"see off, send off; dispatch, give",sòng
 新年,new year,xīn nián
-瓶,"jug, pitcher, vase, jar, bottle",píng
 白酒,Liquor,bái jǐu
 賽,"compete, contend; contest, race",sài
 練,"to practice, drill, exercise, train",liàn
@@ -496,7 +466,6 @@ phrase,english,pinyin
 第,"sequence, number; grade, degree",dì
 同,"same, similar; together with",tóng
 課,"lesson, class; subject, course",kè
-室,"room, home, house, chamber",shì
 教,"teach, class",jiào
 教室,classroom,jiào shì
 同學,classmate,tóng xué
@@ -527,7 +496,6 @@ phrase,english,pinyin
 夏,"summer; great, grand, big",xià
 鼕,"winter, 11th lunar month",dōng
 鞦,"autumn, fall; year",qīu
-春,spring; wanton,chūn
 後,"queen, empress, sovereign; (simp. for 後) behind, rear, after",hòu
 前,"in front, forward; preceding",qián
 季,quarter of year; season; surname,jì
@@ -535,14 +503,12 @@ phrase,english,pinyin
 亞,Asia; second,yà
 季節,season,jì jié
 城,"castle; city, town; municipality",chéng
-市,"market, fair; city, town; trade",shì
 附,"adhere to, append; rely on near to",fù
 園,"garden; park, orchard",yuán
 城市,City,chéng shì
 附近,nearby,fù jìn
 公園,garden,gōng yuán
 圖,"diagram; chart, map, picture",tú
-館,public building,guǎn
 方,"a square, rectangle; a region; local",fāng
 摺,"break off, snap; bend",zhé
 角,"horn; angle, corner; point",jiǎo
@@ -551,7 +517,6 @@ phrase,english,pinyin
 舊,"old, ancient; former, past",jìu
 皮,"skin, hide, fur, feather; outer",pí
 換,change,huàn
-經,classic works; pass through,jīng
 皮鞋,leather shoes,pí xié
 經過,go through,jīng guò
 慣,"habit, custom; habitually, usual",guàn
@@ -574,7 +539,6 @@ phrase,english,pinyin
 辣,"peppery, pungent, hot; cruel",là
 極,"extreme, utmost, furthest, final",jí
 苦,"bitter; hardship, suffering",kǔ
-長,long; length; excel in; leader,cháng
 級,"level, rank, class; grade",jí
 個子,height,gè zǐ
 年級,grade,nián jí
@@ -588,8 +552,6 @@ phrase,english,pinyin
 然後,Then,rán hòu
 西邊,West,xī biān
 東邊,East,dōng biān
-前,"in front, forward; preceding",qián
-左,"left; east; unorthodox, improper",zuǒ
 北邊,North,běi biān
 一直,Always,yī zhí
 最後,at last,zùi hòu
@@ -620,7 +582,6 @@ phrase,english,pinyin
 容易,easy,róng yì
 久,"long time (ago); time passage, grow late",jǐu
 語言,language,yǔ yán
-學,"learning, knowledge; school",xué
 更,"more, still further, much more",gèng
 努力,effort,nǔ lì
 看起來,Looks,kàn qǐ lái
@@ -631,11 +592,7 @@ phrase,english,pinyin
 怪,"strange, unusual, peculiar",guài
 緊,"tense, tight, taut; firm, secure",jǐn
 難過,sad,nán guò
-地,"earth; soil, ground; region",dì
-想,"think, speculate, plan, consider",xiǎng
 求,"seek; demand, request; beseech",qíu
-教,"teach, class",jiào
-班,"class, group, grade; squad; job",bān
 校長,headmaster,xiào cháng
 要求,Require,yào qíu
 食堂,canteen,shí táng
@@ -658,7 +615,6 @@ phrase,english,pinyin
 層,"storey, layer, floor, stratum",céng
 方便,convenient,fāng biàn
 環境,environment,huán jìng
-花,flower; blossoms,huā
 草,"grass, straw, thatch, herbs",cǎo
 太陽,sun,tài yáng
 星星,Star,xīng xīng
@@ -697,7 +653,6 @@ phrase,english,pinyin
 死,die; dead; death,sǐ
 悶,"gloomy, depressed, melancholy",mèn
 腿,"legs, thighs",tǔi
-照,"shine, illumine, reflect",zhào
 照顧,take care of,zhào gù
 公斤,Kilogram,gōng jīn
 著急,in a hurry,zhù jí
@@ -715,7 +670,6 @@ phrase,english,pinyin
 國內,domestic,guó nèi
 答,"answer, reply; return; assent to",dá
 句,sentence,jù
-單,"single, individual, only; lone",dān
 簡,"simple, terse, succinct, a letter",jiǎn
 簡單,Simple,jiǎn dān
 句子,sentence,jù zǐ
@@ -726,7 +680,6 @@ phrase,english,pinyin
 把,"hold, take; guard; regard as",bǎ
 燈,"lantern, lamp",dēng
 空調,air conditioner,kōng diào
-空,"empty, hollow, bare, deserted",kōng
 放,"put, release, free, liberate",fàng
 畫,"a painting, picture, drawing; to draw",huà
 廚房,kitchen,chú fáng
@@ -757,7 +710,6 @@ phrase,english,pinyin
 剛纔,Just now,gāng cái
 電子郵件,e-mail,diàn zǐ yóu jiàn
 迴,"return, turn around; a time",húi
-發,"issue, dispatch, send out; hair",fā
 主要,main,zhǔ yào
 短信,Short message,duǎn xìn
 關於,about,guān yú
@@ -774,7 +726,6 @@ phrase,english,pinyin
 職,"duty, profession; office, post",zhí
 滿意,satisfy,mǎn yì
 餅,"rice-cakes, biscuits",bǐng
-園,"garden; park, orchard",yuán
 月亮,moon,yuè liàng
 月餅,moon cake,yuè bǐng
 中鞦節,Mid-Autumn Festival,zhōng qīu jié
@@ -804,7 +755,6 @@ phrase,english,pinyin
 萌,"bud, sprout",méng
 自拍,Selfie,zì pāi
 銷,"melt, fuse; market, sell",xiāo
-據,"to occupy, take possession of; a base, position",jù
 收據,Receipt,shōu jù
 報銷,to reimburse,bào xiāo
 費用,cost,fèi yòng
@@ -825,7 +775,6 @@ phrase,english,pinyin
 版,printing blocks; edition,bǎn
 傷,"wound, injury; fall ill from",shāng
 受,"receive, accept, get; bear, stand",shòu
-護,"protect, guard, defend, shelter",hù
 救,"save, rescue, relieve; help, aid",jìu
 警,"guard, watch; alert, alarm",jǐng
 報警,Call the police,bào jǐng
@@ -854,7 +803,6 @@ phrase,english,pinyin
 度,"degree, system; manner; to consider",dù
 大約,About,dà yuē
 鷹,falcon; Accipiter species (various),yīng
-毛,"hair, fur, feathers; coarse",máo
 羽,"feather, plume; wings; rad. 124",yǔ
 橙,orange,chéng
 貓頭鷹,owl,māo tóu yīng

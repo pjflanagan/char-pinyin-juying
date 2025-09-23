@@ -12,14 +12,21 @@ if __name__ == '__main__':
       exit(1)
 
     setName = sys.argv[1]
-    set = loadCsv(f"data/flashcards/{setName}")
+    flashcards = loadCsv(f"data/flashcards/{setName}")
 
     outputMap = [("phrase", "english", "pinyin")]
+    phraseSet = []
 
-    for entry in set:
+    for entry in flashcards:
         try:
             phrase = Phrase.getTraditional(entry[0])
             print(phrase)
+            
+            # if there's a duplicate skip it
+            if phrase in phraseSet:
+                continue
+            else:
+                phraseSet.append(phrase)
 
             english = ''
             if len(entry) > 1 and entry[1] != '':

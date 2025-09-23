@@ -172,6 +172,7 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:checked + label {
   text-decoration: line-through;
+  color: #999 !important;
 }
 
 input[type="checkbox"]:checked + label a {
