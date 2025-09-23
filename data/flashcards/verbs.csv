@@ -1,610 +1,286 @@
-phrase,english
-吃,eat
-喝,drink
-走,walk
-跑,run
-看,see
-听,hear
-说,speak
-写,write
-读,read
-买,buy
-卖,sell
-做,do
-工作,work
-学习,study
-教,teach
-问,ask
-答,answer
-想,think
-知道,know
-理解,understand
-记,remember
-忘,forget
-打开,open
-关闭,close
-开始,start
-结束,end
-睡,sleep
-醒,wake
-坐,sit
-站,stand
-跳,jump
-游泳,swim
-飞,fly
-骑,ride
-开,drive
-停,stop
-等,wait
-帮助,help
-喜欢,like
-爱,love
-讨厌,hate
-需要,need
-希望,hope
-担心,worry
-相信,believe
-尝试,try
-改变,change
-决定,decide
-选择,choose
-接受,accept
-拒绝,refuse
-发送,send
-收到,receive
-带,bring
-拿,take
-放,put
-丢,lose
-找到,find
-修理,fix
-建造,build
-破坏,destroy
-保护,protect
-洗,wash
-擦,wipe
-刷,brush
-剪,cut
-画,draw
-拍照,take photos
-录音,record
-唱歌,sing
-跳舞,dance
-笑,laugh
-哭,cry
-喊,shout
-打,hit
-踢,kick
-抱,hug
-亲吻,kiss
-碰,touch
-闻,smell
-尝,taste
-付,pay
-借,borrow
-还,return
-租,rent
-送,give
-收,collect
-分,divide
-合,combine
-增加,increase
-减少,decrease
-成长,grow
-缩小,shrink
-扩展,expand
-缩短,shorten
-延长,extend
-搬,move
-推,push
-拉,pull
-扔,throw
-抓,catch
-捡,pick up
-掉,drop
-掉落,fall
-升,raise
-降,lower
-翻,turn over
-滚,roll
-滑,slide
-爬,climb
-藏,hide
-找,search
-展示,show
-展示,display
-演,perform
-玩,play
-休息,rest
-旅行,travel
-参观,visit
-参加,attend
-组织,organize
-计划,plan
-预订,book
-预约,make appointment
-通知,notify
-提醒,remind
-报告,report
-评论,comment
-讨论,discuss
-解释,explain
-描述,describe
-表达,express
-代表,represent
-管理,manage
-领导,lead
-控制,control
-监督,supervise
-检查,check
-测试,test
-评估,evaluate
-审查,review
-批准,approve
-拒绝,deny
-保存,save
-删除,delete
-编辑,edit
-复制,copy
-粘贴,paste
-打印,print
-扫描,scan
-连接,connect
-断开,disconnect
-安装,install
-卸载,uninstall
-升级,upgrade
-下载,download
-上传,upload
-搜索,search
-浏览,browse
-订阅,subscribe
-取消,unsubscribe
-注册,register
-登录,log in
-登出,log out
-退出,exit
-进入,enter
-离开,leave
-返回,return
-转,turn
-改变,change
-保持,keep
-丢失,lose
-获得,get
-拥有,own
-占有,possess
-分享,share
-分配,assign
-分发,distribute
-收集,collect
-整理,organize
-储存,store
-运输,transport
-邮寄,mail
-发送,send
-接收,receive
-通知,inform
-提醒,remind
-邀请,invite
-拒绝,decline
-接受,accept
-感谢,thank
-道歉,apologize
-原谅,forgive
-责备,blame
-批评,criticize
-赞美,praise
-鼓励,encourage
-支持,support
-反对,oppose
-建议,suggest
-推荐,recommend
-要求,request
-命令,order
-允许,allow
-禁止,forbid
-遵守,obey
-违反,violate
-遵循,follow
-引导,guide
-领导,lead
-管理,manage
-监督,supervise
-控制,control
-处理,handle
-解决,solve
-应对,cope
-面对,face
-避免,avoid
-逃跑,escape
-追,follow
-赶,chase
-抓住,catch
-释放,release
-捆绑,tie
-解开,untie
-锁,lock
-解锁,unlock
-盖,cover
-揭开,uncover
-包裹,wrap
-打开,unwrap
-装,pack
-拆,unpack
-装饰,decorate
-清理,clean up
-打扫,sweep
-拖,drag
-推,push
-拉,pull
-搬运,carry
-举,hold up
-握,hold
-捏,pinch
-拧,twist
-拍,pat
-敲,knock
-按,press
-点,click
-滑动,swipe
-滚动,scroll
-摇,shake
-晃,rock
-转动,rotate
-翻转,flip
-折,fold
-展开,unfold
-撕,tear
-缝,sew
-织,knit
-剪,cut
-粘,glue
-贴,stick
-画,paint
-雕刻,carve
-塑造,shape
-制作,make
-创造,create
-设计,design
-发明,invent
-开发,develop
-研究,research
-探索,explore
-发现,discover
-调查,investigate
-分析,analyze
-计算,calculate
-测量,measure
-估计,estimate
-预测,predict
-计划,plan
-安排,arrange
-组织,organize
-准备,prepare
-完成,complete
-实现,achieve
-获得,obtain
-失去,lose
-赢,win
-输,lose
-比赛,compete
-挑战,challenge
-冒险,adventure
-尝试,attempt
-失败,fail
-成功,succeed
-学习,learn
-教,teach
-训练,train
-练习,practice
-复习,review
-考试,test
-考察,examine
-评估,evaluate
-总结,summarize
-归纳,conclude
-推断,infer
-证明,prove
-解释,explain
-描述,describe
-表达,express
-陈述,state
-报告,report
-通知,inform
-提醒,remind
-建议,suggest
-推荐,recommend
-要求,request
-命令,order
-允许,permit
-禁止,prohibit
-遵守,comply
-违反,violate
-遵循,follow
-引导,guide
-领导,lead
-管理,manage
-监督,supervise
-控制,control
-处理,handle
-解决,solve
-应对,cope
-面对,face
-避免,avoid
-逃跑,escape
-追,follow
-赶,chase
-抓住,catch
-释放,release
-捆绑,tie
-解开,untie
-锁,lock
-解锁,unlock
-盖,cover
-揭开,uncover
-包裹,wrap
-打开,unwrap
-装,pack
-拆,unpack
-装饰,decorate
-清理,clean up
-打扫,sweep
-拖,drag
-推,push
-拉,pull
-搬运,carry
-举,hold up
-握,hold
-捏,pinch
-拧,twist
-拍,pat
-敲,knock
-按,press
-点,click
-滑动,swipe
-滚动,scroll
-摇,shake
-晃,rock
-转动,rotate
-翻转,flip
-折,fold
-展开,unfold
-撕,tear
-缝,sew
-织,knit
-剪,cut
-粘,glue
-贴,stick
-画,paint
-雕刻,carve
-塑造,shape
-制作,make
-创造,create
-设计,design
-发明,invent
-开发,develop
-研究,research
-探索,explore
-发现,discover
-调查,investigate
-分析,analyze
-计算,calculate
-测量,measure
-估计,estimate
-预测,predict
-计划,plan
-安排,arrange
-组织,organize
-准备,prepare
-完成,complete
-实现,achieve
-获得,obtain
-失去,lose
-输,lose
-比赛,compete
-挑战,challenge
-冒险,adventure
-尝试,attempt
-失败,fail
-成功,succeed
-学习,learn
-教,teach
-训练,train
-练习,practice
-复习,review
-考试,test
-考察,examine
-评估,evaluate
-总结,summarize
-归纳,conclude
-推断,infer
-证明,prove
-解释,explain
-描述,describe
-表达,express
-陈述,state
-报告,report
-通知,inform
-提醒,remind
-建议,suggest
-推荐,recommend
-要求,request
-命令,order
-允许,permit
-禁止,prohibit
-遵守,comply
-违反,violate
-遵循,follow
-引导,guide
-领导,lead
-管理,manage
-监督,supervise
-控制,control
-处理,handle
-解决,solve
-应对,cope
-面对,face
-避免,avoid
-逃跑,escape
-追,follow
-赶,chase
-抓住,catch
-释放,release
-捆绑,tie
-解开,untie
-锁,lock
-解锁,unlock
-盖,cover
-揭开,uncover
-包裹,wrap
-打开,unwrap
-装,pack
-拆,unpack
-装饰,decorate
-清理,clean up
-打扫,sweep
-拖,drag
-推,push
-拉,pull
-搬运,carry
-举,hold up
-握,hold
-捏,pinch
-拧,twist
-拍,pat
-敲,knock
-按,press
-点,click
-滑动,swipe
-滚动,scroll
-摇,shake
-晃,rock
-转动,rotate
-翻转,flip
-折,fold
-展开,unfold
-撕,tear
-缝,sew
-织,knit
-剪,cut
-粘,glue
-贴,stick
-画,paint
-雕刻,carve
-塑造,shape
-制作,make
-创造,create
-设计,design
-发明,invent
-开发,develop
-研究,research
-探索,explore
-发现,discover
-调查,investigate
-分析,analyze
-计算,calculate
-测量,measure
-估计,estimate
-预测,predict
-计划,plan
-安排,arrange
-组织,organize
-准备,prepare
-完成,complete
-实现,achieve
-获得,obtain
-失去,lose
-输,lose
-比赛,compete
-挑战,challenge
-冒险,adventure
-尝试,attempt
-失败,fail
-成功,succeed
-学习,learn
-教,teach
-训练,train
-练习,practice
-复习,review
-考试,test
-考察,examine
-评估,evaluate
-总结,summarize
-归纳,conclude
-推断,infer
-证明,prove
-解释,explain
-描述,describe
-表达,express
-陈述,state
-报告,report
-通知,inform
-提醒,remind
-建议,suggest
-推荐,recommend
-要求,request
-命令,order
-允许,permit
-禁止,prohibit
-遵守,comply
-违反,violate
-遵循,follow
-引导,guide
-领导,lead
-管理,manage
-监督,supervise
-控制,control
-处理,handle
-解决,solve
-应对,cope
-面对,face
-避免,avoid
-逃跑,escape
-追,follow
-赶,chase
-抓住,catch
-释放,release
-捆绑,tie
-解开,untie
-锁,lock
-解锁,unlock
-盖,cover
-揭开,uncover
-包裹,wrap
-打开,unwrap
-装,pack
-拆,unpack
-装饰,decorate
-清理,clean up
-打扫,sweep
-拖,drag
-推,push
-拉,pull
-搬运,carry
-举,hold up
-握,hold
-捏,pinch
-拧,twist
-拍,pat
-敲,knock
-按,press
-点,click
-滑动,swipe
-滚动,scroll
-摇,shake
-晃,rock
-转动,rotate
-翻转,flip
-折,fold
-展开,unfold
-撕,tear
-缝,sew
-织,knit
-剪,cut
-粘,glue
-贴,stick
-画,paint
-雕刻,carve
-塑造,shape
-制
+phrase,english,pinyin
+吃,eat,chī
+喝,drink,hē
+走,walk,zǒu
+跑,run,pǎo
+看,see,kàn
+聽,hear,tīng
+說,speak,shuō
+寫,write,xiě
+讀,read,dú
+買,buy,mǎi
+賣,sell,mài
+做,do,zuò
+工作,work,gōng zuò
+學習,study,xué xí
+教,teach,jiào
+問,ask,wèn
+答,answer,dá
+想,think,xiǎng
+知道,know,zhī dào
+理解,understand,lǐ jiě
+記,remember,jì
+忘,forget,wàng
+打開,open,dǎ kāi
+關閉,close,guān bì
+開始,start,kāi shǐ
+結束,end,jié shù
+睡,sleep,shùi
+醒,wake,xǐng
+坐,sit,zuò
+站,stand,zhàn
+跳,jump,tiào
+遊泳,swim,yóu yǒng
+飛,fly,fēi
+騎,ride,qí
+開,drive,kāi
+停,stop,tíng
+等,wait,děng
+幫助,help,bāng zhù
+喜歡,like,xǐ huān
+愛,love,ài
+討厭,hate,tǎo yàn
+需要,need,xū yào
+希望,hope,xī wàng
+擔心,worry,dān xīn
+相信,believe,xiāng xìn
+嘗試,try,cháng shì
+改變,change,gǎi biàn
+決定,decide,jué dìng
+選擇,choose,xuǎn zé
+接受,accept,jiē shòu
+拒絕,refuse,jù jué
+發送,send,fā sòng
+收到,receive,shōu dào
+帶,bring,dài
+拿,take,ná
+放,put,fàng
+丟,lose,dīu
+找到,find,zhǎo dào
+修理,fix,xīu lǐ
+建造,build,jiàn zào
+破壞,destroy,pò huài
+保護,protect,bǎo hù
+洗,wash,xǐ
+擦,wipe,cā
+刷,brush,shuā
+剪,cut,jiǎn
+畫,draw,huà
+拍照,take photos,pāi zhào
+錄音,record,lù yīn
+唱歌,sing,chàng gē
+跳舞,dance,tiào wǔ
+笑,laugh,xiào
+哭,cry,kū
+喊,shout,hǎn
+打,hit,dǎ
+踢,kick,tī
+抱,hug,bào
+親吻,kiss,qīn wěn
+碰,touch,pèng
+聞,smell,wén
+嘗,taste,cháng
+付,pay,fù
+藉,borrow,jiè
+還,return,huán
+租,rent,zū
+送,give,sòng
+收,collect,shōu
+分,divide,fēn
+閤,combine,gé
+增加,increase,zēng jiā
+減少,decrease,jiǎn shǎo
+成長,grow,chéng cháng
+縮小,shrink,suō xiǎo
+擴展,expand,kuò zhǎn
+縮短,shorten,suō duǎn
+延長,extend,yán cháng
+搬,move,bān
+推,push,tūi
+拉,pull,lā
+扔,throw,rēng
+抓,catch,zhuā
+撿,pick up,jiǎn
+掉,drop,diào
+掉落,fall,diào luò
+升,raise,shēng
+降,lower,jiàng
+翻,turn over,fān
+滾,roll,gǔn
+滑,slide,huá
+爬,climb,pá
+藏,hide,cáng
+找,search,zhǎo
+展示,show,zhǎn shì
+演,perform,yǎn
+玩,play,wán
+休息,rest,xīu xī
+旅行,travel,lv̌ xíng
+參觀,visit,cān guān
+參加,attend,cān jiā
+組織,organize,zǔ zhī
+計劃,plan,jì huà
+預訂,book,yù dìng
+預約,make appointment,yù yuē
+通知,notify,tōng zhī
+提醒,remind,tí xǐng
+報告,report,bào gào
+評論,comment,píng lùn
+討論,discuss,tǎo lùn
+解釋,explain,jiě shì
+描述,describe,miáo shù
+錶達,express,biǎo dá
+代錶,represent,dài biǎo
+管理,manage,guǎn lǐ
+領導,lead,lǐng dǎo
+控製,control,kòng zhì
+監督,supervise,jiān dū
+檢查,check,jiǎn chá
+測試,test,cè shì
+評估,evaluate,píng gū
+審查,review,shěn chá
+批準,approve,pī zhǔn
+保存,save,bǎo cún
+刪除,delete,shān chú
+編輯,edit,biān jí
+復製,copy,fù zhì
+粘貼,paste,nián tiē
+打印,print,dǎ yìn
+掃描,scan,sǎo miáo
+連接,connect,lián jiē
+斷開,disconnect,duàn kāi
+安裝,install,ān zhuāng
+卸載,uninstall,xiè zài
+升級,upgrade,shēng jí
+下載,download,xià zài
+上傳,upload,shàng chuán
+搜索,search,sōu suǒ
+瀏覽,browse,líu lǎn
+訂閱,subscribe,dìng yuè
+取消,unsubscribe,qǔ xiāo
+注冊,register,zhù cè
+登錄,log in,dēng lù
+登出,log out,dēng chū
+退出,exit,tùi chū
+進入,enter,jìn rù
+離開,leave,lí kāi
+返迴,return,fǎn húi
+轉,turn,zhuǎn
+保持,keep,bǎo chí
+丟失,lose,dīu shī
+獲得,get,huò dé
+擁有,own,yōng yǒu
+占有,possess,zhān yǒu
+分享,share,fēn xiǎng
+分配,assign,fēn pèi
+分發,distribute,fēn fā
+收集,collect,shōu jí
+整理,organize,zhěng lǐ
+儲存,store,chǔ cún
+運輸,transport,yùn shū
+郵寄,mail,yóu jì
+接收,receive,jiē shōu
+邀請,invite,yāo qǐng
+感謝,thank,gǎn xiè
+道歉,apologize,dào qiàn
+原諒,forgive,yuán liàng
+責備,blame,zé bèi
+批評,criticize,pī píng
+贊美,praise,zàn měi
+鼓勵,encourage,gǔ lì
+支持,support,zhī chí
+反對,oppose,fǎn dùi
+建議,suggest,jiàn yì
+推薦,recommend,tūi jiàn
+要求,request,yào qíu
+命令,order,mìng lìng
+允許,allow,yǔn xǔ
+禁止,forbid,jìn zhǐ
+遵守,obey,zūn shǒu
+違反,violate,wéi fǎn
+遵循,follow,zūn xún
+引導,guide,yǐn dǎo
+處理,handle,chù lǐ
+解決,solve,jiě jué
+應對,cope,yīng dùi
+麵對,face,miàn dùi
+避免,avoid,bì miǎn
+逃跑,escape,táo pǎo
+追,follow,zhūi
+趕,chase,gǎn
+抓住,catch,zhuā zhù
+釋放,release,shì fàng
+捆綁,tie,kǔn bǎng
+解開,untie,jiě kāi
+鎖,lock,suǒ
+解鎖,unlock,jiě suǒ
+蓋,cover,gài
+揭開,uncover,jiē kāi
+包裹,wrap,bāo guǒ
+裝,pack,zhuāng
+拆,unpack,chāi
+裝飾,decorate,zhuāng shì
+清理,clean up,qīng lǐ
+打掃,sweep,dǎ sǎo
+拖,drag,tuō
+搬運,carry,bān yùn
+舉,hold up,jǔ
+握,hold,wò
+捏,pinch,niē
+擰,twist,níng
+拍,pat,pāi
+敲,knock,qiāo
+按,press,àn
+點,click,diǎn
+滑動,swipe,huá dòng
+滾動,scroll,gǔn dòng
+搖,shake,yáo
+晃,rock,huǎng
+轉動,rotate,zhuǎn dòng
+翻轉,flip,fān zhuǎn
+摺,fold,zhé
+展開,unfold,zhǎn kāi
+撕,tear,sī
+縫,sew,féng
+織,knit,zhī
+粘,glue,nián
+貼,stick,tiē
+雕刻,carve,diāo kè
+塑造,shape,sù zào
+製作,make,zhì zuò
+創造,create,chuàng zào
+設計,design,shè jì
+發明,invent,fā míng
+開發,develop,kāi fā
+研究,research,yán jīu
+探索,explore,tàn suǒ
+發現,discover,fā xiàn
+調查,investigate,diào chá
+分析,analyze,fēn xī
+計算,calculate,jì suàn
+測量,measure,cè liàng
+估計,estimate,gū jì
+預測,predict,yù cè
+安排,arrange,ān pái
+準備,prepare,zhǔn bèi
+完成,complete,wán chéng
+實現,achieve,shí xiàn
+失去,lose,shī qù
+贏,win,yíng
+輸,lose,shū
+比賽,compete,bǐ sài
+挑戰,challenge,tiāo zhàn
+冒險,adventure,mào xiǎn
+失敗,fail,shī bài
+成功,succeed,chéng gōng
+訓練,train,xùn liàn
+練習,practice,liàn xí
+復習,review,fù xí
+考試,test,kǎo shì
+考察,examine,kǎo chá
+總結,summarize,zǒng jié
+歸納,conclude,gūi nà
+推斷,infer,tūi duàn
+證明,prove,zhèng míng
+陳述,state,chén shù
+製,"make, manufacture; produce",zhì
