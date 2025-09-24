@@ -19,7 +19,7 @@ phrase,english,pinyin
 想,think,xiǎng
 知道,know,zhī dào
 理解,understand,lǐ jiě
-記,remember,jì
+記得,remember,jì de
 忘,forget,wàng
 打開,open,dǎ kāi
 關閉,close,guān bì
@@ -41,6 +41,7 @@ phrase,english,pinyin
 愛,love,ài
 討厭,hate,tǎo yàn
 需要,need,xū yào
+得,have to,de
 希望,hope,xī wàng
 擔心,worry,dān xīn
 相信,believe,xiāng xìn
