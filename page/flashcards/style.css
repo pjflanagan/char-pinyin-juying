@@ -17,6 +17,7 @@
   position: fixed;
   top: 0;
   padding: 24px;
+  overflow-y: scroll;
 }
 
 #modal .modal-content {
