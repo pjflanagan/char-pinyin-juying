@@ -1,5 +1,8 @@
 
 # General
+- [ ] You are handling ü wrong. Make it so we have all the tones for ü and redo the dictionary
+  - [ ] Note the way we strip tones might be removing ü or we should just use "v" for everything
+  - [ ] Use these: ǖ ǘ ǚ ǜ
 - [x] mobile sizing (larger, no page zoom allowed)
 - [x] home link on every page
 - [x] Add Google Translate python

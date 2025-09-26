@@ -17,11 +17,12 @@ HANZI_TO_ENGLISH_MAP = loadCsv('data/maps/Hanzi-English')
 PINYIN_TONELESS_TO_ZHUYIN_MAP = loadCsv('data/maps/PinyinToneless-Zhuyin')
 
 REPLACE_PINYIN = [
-    # can't find a first tone v
-    ['v̀', 'ù'],
-    ['v̌', 'ǔ'],
-    ['v́', 'ú'],
-    ['v', 'u'],
+    # I cannot find an example with a first tone v
+    # ['v', 'ǖ'],
+    ['v̀', 'ǜ'],
+    ['v̌', 'ǚ'],
+    ['v́', 'ǘ'],
+    ['v', 'ü'],
 ]
 
 IGNORE_CHARACTERS = [
@@ -44,11 +45,11 @@ class Hanzi:
     def getPinyin(char):
         pinyin = PinyinConv.get(char)
         for replacement in REPLACE_PINYIN:
-            pinyin.replace(replacement[0], replacement[1])
+            pinyin = pinyin.replace(replacement[0], replacement[1])
         return pinyin
     
     def getTonelessPinyin(char):
-        return PinyinConv.get(char, format="strip").replace('v', 'u')
+        return PinyinConv.get(char, format="strip").replace('v', 'ü')
 
     def getTone(char):
         pinyinNumerical = PinyinConv.get(char, format="numerical")
