@@ -145,7 +145,6 @@ function getRedirectUrl({ web, ios, android }) {
   return `${getBaseUrl()}/page/redirect?web=${web}&ios=${ios}&android=${android}`;
 }
 
-
 window.onload = function() {
   $('#home-link').attr('href', getBaseUrl());
   

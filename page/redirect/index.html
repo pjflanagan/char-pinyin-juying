@@ -3,6 +3,7 @@
   <body>
     <script>
       function getIsMobile() {
+        // return window.innerWidth < 780;
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
         );
@@ -17,14 +18,12 @@
         return "unknown";
       }
 
-      function attemptRedirectToApp() {}
-
-      function redirectToWebpage() {}
-
       // https://gist.github.com/pjflanagan/5dd6889dc791ce4c318e7dded58589a5
 
+      // TEST:
+      // http://[::]:8000//page/redirect?web=https://duolingo.com/&ios=duolingo://&android=duolingo://
+
       (function () {
-        // TODO: get all the URL params, if there are errors, do nothing
         const urlParams = new URLSearchParams(window.location.search);
         const androidURL = urlParams.get("android");
         const iosURL = urlParams.get("ios");
@@ -32,7 +31,7 @@
 
         // 1) if this is not a mobile device, redirect to the webpage
         if (!getIsMobile()) {
-          window.location.replace(webURL, "_blank");
+          window.location.replace(webURL);
           return;
         }
 
@@ -42,10 +41,10 @@
         switch (os) {
           case "ios":
             appUrl = iosURL;
-            return;
+            break;
           case "android":
             appUrl = androidURL;
-            return;
+            break;
           case "unknown":
           default:
             window.location.replace(webURL);
@@ -54,9 +53,10 @@
 
         // 3) attempt to open the app, this will create a popup, add a listener for if the page is refocused to open the webpage instead
         window.location.replace(appUrl);
-        window.addEventListener("focus", () => {
-          window.location.replace(webURL, "_blank");
-        });
+        // TODO: figure out how to do the cancelled error handler
+        // window.addEventListener("focus", () => {
+        //   window.location.replace(webURL);
+        // });
       })();
     </script>
   </body>
