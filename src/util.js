@@ -141,6 +141,20 @@ const StorageUtil = {
 // COMMON UI -----------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
+function getRedirectUrl({ web, ios, android }) {
+  return `${getBaseUrl()}/page/redirect?web=${web}&ios=${ios}&android=${android}`;
+}
+
+
 window.onload = function() {
   $('#home-link').attr('href', getBaseUrl());
+  
+  $('a').each(function() {
+    const web = $(this).attr('data-web');
+    const ios = $(this).attr('data-android');
+    const android = $(this).attr('data-ios');
+    if (web && ios && android) {
+      $(this).attr('href', getRedirectUrl({ web, ios, android }));
+    }
+  })
 }
