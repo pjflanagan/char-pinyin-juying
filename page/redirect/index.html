@@ -3,7 +3,6 @@
   <body>
     <script>
       function getIsMobile() {
-        // return window.innerWidth < 780;
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
           navigator.userAgent
         );
@@ -53,10 +52,6 @@
 
         // 3) attempt to open the app, this will create a popup, add a listener for if the page is refocused to open the webpage instead
         window.location.replace(appUrl);
-        // TODO: figure out how to do the cancelled error handler
-        // window.addEventListener("focus", () => {
-        //   window.location.replace(webURL);
-        // });
       })();
     </script>
   </body>

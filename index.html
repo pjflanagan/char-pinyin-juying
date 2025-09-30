@@ -48,32 +48,34 @@
           <p>Do ALL of these:</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
-              <input type="checkbox" data-checklist="duchinese" />
-              <label
-                ><a
+              <input id="checkbox-duchinese" type="checkbox" data-checklist="duchinese" />
+              <label for="checkbox-duchinese">
+                <a
                   data-web="https://duchinese.net/"
                   data-ios="duchinese://"
                   data-android="duchinese://"
                   target="_blank"
-                  >DuChinese</a
-                ></label
-              >
+                >
+                  DuChinese
+                </a>
+              </label>
             </li>
             <li>
-              <input type="checkbox" data-checklist="duolingo" />
-              <label
-                ><a
+              <input id="checkbox-duolingo" type="checkbox" data-checklist="duolingo" />
+              <label for="checkbox-duolingo">
+                <a
                   data-web="https://duolingo.com/"
                   data-ios="duolingo://"
                   data-android="duolingo://"
                   target="_blank"
-                  >Duolingo</a
-                ></label
-              >
+                >
+                  Duolingo
+                </a>
+              </label>
             </li>
             <li>
-              <input type="checkbox" data-checklist="flashcards" />
-              <label><a href="./page/flashcards">Flashcards</a></label>
+              <input id="checkbox-flashcards" type="checkbox" data-checklist="flashcards" />
+              <label for="checkbox-flashcards"><a href="./page/flashcards">Flashcards</a></label>
             </li>
           </ul>
         </div>
@@ -81,16 +83,16 @@
           <p>Do 1 of these:</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
-              <input type="checkbox" data-checklist="podcast" />
-              <label>Listen to a podcast</label>
+              <input id="checkbox-podcast" type="checkbox" data-checklist="podcast" />
+              <label for="checkbox-podcast">Listen to a podcast</label>
             </li>
             <li>
-              <input type="checkbox" data-checklist="song" />
-              <label>Translate a song</label>
+              <input id="checkbox-song" type="checkbox" data-checklist="song" />
+              <label for="checkbox-song">Translate a song</label>
             </li>
             <li>
-              <input type="checkbox" data-checklist="make-flashcards" />
-              <label>Make flashcards</label>
+              <input id="checkbox-make_flashcards" type="checkbox" data-checklist="make-flashcards" />
+              <label for="checkbox-make_flashcards">Make flashcards</label>
             </li>
           </ul>
         </div>
@@ -98,16 +100,16 @@
           <p>Maybe do these:</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
-              <input type="checkbox" data-checklist="tv-show" />
-              <label>Watch a children's Chinese show</label>
+              <input id="checkbox-tv" type="checkbox" data-checklist="tv-show" />
+              <label for="checkbox-tv">Watch a children's Chinese show</label>
             </li>
             <li>
-              <input type="checkbox" data-checklist="read-book" />
-              <label>Read a book</label>
+              <input id="checkbox-book" type="checkbox" data-checklist="read-book" />
+              <label for="checkbox-book">Read a book</label>
             </li>
             <li>
-              <input type="checkbox" data-checklist="write-characters" />
-              <label>Write characters</label>
+              <input id="checkbox-write" type="checkbox" data-checklist="write-characters" />
+              <label for="checkbox-write">Write characters</label>
             </li>
           </ul>
         </div>
@@ -119,8 +121,7 @@
         <li>
           <a href="./page/flashcards">Flashcards</a> -
           <span style="color: #999">
-            Sets I've found online that I've turned to flashcards. (Curated sets
-            coming soon)
+            A collection of sets I've curated and a few I've found online from other students.
           </span>
         </li>
         <li>
@@ -154,19 +155,35 @@
       <h4>Learning Apps</h4>
       <ul>
         <li>
-          <a href="https://duchinese.net/" target="_blank">DuChinese</a> -
+          <a
+            data-web="https://duchinese.net/"
+            data-ios="duchinese://"
+            data-android="duchinese://"
+            target="_blank"
+          >
+            DuChinese
+          </a>
+          -
           <span style="color: #999">Good for reading</span>
         </li>
         <li>
-          <a href="https://duolingo.com/" target="_blank">Duolingo</a> -
+          <a
+            data-web="https://duolingo.com/"
+            data-ios="duolingo://"
+            data-android="duolingo://"
+            target="_blank"
+          >
+            Duolingo
+          </a>
+          -
           <span style="color: #999">Good for grammar</span>
         </li>
         <li>
-          Memrise - <span style="color: #999">Good for basic phrases</span>
-        </li>
-        <li>
           HelloChinese -
-          <span style="color: #999">Good for a change of pace</span>
+          <span style="color: #999">Good for a change of pace (subscription ends December)</span>
+        </li>
+        <li style="text-decoration: line-through; color: #666;">
+          Memrise - <span>Good for basic phrases (subscription cancelled)</span>
         </li>
       </ul>
       <h4>Podcasts</h4>
