@@ -135,6 +135,7 @@ if __name__ == "__main__":
     print("No arguments provided.")
     exit(1)
 
+  # TODO: this should take a param so we know if this is a set or if this is one file
   flashcardsName = sys.argv[1]
   setName = flashcardsName.split('-')[0]
 

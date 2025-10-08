@@ -3,6 +3,8 @@ import sys
 from util.file import writeCsv, loadCsv
 from util.mandarin import Phrase, Hanzi
 
+
+# TODO: param for if refine should happen to a single file or if it should be broken into sets
 SET_SIZE = 30
 BASE_OUTPUT_MAP = [("phrase", "english", "pinyin", "comments")]
 
