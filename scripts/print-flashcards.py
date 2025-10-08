@@ -134,20 +134,30 @@ if __name__ == "__main__":
   else:
     print("No arguments provided.")
     exit(1)
-
-  # TODO: this should take a param so we know if this is a set or if this is one file
-  flashcardsName = sys.argv[1]
-  setName = flashcardsName.split('-')[0]
-
+  setName = sys.argv[1]
+  
+  setIndex = None
+  if len(sys.argv) > 2:
+    print("Flashcard set index:", sys.argv[2])
+    setIndex = sys.argv[2]
+    
+  flashcardsName = setName
+  if setIndex != None:
+    flashcardsName += f"-{setIndex}"
+    
+  fileLocation = f"data/flashcards/{setName}"
+  if setIndex != None:
+    fileLocation += f"/{setName}-{setIndex}"
+    
   pdf = FPDF('P', 'in', 'Letter')
   pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv(f"data/flashcards/{setName}/{flashcardsName}")
+  flashcards = loadCsv(fileLocation)
 
   pageCardSet = []
   for index, entry in enumerate(flashcards, start=1):
-    card = makeCard(index, entry, flashcardsName)
+    card = makeCard(index, entry, f"")
 
     if card == None:
       pass

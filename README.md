@@ -7,12 +7,48 @@ These are a few pages with helpful tools for learning mandarin.
 
 ## Study
 
-To add a flashcard set follow these steps:
+To add and study a flashcard set follow these steps:
 
-1. Write in the most recent `data/flashcards/<setName>/<setName>-<setIndex>.csv` file with the phrases you want, you can omit english and pinyin
-2. Run `scripts/refine-flashcard.py "setName"` on your new set to update missing data, remove duplicates, convert to traditional, and break into sub sets for 30. 
-  - Flashcards are refined in place to limit the usage of the google translate api
-3. Add a link to see your flashcards on web or run `print-flashcard.py "setName"` to generate printable flashcards
+### 1. Write flashcards
+
+If you are writing a single set (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/<path-to-setName>.csv`
+
+If you are writing multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/<setName>/<setName>-<setIndex>.csv` file with the phrases you want.
+
+When making flashcards you can omit english and pinyin if you want.
+
+### 2. Refine flashcards
+
+If you are writing a single set
+```bash
+$ scripts/refine-flashcards.py <path-to-setName>
+$ scripts/refine-flashcards.py songs/wu_bai_norweigan_forest
+``` 
+
+If you are writing a multi set, run 
+```bash
+$ scripts/refine-flashcards.py <setName> set
+$ scripts/refine-flashcards.py verbs set
+```
+
+This will update missing data, remove duplicates, convert to traditional, and break into sub sets for 30. Flashcards are refined in place to limit the usage of the Google Translate API.
+
+### 3. Use flashcards
+
+Add a link to see your flashcards in `page/flashcards/index.html` on web. Or you can print your flashcards
+
+If you are printing a single set
+```bash
+$ scripts/print-flashcards.py <path-to-setName>
+$ scripts/print-flashcards.py songs/wu_bai_norweigan_forest
+``` 
+
+If you are printing one part of a multi set, run print with a `<setIndex>`
+```bash
+$ scripts/print-flashcards.py <setName> <setIndex>
+$ scripts/print-flashcards.py verbs 2
+```
+
 
 ## Repository Setup
 

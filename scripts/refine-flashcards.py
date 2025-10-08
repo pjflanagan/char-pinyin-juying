@@ -3,20 +3,20 @@ import sys
 from util.file import writeCsv, loadCsv
 from util.mandarin import Phrase, Hanzi
 
-
-# TODO: param for if refine should happen to a single file or if it should be broken into sets
 SET_SIZE = 30
 BASE_OUTPUT_MAP = [("phrase", "english", "pinyin", "comments")]
 
-def getCsvFileName(setName, setIndex):
-    return f"data/flashcards/{setName}/{setName}-{setIndex}"
+def getCsvFileName(mode, setName, setIndex):
+    if mode == "set":
+        return f"data/flashcards/{setName}/{setName}-{setIndex}"
+    return f"data/flashcards/{setName}"
 
-def loadAllFlashcards(setName):
+def loadAllFlashcards(mode, setName):
     setIndex = 1
     allFlashcards = []
     valid = True
     while valid:
-        fileName = getCsvFileName(setName, setIndex)
+        fileName = getCsvFileName(mode, setName, setIndex)
         print("Loading file:", fileName)
         try:
             flashcards = loadCsv(fileName)
@@ -26,6 +26,8 @@ def loadAllFlashcards(setName):
         except:
             print("No file:", fileName)
             valid = False
+        if mode != "set":
+            valid = False
     return allFlashcards
     
 
@@ -34,11 +36,16 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
       print("Flashcard set:", sys.argv[1])
     else:
-      print("No arguments provided.")
+      print("Missing required set name argument.")
       exit(1)
-
     setName = sys.argv[1]
-    flashcards = loadAllFlashcards(setName)
+
+    mode = "default"
+    if len(sys.argv) > 2 and sys.argv[2] == "set":
+      print("Refining flashcards in set mode")
+      mode = "set"
+
+    flashcards = loadAllFlashcards(mode, setName)
 
     outputMap = BASE_OUTPUT_MAP.copy()
     phraseSet = []
@@ -71,10 +78,10 @@ if __name__ == '__main__':
             pinyin = ''
             if len(entry) > 2 and entry[2] != '':
                 pinyin = entry[2]
-                print("Pinyin provided:", english)
+                print("Pinyin provided:", pinyin)
             else:
                 pinyin = Phrase.getPinyin(phrase)
-                print("Pinyin refined:", english)
+                print("Pinyin refined:", pinyin)
                 
             comment = ''
             if len(entry) > 3 and entry[3] != '':
@@ -89,10 +96,10 @@ if __name__ == '__main__':
         except:
             print('Error for phrase:' + phrase)
 
-        if len(outputMap) == SET_SIZE + 1:
-            writeCsv(getCsvFileName(setName, setIndex), outputMap)
+        if mode == "set" and len(outputMap) == SET_SIZE + 1:
+            writeCsv(getCsvFileName(mode, setName, setIndex), outputMap)
             setIndex += 1
             outputMap = BASE_OUTPUT_MAP.copy()
 
     # end while
-    writeCsv(getCsvFileName(setName, setIndex), outputMap)
+    writeCsv(getCsvFileName(mode, setName, setIndex), outputMap)
