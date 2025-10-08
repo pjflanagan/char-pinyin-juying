@@ -143,9 +143,7 @@
     let checkedFlashcardSets = StorageUtil.load(FLASHCARD_SET_STORAGE_KEY) || [];
 
     function saveFlashcardSetCheckbox(flashcardSet) {
-      console.log(flashcardSet);
       const isChecked = $(`[data-checkbox="${flashcardSet}"]`).is(":checked");
-      console.log(isChecked);
       if (isChecked) {
         checkedFlashcardSets.push(flashcardSet)
       } else {
