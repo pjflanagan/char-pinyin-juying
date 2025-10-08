@@ -136,12 +136,13 @@ if __name__ == "__main__":
     exit(1)
 
   flashcardsName = sys.argv[1]
+  setName = flashcardsName.split('-')[0]
 
   pdf = FPDF('P', 'in', 'Letter')
   pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv(f"data/flashcards/{flashcardsName}")
+  flashcards = loadCsv(f"data/flashcards/{setName}/{flashcardsName}")
 
   pageCardSet = []
   for index, entry in enumerate(flashcards, start=1):
