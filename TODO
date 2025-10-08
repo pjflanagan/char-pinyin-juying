@@ -1,8 +1,14 @@
 
+# Latest Change
+- [ ] Make sure website can access this
+- [ ] See if website can access the folder and just display that?
+- [ ] Divide flashcards into sets of 24, so that when I add more I can just put them in a new set
+
+
 # General
-- [ ] You are handling ü wrong. Make it so we have all the tones for ü and redo the dictionary
-  - [ ] Note the way we strip tones might be removing ü or we should just use "v" for everything
-  - [ ] Use these: ǖ ǘ ǚ ǜ
+- [x] You are handling ü wrong. Make it so we have all the tones for ü and redo the dictionary
+  - [x] Note the way we strip tones might be removing ü or we should just use "v" for everything
+  - [x] Use these: ǖ ǘ ǚ ǜ
 - [x] mobile sizing (larger, no page zoom allowed)
 - [x] home link on every page
 - [x] Add Google Translate python
@@ -13,7 +19,8 @@
 
 # Home
 - [x] links to other helpful tools (bopomofo soundboard, my songs)
-- [ ] links to other helpful tools (podcasts, youtube, playlists, and the zhuyin diagram)
+- [x] links to other helpful tools (podcasts, youtube)
+- [ ] More links  playlists, and the zhuyin diagram
 
 # Read
 - [x] highlight multiple characters
