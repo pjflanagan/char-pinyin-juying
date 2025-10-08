@@ -1,4 +1,4 @@
-phrase,english,pinyin
+phrase,english,pinyin,comment
 你,"you, second person pronoun",nǐ
 好,"good, excellent, fine; well",hǎo
 再見,goodbye,zài jiàn
@@ -807,7 +807,7 @@ phrase,english,pinyin
 橙,orange,chéng
 貓頭鷹,owl,māo tóu yīng
 羽毛,feather,yǔ máo
-多兒,Duoer,duō ér
+多兒,Duoer,duō ér,this is clearly sourced from Duolingo
 鼓勵,encourage,gǔ lì
 提醒,remind,tí xǐng
 懶,"lazy, languid, listless",lǎn

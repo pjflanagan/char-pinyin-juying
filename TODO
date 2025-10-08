@@ -1,9 +1,4 @@
 
-# Latest Change
-- [ ] Flashcards modal should have a list of all sets, I can check a box to mark it as known
-- [x] Divide flashcards into sets of 30, so that when I add more I can just put them in a new set
-
-
 # General
 - [x] You are handling ü wrong. Make it so we have all the tones for ü and redo the dictionary
   - [x] Note the way we strip tones might be removing ü or we should just use "v" for everything
@@ -29,6 +24,8 @@
 - [ ] Allow font toggle so I can see characters in different fonts
 
 # Flashcards
+- [x] Flashcards modal should have a list of all sets, I can check a box to mark it as known
+- [x] Divide flashcards into sets of 30, so that when I add more I can just put them in a new set
 - [x] header link to reverse flashcards (show english, hide character and pinyin)
 - [x] One flashcard page with a popup to switch, link to open popup in header
 - [x] Flashcard page uses the data in a flashcard (no zhuyin anymore)

@@ -74,7 +74,6 @@
           <li data-flashcardSet="dishes-1"></li>
           <li data-flashcardSet="dishes-2"></li>
         </ul>
-
         <p>Unsorted</p>
         <ul>
           <li><a onclick="flashcardPage.chooseSet('phrases')">Phrases</a></li>
@@ -83,28 +82,19 @@
           <li><a onclick="flashcardPage.chooseSet('measure-words')">Measure Words</a></li>
           <li><a onclick="flashcardPage.chooseSet('dining')">Dining</a></li>
           <li><a onclick="flashcardPage.chooseSet('foods')">Foods</a></li>
-          <!-- Directions -->
-        </ul>
-        <p>Taiwan</p>
-        <ul>
           <li><a onclick="flashcardPage.chooseSet('taiwan-local')">Taiwan Local</a></li>
           <li><a onclick="flashcardPage.chooseSet('taiwan-places')">Taiwan Places<a></li>
-        </ul>
-        <p>Advanced</p>
-        <ul>
           <li><a onclick="flashcardPage.chooseSet('chengyu')">成語 - Idioms</a></li>
+          <li style="color:#999;">More coming soon...</li>
+          <!-- Directions -->
         </ul>
-        <p style="color:#999;">More coming soon...</p>
         <p>Sourced</p>
         <ul>
           <li>
-            <a onclick="flashcardPage.chooseSet('_external-bamboo')">Bamboo</a> -
-            <span style="color: #999"
-              >Sourced from another project I worked on called
-              <a href="https://pjflanagan.me/blog/bamboo/" target="_blank"
-                >Bamboo</a
-              ></span
-            >
+            <a onclick="flashcardPage.chooseSet('_external-duolingo')">Duolingo</a> -
+            <span style="color: #999">
+              Sourced from Duolingo's public API
+            </span>
           </li>
           <li>
             <a onclick="flashcardPage.chooseSet('_external-reddit')">Reddit</a> -
@@ -148,14 +138,21 @@
   <script>
     const flashcardPage = new FlashcardPage();
 
+    // TODO: load the flashcard storage
+    const checkedFlashcardSets = [];
+
+    function saveFlashcardSetCheckbox(flashcardSet) {
+      // TODO: get the checkbox information and see if it is checked
+      // TODO: add it or remove it from the list and update storage
+    }
 
     $('[data-flashcardSet]').each(function() {
       const flashcardSet = $(this).attr('data-flashcardSet');
       const setName = flashcardSet.split('-')[0];
       const setIndex = flashcardSet.split('-')[1];
-      // TODO: get the flashcard storage and see what's been checked off
+      const checked = checkedFlashcardSets.includes(flashcardSet)
       $(this).append(`
-        <input data-checkbox="${flashcardSet}" type="checkbox" />
+        <input checked="${checked}" onclick="saveFlashcardSetCheckbox('${flashcardSet}')" data-checkbox="${flashcardSet}" type="checkbox" />
         <label>
           <a onclick="flashcardPage.chooseSet('${setName}/${flashcardSet}')">${flashcardSet}</a>
         </label>
