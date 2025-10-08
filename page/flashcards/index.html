@@ -3,7 +3,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1, user-scalable=no"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"
     />
     <title>Study Mandarin: Flashcards</title>
     <link
@@ -44,6 +44,19 @@
     <div id="modal">
       <div class="modal-content">
         <h3>Choose a flashcard set</h3>
+        <p>Verbs</p>
+        <!-- TODO: style this so they show up in columns, or maybe can be minimized? -->
+        <ul style="list-style-type: none; padding-inline-start: 20px">
+          <li>
+              <!-- TODO: store the value of if this is checked -->
+              <input data-checklist="verbs-1" type="checkbox" />
+              <label>
+                <!-- TODO: use JS and populate all of these with onclick methods instead of manually -->
+                <a onclick="flashcardPage.chooseSet('verbs/verbs-1')">Verbs 1</a>
+              </label>
+          </li>
+        </ul>
+
         <p>General</p>
         <ul>
           <li><a onclick="flashcardPage.chooseSet('phrases')">Phrases</a></li>

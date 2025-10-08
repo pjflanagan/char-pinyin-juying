@@ -1,8 +1,7 @@
 
 # Latest Change
-- [ ] Make sure website can access this
-- [ ] See if website can access the folder and just display that?
-- [ ] Divide flashcards into sets of 24, so that when I add more I can just put them in a new set
+- [ ] Flashcards modal should have a list of all sets, I can check a box to mark it as known
+- [x] Divide flashcards into sets of 30, so that when I add more I can just put them in a new set
 
 
 # General

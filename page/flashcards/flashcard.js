@@ -30,14 +30,15 @@ class FlashcardPage {
   }
 
   async loadFlashcards() {
-    this.storageKey = `flanny-sm-${this.setName}-flashcards`,
+    this.storageKey = `flanny-sm-${this.setName}-flashcards`;
     this.knownFlashcards = StorageUtil.load(this.storageKey) || [];
 
     const allFlashcards = await loadCsv(`data/flashcards/${this.setName}`);
-    this.flashcards = allFlashcards.filter(card => !this.knownFlashcards.includes(card.phrase));
+    const unknownFlashcards = allFlashcards.filter(card => card.phrase !== '' && !this.knownFlashcards.includes(card.phrase));
+
 
     // shuffle and display
-    this.flashcards = this.flashcards.sort(() => Math.random() - 0.5);
+    this.flashcards = unknownFlashcards.sort(() => Math.random() - 0.5);
     this.currentIndex = 0;
     this.display();
     this.hide();
