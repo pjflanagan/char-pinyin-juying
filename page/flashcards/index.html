@@ -44,46 +44,47 @@
     <div id="modal">
       <div class="modal-content">
         <h3>Choose a flashcard set</h3>
-        <p>Basics</p>
-        <ul style="list-style-type: none; padding-inline-start: 20px">
-          <li data-flashcardSet="basics-1"></li>
-          <li data-flashcardSet="basics-2"></li>
-          <li data-flashcardSet="basics-3"></li>
-        </ul>
-        <p>Verbs</p>
-        <!-- TODO: style this so they show up in columns, or maybe can be minimized? -->
-        <ul style="list-style-type: none; padding-inline-start: 20px">
-          <li data-flashcardSet="verbs-1"></li>
-          <li data-flashcardSet="verbs-2"></li>
-          <li data-flashcardSet="verbs-3"></li>
-          <li data-flashcardSet="verbs-4"></li>
-          <li data-flashcardSet="verbs-5"></li>
-          <li data-flashcardSet="verbs-6"></li>
-          <li data-flashcardSet="verbs-7"></li>
-          <li data-flashcardSet="verbs-8"></li>
-          <li data-flashcardSet="verbs-9"></li>
-          <li data-flashcardSet="verbs-10"></li>
-        </ul>
-        <p>Adjectives</p>
-        <ul style="list-style-type: none; padding-inline-start: 20px">
-          <li data-flashcardSet="adjectives-1"></li>
-          <li data-flashcardSet="adjectives-2"></li>
-        </ul>
-        <p>Dishes</p>
-        <ul style="list-style-type: none; padding-inline-start: 20px">
-          <li data-flashcardSet="dishes-1"></li>
-          <li data-flashcardSet="dishes-2"></li>
-        </ul>
+        <div style="column-width: 196px">
+          <p>Basics</p>
+          <ul style="list-style-type: none; padding-inline-start: 20px">
+            <li data-flashcardSet="basics-1"></li>
+            <li data-flashcardSet="basics-2"></li>
+            <li data-flashcardSet="basics-3"></li>
+          </ul>
+          <p>Verbs</p>
+          <ul style="list-style-type: none; padding-inline-start: 20px">
+            <li data-flashcardSet="verbs-1"></li>
+            <li data-flashcardSet="verbs-2"></li>
+            <li data-flashcardSet="verbs-3"></li>
+            <li data-flashcardSet="verbs-4"></li>
+            <li data-flashcardSet="verbs-5"></li>
+            <li data-flashcardSet="verbs-6"></li>
+            <li data-flashcardSet="verbs-7"></li>
+            <li data-flashcardSet="verbs-8"></li>
+            <li data-flashcardSet="verbs-9"></li>
+            <li data-flashcardSet="verbs-10"></li>
+          </ul>
+          <p>Adjectives</p>
+          <ul style="list-style-type: none; padding-inline-start: 20px">
+            <li data-flashcardSet="adjectives-1"></li>
+            <li data-flashcardSet="adjectives-2"></li>
+          </ul>
+          <p>Dishes</p>
+          <ul style="list-style-type: none; padding-inline-start: 20px">
+            <li data-flashcardSet="dishes-1"></li>
+            <li data-flashcardSet="dishes-2"></li>
+          </ul>
+        </div>
+        <hr />
         <p>Unsorted</p>
         <ul>
           <li><a onclick="flashcardPage.chooseSet('phrases')">Phrases</a></li>
           <li><a onclick="flashcardPage.chooseSet('structures')">Structures</a></li>
-          <li><a onclick="flashcardPage.chooseSet('pleasantries')">Pleasantries</a></li>
-          <li><a onclick="flashcardPage.chooseSet('measure-words')">Measure Words</a></li>
+          <li><a onclick="flashcardPage.chooseSet('measure_words')">Measure Words</a></li>
           <li><a onclick="flashcardPage.chooseSet('dining')">Dining</a></li>
           <li><a onclick="flashcardPage.chooseSet('foods')">Foods</a></li>
-          <li><a onclick="flashcardPage.chooseSet('taiwan-local')">Taiwan Local</a></li>
-          <li><a onclick="flashcardPage.chooseSet('taiwan-places')">Taiwan Places<a></li>
+          <li><a onclick="flashcardPage.chooseSet('taiwan_local')">Taiwan Local</a></li>
+          <li><a onclick="flashcardPage.chooseSet('taiwan_places')">Taiwan Places<a></li>
           <li><a onclick="flashcardPage.chooseSet('chengyu')">成語 - Idioms</a></li>
           <li style="color:#999;">More coming soon...</li>
           <!-- Directions -->
@@ -136,23 +137,30 @@
   <script src="../../src/util.js"></script>
   <script src="flashcard.js"></script>
   <script>
+    const FLASHCARD_SET_STORAGE_KEY = 'flanny-sm-flashcard-set-checkbox';
     const flashcardPage = new FlashcardPage();
 
-    // TODO: load the flashcard storage
-    const checkedFlashcardSets = [];
+    let checkedFlashcardSets = StorageUtil.load(FLASHCARD_SET_STORAGE_KEY) || [];
 
     function saveFlashcardSetCheckbox(flashcardSet) {
-      // TODO: get the checkbox information and see if it is checked
-      // TODO: add it or remove it from the list and update storage
+      console.log(flashcardSet);
+      const isChecked = $(`[data-checkbox="${flashcardSet}"]`).is(":checked");
+      console.log(isChecked);
+      if (isChecked) {
+        checkedFlashcardSets.push(flashcardSet)
+      } else {
+        checkedFlashcardSets = checkedFlashcardSets.filter(set => set !== flashcardSet);
+      }
+      StorageUtil.save(FLASHCARD_SET_STORAGE_KEY, checkedFlashcardSets);
     }
 
     $('[data-flashcardSet]').each(function() {
       const flashcardSet = $(this).attr('data-flashcardSet');
       const setName = flashcardSet.split('-')[0];
       const setIndex = flashcardSet.split('-')[1];
-      const checked = checkedFlashcardSets.includes(flashcardSet)
+      const checked = checkedFlashcardSets.includes(flashcardSet);
       $(this).append(`
-        <input checked="${checked}" onclick="saveFlashcardSetCheckbox('${flashcardSet}')" data-checkbox="${flashcardSet}" type="checkbox" />
+        <input ${checked ? 'checked' : ''} onclick="saveFlashcardSetCheckbox('${flashcardSet}')" data-checkbox="${flashcardSet}" type="checkbox" />
         <label>
           <a onclick="flashcardPage.chooseSet('${setName}/${flashcardSet}')">${flashcardSet}</a>
         </label>

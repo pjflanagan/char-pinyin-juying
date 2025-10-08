@@ -56,6 +56,11 @@ p {
   color: #ccc;
 }
 
+hr {
+  margin: 24px;
+  border-color: #fff2;
+}
+
 /* HEADER */
 
 #header {
