@@ -55,11 +55,11 @@ if __name__ == '__main__':
     for entry in flashcards:
         try:
             phrase = Phrase.getTraditional(entry[0])
-            print("Refining phrase:", phrase)
+            print("Refining phrase:", phrase, end=" - ")
             
             # if there's a duplicate skip it
             if phrase in phraseSet:
-                print("Duplicate phrase", phrase)
+                print("Duplicate skipped")
                 continue
             else:
                 phraseSet.append(phrase)
@@ -67,13 +67,13 @@ if __name__ == '__main__':
             english = ''
             if len(entry) > 1 and entry[1] != '':
                 english = entry[1]
-                print("English provided:", english)
+                print("English provided:", english, end=" - ")
             elif len(phrase) == 1:
                 english = Hanzi.getEnglish(phrase)
-                print("English refined for one word:", english)
+                print("English refined for one word:", english, end=" - ")
             else:
                 english = Phrase.translateEnglish(phrase)
-                print("English refined using Google translate:", english)
+                print("English refined using Google translate:", english, end=" - ")
             
             pinyin = ''
             if len(entry) > 2 and entry[2] != '':
@@ -94,7 +94,7 @@ if __name__ == '__main__':
                 comment
             ))
         except:
-            print('Error for phrase:' + phrase)
+            print('ERROR processing phrase')
 
         if mode == "set" and len(outputMap) == SET_SIZE + 1:
             writeCsv(getCsvFileName(mode, setName, setIndex), outputMap)

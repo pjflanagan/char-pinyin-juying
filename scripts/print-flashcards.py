@@ -149,6 +149,10 @@ if __name__ == "__main__":
   if setIndex != None:
     fileLocation += f"/{setName}-{setIndex}"
     
+  setFullName = setName
+  if setIndex != None:
+    setFullName += f"-{setIndex}"
+    
   pdf = FPDF('P', 'in', 'Letter')
   pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
@@ -157,7 +161,7 @@ if __name__ == "__main__":
 
   pageCardSet = []
   for index, entry in enumerate(flashcards, start=1):
-    card = makeCard(index, entry, f"")
+    card = makeCard(index, entry, setFullName)
 
     if card == None:
       pass

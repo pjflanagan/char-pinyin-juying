@@ -1,4 +1,11 @@
 
+# Flashcard Writing
+- [ ] Copy in all my class words
+- [ ] Sort them into sets, then print a few sets
+
+# Print
+- [ ] phrases-2
+
 # General
 - [x] You are handling ü wrong. Make it so we have all the tones for ü and redo the dictionary
   - [x] Note the way we strip tones might be removing ü or we should just use "v" for everything
@@ -10,6 +17,8 @@
 # Printable
 - [x] write code that takes a csv and makes a pdf
 - [x] csv just prints exactly what is on the flashcard
+- [ ] zhuyin on the flashcard
+- [ ] put the section in a new spot so it doesn't get cut off by bottom of the page
 
 # Home
 - [x] links to other helpful tools (bopomofo soundboard, my songs)
