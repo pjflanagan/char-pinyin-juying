@@ -21,14 +21,14 @@ When making flashcards you can omit english and pinyin if you want.
 
 If you are writing a single set
 ```bash
-$ scripts/refine-flashcards.py <path-to-setName>
-$ scripts/refine-flashcards.py songs/wu_bai_norweigan_forest
+$ scripts/refine.py <path-to-setName>
+$ scripts/refine.py songs/wu_bai_norweigan_forest
 ``` 
 
 If you are writing a multi set, run 
 ```bash
-$ scripts/refine-flashcards.py <setName> set
-$ scripts/refine-flashcards.py verbs set
+$ scripts/refine.py <setName> set
+$ scripts/refine.py verbs set
 ```
 
 This will update missing data, remove duplicates, convert to traditional, and break into sub sets for 30. Flashcards are refined in place to limit the usage of the Google Translate API.
@@ -39,14 +39,14 @@ Add a link to see your flashcards in `page/flashcards/index.html` on web. Or you
 
 If you are printing a single set
 ```bash
-$ scripts/print-flashcards.py <path-to-setName>
-$ scripts/print-flashcards.py songs/wu_bai_norweigan_forest
+$ scripts/print.py <path-to-setName>
+$ scripts/print.py songs/wu_bai_norweigan_forest
 ``` 
 
 If you are printing one part of a multi set, run print with a `<setIndex>`
 ```bash
-$ scripts/print-flashcards.py <setName> <setIndex>
-$ scripts/print-flashcards.py verbs 2
+$ scripts/print.py <setName> <setIndex>
+$ scripts/print.py verbs 2
 ```
 
 
@@ -59,7 +59,8 @@ This repo is made up of a few parts.
   - `source`
 - `page` - public pages, these are apps for typing and doing flashcards
 - `print` - printable pdfs of flashcards
-- `scripts` - creates our dictionary, flashcards, and any maps needed
+- `scripts` - refine and print flashcards, 
+  - `setup` - creates our dictionary, mappings, and extracts flashcards from found datasets
   - `util` - utility functions
 - `src` - shared source code for theme styles and utils for the pages
   - `lib` minified libraries
