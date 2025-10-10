@@ -1,41 +1,21 @@
 
-# Flashcard Writing
-- [ ] Copy in all my class words
-- [ ] Sort them into sets, then print a few sets
+# Study
+- [ ] Write and then print a few more sets of cards (dining, dishes, foods)
 
-# Print
-- [ ] phrases-2
 
-# General
-- [x] You are handling ü wrong. Make it so we have all the tones for ü and redo the dictionary
-  - [x] Note the way we strip tones might be removing ü or we should just use "v" for everything
-  - [x] Use these: ǖ ǘ ǚ ǜ
-- [x] mobile sizing (larger, no page zoom allowed)
-- [x] home link on every page
-- [x] Add Google Translate python
+# Dev
 
-# Printable
-- [x] write code that takes a csv and makes a pdf
-- [x] csv just prints exactly what is on the flashcard
+## General
+
+## Printable
 - [ ] zhuyin on the flashcard
 - [ ] put the section in a new spot so it doesn't get cut off by bottom of the page
 
-# Home
-- [x] links to other helpful tools (bopomofo soundboard, my songs)
-- [x] links to other helpful tools (podcasts, youtube)
-- [ ] More links  playlists, and the zhuyin diagram
+## Home
+- [ ] More links playlists, and the zhuyin diagram
+- [ ] Link more Youtube channels
 
-# Read
-- [x] highlight multiple characters
-- [x] Move the cursor in the text box with click
-- [x] Move the cursor around while typing and with the arrow keys
-- [x] button to open in Google translate
+## Read
 - [ ] Allow font toggle so I can see characters in different fonts
 
-# Flashcards
-- [x] Flashcards modal should have a list of all sets, I can check a box to mark it as known
-- [x] Divide flashcards into sets of 30, so that when I add more I can just put them in a new set
-- [x] header link to reverse flashcards (show english, hide character and pinyin)
-- [x] One flashcard page with a popup to switch, link to open popup in header
-- [x] Flashcard page uses the data in a flashcard (no zhuyin anymore)
-- [x] storage for flashcards
+## Flashcards
