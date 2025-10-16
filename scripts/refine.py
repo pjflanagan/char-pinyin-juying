@@ -2,56 +2,89 @@
 import sys
 from util.file import writeCsv, loadCsv
 from util.mandarin import Phrase, Hanzi
+from util.flashcards import getCsvFileName
 
 SET_SIZE = 30
-BASE_OUTPUT_MAP = [("phrase", "english", "pinyin", "comments")]
+BASE_OUTPUT_HEADER = [("phrase", "english", "pinyin", "comments")]
 
-def getCsvFileName(mode, setName, setIndex):
-    if mode == "set":
-        return f"data/flashcards/{setName}/{setName}-{setIndex}"
-    return f"data/flashcards/{setName}"
-
-def loadAllFlashcards(mode, setName):
-    setIndex = 1
+def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
+    unitIndex = 1
     allFlashcards = []
-    valid = True
-    while valid:
-        fileName = getCsvFileName(mode, setName, setIndex)
+    loadNextUnit = True
+    while loadNextUnit:
+        fileName = getCsvFileName(flashcardType, flashcardName, unitIndex)
         print("Loading file:", fileName)
         try:
             flashcards = loadCsv(fileName)
             print("File contains", len(flashcards), "flashcards")
             allFlashcards.extend(flashcards)
-            setIndex += 1
+            unitIndex += 1
         except:
             print("No file:", fileName)
-            valid = False
-        if mode != "set":
-            valid = False
+            loadNextUnit = False
+        if flashcardType != "unit":
+            loadNextUnit = False
     return allFlashcards
-    
 
+
+def refineEntry(entry):
+    # english
+    english = ''
+    if len(entry) > 1 and entry[1] != '':
+        english = entry[1]
+        print("English provided:", english, end=" - ")
+    elif len(phrase) == 1:
+        english = Hanzi.getEnglish(phrase)
+        print("English refined for one word:", english, end=" - ")
+    else:
+        english = Phrase.translateEnglish(phrase)
+        print("English refined using Google translate:", english, end=" - ")
+    
+    # pinyin
+    pinyin = ''
+    if len(entry) > 2 and entry[2] != '':
+        pinyin = entry[2]
+        print("Pinyin provided:", pinyin)
+    else:
+        pinyin = Phrase.getPinyin(phrase)
+        print("Pinyin refined:", pinyin)
+        
+    # comment
+    comment = ''
+    if len(entry) > 3 and entry[3] != '':
+        comment = entry[3]
+        
+    return (
+                phrase,
+                english,
+                pinyin,
+                comment
+            )
+    
 if __name__ == '__main__':
     
+    # get the type of refinement, either set or unit
     if len(sys.argv) > 1:
-      print("Flashcard set:", sys.argv[1])
+      print("Flashcard type:", sys.argv[1])
     else:
-      print("Missing required set name argument.")
+      print("Missing required flashcardType argument, must be one of `set` or `unit`.")
       exit(1)
-    setName = sys.argv[1]
+    flashcardType = sys.argv[1]
+    
+    # get the name of the flashcard being refined
+    if len(sys.argv) > 2:
+      print("Flashcard set:", sys.argv[2])
+    else:
+      print("Missing required flashcardName argument.")
+      exit(1)
+    flashcardName = sys.argv[2]
 
-    mode = "default"
-    if len(sys.argv) > 2 and sys.argv[2] == "set":
-      print("Refining flashcards in set mode")
-      mode = "set"
-
-    flashcards = loadAllFlashcards(mode, setName)
-
-    outputMap = BASE_OUTPUT_MAP.copy()
-    phraseSet = []
-    setIndex = 1
-
+    flashcards = loadAllFlashcards(flashcardType, flashcardName)
     print("Total flashcard count:", len(flashcards))
+
+    outputMap = BASE_OUTPUT_HEADER.copy()
+    phraseSet = []
+    unitIndex = 1
     for entry in flashcards:
         try:
             phrase = Phrase.getTraditional(entry[0])
@@ -64,42 +97,15 @@ if __name__ == '__main__':
             else:
                 phraseSet.append(phrase)
 
-            english = ''
-            if len(entry) > 1 and entry[1] != '':
-                english = entry[1]
-                print("English provided:", english, end=" - ")
-            elif len(phrase) == 1:
-                english = Hanzi.getEnglish(phrase)
-                print("English refined for one word:", english, end=" - ")
-            else:
-                english = Phrase.translateEnglish(phrase)
-                print("English refined using Google translate:", english, end=" - ")
-            
-            pinyin = ''
-            if len(entry) > 2 and entry[2] != '':
-                pinyin = entry[2]
-                print("Pinyin provided:", pinyin)
-            else:
-                pinyin = Phrase.getPinyin(phrase)
-                print("Pinyin refined:", pinyin)
-                
-            comment = ''
-            if len(entry) > 3 and entry[3] != '':
-                comment = entry[3]
-
-            outputMap.append((
-                phrase,
-                english,
-                pinyin,
-                comment
-            ))
+            refinedEntry = refineEntry(entry)
+            outputMap.append(refinedEntry)
         except:
             print('ERROR processing phrase')
 
-        if mode == "set" and len(outputMap) == SET_SIZE + 1:
-            writeCsv(getCsvFileName(mode, setName, setIndex), outputMap)
-            setIndex += 1
-            outputMap = BASE_OUTPUT_MAP.copy()
+        if flashcardType == "set" and len(outputMap) == SET_SIZE + 1:
+            writeCsv(getCsvFileName(flashcardType, flashcardName, unitIndex), outputMap)
+            unitIndex += 1
+            outputMap = BASE_OUTPUT_HEADER.copy()
 
     # end while
-    writeCsv(getCsvFileName(mode, setName, setIndex), outputMap)
+    writeCsv(getCsvFileName(flashcardType, flashcardName, unitIndex), outputMap)

@@ -11,9 +11,9 @@ To add and study a flashcard set follow these steps:
 
 ### 1. Write flashcards
 
-If you are writing a single set (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/<path-to-setName>.csv`
+If you are writing a single set (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/set/<path-to-setName>.csv`
 
-If you are writing multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/<setName>/<setName>-<setIndex>.csv` file with the phrases you want.
+If you are writing a unit made of multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/unit/<unitName>/<unitName>-<unitIndex>.csv` file with the phrases you want.
 
 When making flashcards you can omit english and pinyin if you want.
 
@@ -21,14 +21,14 @@ When making flashcards you can omit english and pinyin if you want.
 
 If you are writing a single set
 ```bash
-$ scripts/refine.py <path-to-setName>
-$ scripts/refine.py songs/wu_bai_norweigan_forest
+$ scripts/refine.py set <path-to-setName>
+$ scripts/refine.py set songs/wu_bai_norweigan_forest
 ``` 
 
-If you are writing a multi set, run 
+If you are writing a unit with multiple sets
 ```bash
-$ scripts/refine.py <setName> set
-$ scripts/refine.py verbs set
+$ scripts/refine.py unit <unitName>
+$ scripts/refine.py unit verbs
 ```
 
 This will update missing data, remove duplicates, convert to traditional, and break into sub sets for 30. Flashcards are refined in place to limit the usage of the Google Translate API.
@@ -39,14 +39,14 @@ Add a link to see your flashcards in `page/flashcards/index.html` on web. Or you
 
 If you are printing a single set
 ```bash
-$ scripts/print.py <path-to-setName>
-$ scripts/print.py songs/wu_bai_norweigan_forest
+$ scripts/print.py set <path-to-setName>
+$ scripts/print.py set songs/wu_bai_norweigan_forest
 ``` 
 
-If you are printing one part of a multi set, run print with a `<setIndex>`
+If you are printing one set in a unit, run print with a `<unitIndex>`
 ```bash
-$ scripts/print.py <setName> <setIndex>
-$ scripts/print.py verbs 2
+$ scripts/print.py unit <unitName> <unitIndex>
+$ scripts/print.py unit verbs 2
 ```
 
 
@@ -55,10 +55,14 @@ $ scripts/print.py verbs 2
 This repo is made up of a few parts.
 - `data` - input/output data
   - `flashcards` - csv's containing flashcards
+    - `unit`
+    - `set`
   - `maps`
   - `source`
 - `page` - public pages, these are apps for typing and doing flashcards
 - `print` - printable pdfs of flashcards
+    - `unit`
+    - `set`
 - `scripts` - refine and print flashcards, 
   - `setup` - creates our dictionary, mappings, and extracts flashcards from found datasets
   - `util` - utility functions

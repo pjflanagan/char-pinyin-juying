@@ -3,6 +3,7 @@ import math
 from fpdf import FPDF
 from util.file import loadCsv
 import sys
+from util.flashcards import getCsvFileName
 
 # ---------------------------------------------------------
 # CONST ---------------------------------------------------
@@ -129,39 +130,43 @@ def makeCard(index, entry, setName):
 
 if __name__ == "__main__":
 
+  # get the type of print, either set or unit
   if len(sys.argv) > 1:
-    print("Flashcard set:", sys.argv[1])
+    print("Flashcard type:", sys.argv[1])
   else:
-    print("No arguments provided.")
+    print("Missing required flashcardType argument, must be one of `set` or `unit`.")
     exit(1)
-  setName = sys.argv[1]
+  flashcardType = sys.argv[1]
   
-  setIndex = None
+  # get the name of the flashcard being refined
   if len(sys.argv) > 2:
-    print("Flashcard set index:", sys.argv[2])
-    setIndex = sys.argv[2]
+    print("Flashcard set:", sys.argv[2])
+  else:
+    print("Missing required flashcardName argument.")
+    exit(1)
+  flashcardName = sys.argv[2]
+  
+  # get the unit being refined if this is a unit print
+  unitIndex = 1
+  if flashcardType == "unit":
+    if len(sys.argv) > 3:
+      print("Flashcard unit number:", sys.argv[3])
+    else:
+      print("Missing required unitIndex argument for unit print.")
+      exit(1)
+    unitIndex = sys.argv[3]
     
-  flashcardsName = setName
-  if setIndex != None:
-    flashcardsName += f"-{setIndex}"
-    
-  fileLocation = f"data/flashcards/{setName}"
-  if setIndex != None:
-    fileLocation += f"/{setName}-{setIndex}"
-    
-  setFullName = setName
-  if setIndex != None:
-    setFullName += f"-{setIndex}"
+  flashcardFullName = flashcardName if flashcardType == "set" else f"{flashcardName}-{unitIndex}"
     
   pdf = FPDF('P', 'in', 'Letter')
   pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv(fileLocation)
+  flashcards = loadCsv(getCsvFileName(flashcardType, flashcardName, unitIndex))
 
   pageCardSet = []
   for index, entry in enumerate(flashcards, start=1):
-    card = makeCard(index, entry, setFullName)
+    card = makeCard(index, entry, flashcardFullName)
 
     if card == None:
       pass
@@ -178,6 +183,10 @@ if __name__ == "__main__":
     drawPage(pdf, front, True)
     drawPage(pdf, back, False)
   
-  pdf.output(f"print/{flashcardsName}.pdf")
+  if flashcardType == "set":
+    pdf.output(f"print/set/{flashcardFullName}.pdf")
+  else:
+    pdf.output(f"print/unit/{flashcardName}/{flashcardFullName}.pdf")
+    
 
 
