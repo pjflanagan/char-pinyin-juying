@@ -8,17 +8,17 @@ SET_SIZE = 30
 BASE_OUTPUT_HEADER = [("phrase", "english", "pinyin", "comments")]
 
 def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
-    unitIndex = 1
+    classIndex = 1
     allFlashcards = []
     loadNextUnit = True
     while loadNextUnit:
-        fileName = getCsvFileName(flashcardType, flashcardName, unitIndex)
+        fileName = getCsvFileName(flashcardType, flashcardName, classIndex)
         print("Loading file:", fileName)
         try:
             flashcards = loadCsv(fileName)
             print("File contains", len(flashcards), "flashcards")
             allFlashcards.extend(flashcards)
-            unitIndex += 1
+            classIndex += 1
         except:
             print("No file:", fileName)
             loadNextUnit = False
@@ -67,7 +67,7 @@ if __name__ == '__main__':
     if len(sys.argv) > 1:
       print("Flashcard type:", sys.argv[1])
     else:
-      print("Missing required flashcardType argument, must be one of `set` or `unit`.")
+      print("Missing required flashcardType argument, must be one of `class` or `unit`.")
       exit(1)
     flashcardType = sys.argv[1]
     
@@ -84,7 +84,7 @@ if __name__ == '__main__':
 
     outputMap = BASE_OUTPUT_HEADER.copy()
     phraseSet = []
-    unitIndex = 1
+    classIndex = 1
     for entry in flashcards:
         try:
             phrase = Phrase.getTraditional(entry[0])
@@ -102,10 +102,10 @@ if __name__ == '__main__':
         except:
             print('ERROR processing phrase')
 
-        if flashcardType == "set" and len(outputMap) == SET_SIZE + 1:
-            writeCsv(getCsvFileName(flashcardType, flashcardName, unitIndex), outputMap)
-            unitIndex += 1
+        if flashcardType == "class" and len(outputMap) == SET_SIZE + 1:
+            writeCsv(getCsvFileName(flashcardType, flashcardName, classIndex), outputMap)
+            classIndex += 1
             outputMap = BASE_OUTPUT_HEADER.copy()
 
     # end while
-    writeCsv(getCsvFileName(flashcardType, flashcardName, unitIndex), outputMap)
+    writeCsv(getCsvFileName(flashcardType, flashcardName, classIndex), outputMap)

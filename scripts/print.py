@@ -134,7 +134,7 @@ if __name__ == "__main__":
   if len(sys.argv) > 1:
     print("Flashcard type:", sys.argv[1])
   else:
-    print("Missing required flashcardType argument, must be one of `set` or `unit`.")
+    print("Missing required flashcardType argument, must be one of `class` or `unit`.")
     exit(1)
   flashcardType = sys.argv[1]
   
@@ -146,23 +146,23 @@ if __name__ == "__main__":
     exit(1)
   flashcardName = sys.argv[2]
   
-  # get the unit being refined if this is a unit print
-  unitIndex = 1
-  if flashcardType == "unit":
+  # get the classIndex being refined if this is a class print
+  classIndex = 1
+  if flashcardType == "class":
     if len(sys.argv) > 3:
-      print("Flashcard unit number:", sys.argv[3])
+      print("Flashcard classIndex:", sys.argv[3])
     else:
-      print("Missing required unitIndex argument for unit print.")
+      print("Missing required classIndex argument for class print.")
       exit(1)
-    unitIndex = sys.argv[3]
+    classIndex = sys.argv[3]
     
-  flashcardFullName = flashcardName if flashcardType == "set" else f"{flashcardName}-{unitIndex}"
+  flashcardFullName = flashcardName if flashcardType == "unit" else f"{flashcardName}-{classIndex}"
     
   pdf = FPDF('P', 'in', 'Letter')
   pdf.add_font('noto', '', 'src/font/NotoSansTC-Regular.ttf') # uni=True
   pdf.set_auto_page_break(False)
 
-  flashcards = loadCsv(getCsvFileName(flashcardType, flashcardName, unitIndex))
+  flashcards = loadCsv(getCsvFileName(flashcardType, flashcardName, classIndex))
 
   pageCardSet = []
   for index, entry in enumerate(flashcards, start=1):
@@ -183,10 +183,10 @@ if __name__ == "__main__":
     drawPage(pdf, front, True)
     drawPage(pdf, back, False)
   
-  if flashcardType == "set":
-    pdf.output(f"print/set/{flashcardFullName}.pdf")
+  if flashcardType == "unit":
+    pdf.output(f"print/unit/{flashcardFullName}.pdf")
   else:
-    pdf.output(f"print/unit/{flashcardName}/{flashcardFullName}.pdf")
+    pdf.output(f"print/class/{flashcardName}/{flashcardFullName}.pdf")
     
 
 

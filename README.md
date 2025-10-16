@@ -11,43 +11,45 @@ To add and study a flashcard set follow these steps:
 
 ### 1. Write flashcards
 
-If you are writing a single set (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/set/<path-to-setName>.csv`
+If you are writing a single set unit (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/unit/<path-to-setName>.csv`
 
-If you are writing a unit made of multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/unit/<unitName>/<unitName>-<unitIndex>.csv` file with the phrases you want.
+If you are writing a class made of multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/class/<className>/<className>-<classSetIndex>.csv` file with the phrases you want.
 
 When making flashcards you can omit english and pinyin if you want.
 
 ### 2. Refine flashcards
 
-If you are writing a single set
+If you are writing a class with multiple sets
 ```bash
-$ scripts/refine.py set <path-to-setName>
-$ scripts/refine.py set songs/wu_bai_norweigan_forest
-``` 
-
-If you are writing a unit with multiple sets
-```bash
-$ scripts/refine.py unit <unitName>
-$ scripts/refine.py unit verbs
+$ scripts/refine.py class <className>
+$ scripts/refine.py class verbs
 ```
+
+If you are writing a single set unit
+```bash
+$ scripts/refine.py unit <path-to-setName>
+$ scripts/refine.py unit songs/wu_bai_norweigan_forest
+``` 
 
 This will update missing data, remove duplicates, convert to traditional, and break into sub sets for 30. Flashcards are refined in place to limit the usage of the Google Translate API.
 
 ### 3. Use flashcards
 
-Add a link to see your flashcards in `page/flashcards/index.html` on web. Or you can print your flashcards
+Add a link to see your flashcards in `page/flashcards/index.html` on web.
+Or you can print your flashcards.
 
-If you are printing a single set
+If you are printing one set in a class, run print with a `<classSetIndex>`
 ```bash
-$ scripts/print.py set <path-to-setName>
-$ scripts/print.py set songs/wu_bai_norweigan_forest
+$ scripts/print.py class <className> <classSetIndex>
+$ scripts/print.py class verbs 2
+```
+
+If you are printing a single set unit
+```bash
+$ scripts/print.py unit <path-to-setName>
+$ scripts/print.py unit songs/wu_bai_norweigan_forest
 ``` 
 
-If you are printing one set in a unit, run print with a `<unitIndex>`
-```bash
-$ scripts/print.py unit <unitName> <unitIndex>
-$ scripts/print.py unit verbs 2
-```
 
 
 ## Repository Setup
@@ -55,14 +57,14 @@ $ scripts/print.py unit verbs 2
 This repo is made up of a few parts.
 - `data` - input/output data
   - `flashcards` - csv's containing flashcards
+    - `class`
     - `unit`
-    - `set`
   - `maps`
   - `source`
 - `page` - public pages, these are apps for typing and doing flashcards
 - `print` - printable pdfs of flashcards
+    - `class`
     - `unit`
-    - `set`
 - `scripts` - refine and print flashcards, 
   - `setup` - creates our dictionary, mappings, and extracts flashcards from found datasets
   - `util` - utility functions

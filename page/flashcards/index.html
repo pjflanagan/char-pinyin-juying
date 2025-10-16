@@ -84,32 +84,32 @@
         <hr />
         <p>Songs</p>
         <ul>
-          <li><a onclick="flashcardPage.chooseSet('set/songs/wu_bai_norweigan_forest')">挪威的森林 - 伍佰 & China Blue</a></li>
+          <li><a onclick="flashcardPage.chooseSet('unit/songs/wu_bai_norweigan_forest')">挪威的森林 - 伍佰 & China Blue</a></li>
         </ul>
         <p>Unsorted</p>
         <ul>
-          <li><a onclick="flashcardPage.chooseSet('set/structures')">Structures</a></li>
-          <li><a onclick="flashcardPage.chooseSet('set/measure_words')">Measure Words</a></li>
-          <li><a onclick="flashcardPage.chooseSet('set/chengyu')">成語 - Idioms</a></li>
+          <li><a onclick="flashcardPage.chooseSet('unit/structures')">Structures</a></li>
+          <li><a onclick="flashcardPage.chooseSet('unit/measure_words')">Measure Words</a></li>
+          <li><a onclick="flashcardPage.chooseSet('unit/chengyu')">成語 - Idioms</a></li>
           <li style="color:#999;">More coming soon...</li>
           <!-- Directions -->
         </ul>
         <p>Sourced</p>
         <ul>
           <li>
-            <a onclick="flashcardPage.chooseSet('set/external/class')">China Institute</a> -
+            <a onclick="flashcardPage.chooseSet('unit/external/class')">China Institute</a> -
             <span style="color: #999">
               Sourced from a class I took at the China Institute in NYC
             </span>
           </li>
           <li>
-            <a onclick="flashcardPage.chooseSet('set/external/duolingo')">Duolingo</a> -
+            <a onclick="flashcardPage.chooseSet('unit/external/duolingo')">Duolingo</a> -
             <span style="color: #999">
               Sourced from Duolingo's public API
             </span>
           </li>
           <li>
-            <a onclick="flashcardPage.chooseSet('set/external/reddit')">Reddit</a> -
+            <a onclick="flashcardPage.chooseSet('unit/external/reddit')">Reddit</a> -
             <span style="color: #999">
               Sourced from a Reddit user (I can't find the original link)
             </span>
@@ -171,7 +171,7 @@
       $(this).append(`
         <input ${checked ? 'checked' : ''} onclick="saveFlashcardSetCheckbox('${flashcardUnit}')" data-checkbox="${flashcardUnit}" type="checkbox" />
         <label>
-          <a onclick="flashcardPage.chooseSet('unit/${setName}/${flashcardUnit}')">${flashcardUnit}</a>
+          <a onclick="flashcardPage.chooseSet('class/${setName}/${flashcardUnit}')">${flashcardUnit}</a>
         </label>
       `)
     })
