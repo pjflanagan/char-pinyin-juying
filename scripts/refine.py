@@ -2,33 +2,28 @@
 import sys
 from util.file import writeCsv, loadCsv
 from util.mandarin import Phrase, Hanzi
+from util.flashcards import getCsvFileName
 
 SET_SIZE = 30
 BASE_OUTPUT_HEADER = [("phrase", "english", "pinyin", "comments")]
 
-def getCsvFileName(flashcardType: str, flashcardName: str, setIndex: int) -> str:
-    if flashcardType == "set":
-        return f"data/flashcards/set/{flashcardName}/{flashcardName}-{setIndex}"
-    return f"data/flashcards/unit/{flashcardName}"
-
-
 def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
-    setIndex = 1
+    unitIndex = 1
     allFlashcards = []
-    valid = True
-    while valid:
-        fileName = getCsvFileName(flashcardType, flashcardName, setIndex)
+    loadNextUnit = True
+    while loadNextUnit:
+        fileName = getCsvFileName(flashcardType, flashcardName, unitIndex)
         print("Loading file:", fileName)
         try:
             flashcards = loadCsv(fileName)
             print("File contains", len(flashcards), "flashcards")
             allFlashcards.extend(flashcards)
-            setIndex += 1
+            unitIndex += 1
         except:
             print("No file:", fileName)
-            valid = False
-        if flashcardType != "set":
-            valid = False
+            loadNextUnit = False
+        if flashcardType != "unit":
+            loadNextUnit = False
     return allFlashcards
 
 
