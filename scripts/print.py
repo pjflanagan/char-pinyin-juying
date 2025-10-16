@@ -178,6 +178,10 @@ if __name__ == "__main__":
     drawPage(pdf, front, True)
     drawPage(pdf, back, False)
   
-  pdf.output(f"print/{flashcardsName}.pdf")
+  if setIndex != None:
+    pdf.output(f"print/{setName}/{flashcardsName}.pdf")
+  else:
+    pdf.output(f"print/{flashcardsName}.pdf")
+    
 
 

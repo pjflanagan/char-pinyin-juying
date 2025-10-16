@@ -1,11 +1,23 @@
 
 # Study
-- [ ] Print
-  - [ ] Foods 1 and 2
-  - [ ] Dining
+...
 
 
 # Dev
+
+TODO: some changes to how I want to write this
+
+Reformat to `set` and `unit`
+- Set is broken into 30 words
+- Unit has unlimited words
+
+```sh
+./refine.py set phrases
+./refine.py unit songs/wu_bai
+
+./print.py set phrases 2
+./print unit songs/wu_bai
+```
 
 ## General
 
