@@ -1,8 +1,11 @@
 <html>
   <head>
-    <meta charSet="utf-8" />
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <title>方昕中文: Home</title>
     <link
       rel="apple-touch-icon"
@@ -30,10 +33,54 @@
     <link rel="stylesheet" href="./src/base.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
+
+    <style>
+      .background {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #1c1c1c;
+        background: linear-gradient(180deg,#080808 0%, #1c1c1c 100%);
+        z-index: -1;
+      }
+      /* TODO: these should be two random colors every time! */
+      h1 {
+        margin: 0;
+        width: fit-content;
+        padding: 4px 7px 4px 12px;
+        letter-spacing: 10px;
+        color: #fe1323;
+        text-shadow: 0 0 7px #fe1356aa, 0 0 10px #fe1356aa, 0 0 21px #fe135699,
+          0 0 42px #fe135677, 0 0 82px #fe135666, 0 0 92px #fe135633,
+          0 0 102px #fe135622, 0 0 151px #fe135611;
+      }
+      .neon {
+        border: 3px solid #35d240;
+        box-shadow: 0 0 7px #28ff6caa, 0 0 10px #28ff6c99, 0 0 21px #28ff6c55,
+          0 0 42px #28ff6c33, 0 0 82px #28ff6c22, 0 0 92px #28ff6c11;
+        width: fit-content;
+      }
+
+      .neon.outer {
+        border-radius: 14px;
+        margin: 12px auto;
+        padding: 3px;
+      }
+
+      .neon.inner {
+        border-radius: 8px;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <h1>方昕中文學校</h1>
+      <div class="neon outer">
+        <div class="neon inner">
+          <h1>方昕中文</h1>
+        </div>
+      </div>
       <p>
         你好, welcome to my mandarin study guide. These are the daily tasks I do
         to help improve my skills.
@@ -257,7 +304,9 @@
               >
             </li>
             <li>
-              <a href="https://www.youtube.com/@lazychinese-stories" target="_blank"
+              <a
+                href="https://www.youtube.com/@lazychinese-stories"
+                target="_blank"
                 >Lazy Chinese Stories</a
               >
             </li>
@@ -300,7 +349,8 @@
             target="_blank"
           >
             DuChinese
-          </a> -
+          </a>
+          -
           <span style="color: #999">Good for reading (subscribed)</span>
         </li>
         <li>
@@ -311,7 +361,8 @@
             target="_blank"
           >
             Duolingo
-          </a> -
+          </a>
+          -
           <span style="color: #999">Good for grammar (free tier)</span>
         </li>
         <li>
@@ -387,6 +438,7 @@
         </li>
       </ul>
     </div>
+    <div class="background"></div>
     <script src="src/util.js"></script>
     <script src="src/todo.js"></script>
   </body>
