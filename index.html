@@ -45,21 +45,17 @@
         background: linear-gradient(180deg,#080808 0%, #1c1c1c 100%);
         z-index: -1;
       }
-      /* TODO: these should be two random colors every time! */
       h1 {
         margin: 0;
         width: fit-content;
         padding: 4px 7px 4px 12px;
         letter-spacing: 10px;
-        color: #fe1323;
-        text-shadow: 0 0 7px #fe1356aa, 0 0 10px #fe1356aa, 0 0 21px #fe135699,
-          0 0 42px #fe135677, 0 0 82px #fe135666, 0 0 92px #fe135633,
-          0 0 102px #fe135622, 0 0 151px #fe135611;
+        color: #fe135699;
+        text-shadow: 0 0 3px #fe135699, 0 0 8px #fe135666, 0 0 21px #fe135633;
       }
       .neon {
         border: 3px solid #35d240;
-        box-shadow: 0 0 7px #28ff6caa, 0 0 10px #28ff6c99, 0 0 21px #28ff6c55,
-          0 0 42px #28ff6c33, 0 0 82px #28ff6c22, 0 0 92px #28ff6c11;
+        box-shadow: 0 0 3px #28ff6c99, 0 0 8px #28ff6c66, 0 0 21px #28ff6c33;
         width: fit-content;
       }
 
@@ -441,5 +437,23 @@
     <div class="background"></div>
     <script src="src/util.js"></script>
     <script src="src/todo.js"></script>
+    <script>
+      const textColor = getRandomHue();
+      let borderColor = getRandomHue();
+      while (Math.abs(borderColor - textColor) < 80) {
+        borderColor = getRandomHue();
+      }
+      function getNeonHsla(hue, alpha) {
+        return getHslColor(hue, 72, 48, alpha)
+      }
+      $('h1').css({
+        color: getNeonHsla(textColor, 1),
+        textShadow: `0 0 3px ${getNeonHsla(textColor, 0.6)}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(textColor, 0.2)}`
+      })
+      $('.neon').css({
+        borderColor: getNeonHsla(borderColor, 1),
+        boxShadow: `0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(borderColor, 0.4)}, 0 0 21px ${getNeonHsla(borderColor, 0.2)}`
+      })
+    </script>
   </body>
 </html>
