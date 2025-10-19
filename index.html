@@ -452,7 +452,10 @@
       })
       $('.neon').css({
         borderColor: getNeonHsla(borderColor, 1),
-        boxShadow: `0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(borderColor, 0.4)}, 0 0 21px ${getNeonHsla(borderColor, 0.2)}`
+        boxShadow: `
+          0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(borderColor, 0.4)}, 0 0 21px ${getNeonHsla(borderColor, 0.2)},
+          inset 0 0 3px ${getNeonHsla(borderColor, 0.6)}, inset 0 0 8px ${getNeonHsla(borderColor, 0.4)}, inset 0 0 21px ${getNeonHsla(borderColor, 0.2)}
+        `
       })
     </script>
   </body>
