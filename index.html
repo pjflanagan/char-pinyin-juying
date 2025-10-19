@@ -42,8 +42,11 @@
         top: 0;
         left: 0;
         background: #1c1c1c;
-        background: linear-gradient(180deg,#080808 0%, #1c1c1c 100%);
+        background: linear-gradient(180deg, #080808 0%, #1c1c1c 100%);
         z-index: -1;
+      }
+      .center {
+        margin: 12px auto;
       }
       h1 {
         margin: 0;
@@ -53,27 +56,36 @@
         color: #fe135699;
         text-shadow: 0 0 3px #fe135699, 0 0 8px #fe135666, 0 0 21px #fe135633;
       }
+      h2 {
+        margin: 0;
+        padding: 4px 7px 5px 10px;
+        width: fit-content;
+        letter-spacing: 6px;
+      }
       .neon {
         border: 3px solid #35d240;
         box-shadow: 0 0 3px #28ff6c99, 0 0 8px #28ff6c66, 0 0 21px #28ff6c33;
         width: fit-content;
       }
-
       .neon.outer {
         border-radius: 14px;
-        margin: 12px auto;
         padding: 3px;
       }
-
       .neon.inner {
         border-radius: 8px;
+      }
+      .neon.large {
+        border-width: 3px;
+      }
+      .neon.small {
+        border-width: 2px;
       }
     </style>
   </head>
   <body>
     <div class="container">
-      <div class="neon outer">
-        <div class="neon inner">
+      <div class="neon outer center large">
+        <div class="neon inner large">
           <h1>方昕中文</h1>
         </div>
       </div>
@@ -83,7 +95,11 @@
       </p>
 
       <!-- To Do List -->
-      <h2>每天任務</h2>
+      <div class="neon outer small">
+        <div class="neon inner small">
+          <h2>每天任務</h2>
+        </div>
+      </div>
       <div style="display: flex; flex-wrap: wrap">
         <div style="min-width: 194px">
           <p>做所有這些</p>
@@ -195,7 +211,11 @@
       </div>
 
       <!-- List of study resources -->
-      <h2>Study Resources</h2>
+      <div class="neon outer small">
+        <div class="neon inner small">
+          <h2>學習工具</h2>
+        </div>
+      </div>
       <ul>
         <li>
           <a href="./page/flashcards">Flashcards</a> -
@@ -236,7 +256,6 @@
           </span>
         </li>
       </ul>
-      <h3>External Resources</h3>
       <h4 id="videos">Videos</h4>
       <div style="display: flex; flex-wrap: wrap">
         <div style="min-width: 340px">
@@ -438,25 +457,54 @@
     <script src="src/util.js"></script>
     <script src="src/todo.js"></script>
     <script>
-      const textColor = getRandomHue();
-      let borderColor = getRandomHue();
-      while (Math.abs(borderColor - textColor) < 80) {
-        borderColor = getRandomHue();
-      }
       function getNeonHsla(hue, alpha) {
-        return getHslColor(hue, 72, 48, alpha)
+        return getHslColor(hue, 72, 48, alpha);
       }
-      $('h1').css({
-        color: getNeonHsla(textColor, 1),
-        textShadow: `0 0 3px ${getNeonHsla(textColor, 0.6)}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(textColor, 0.2)}`
-      })
-      $('.neon').css({
-        borderColor: getNeonHsla(borderColor, 1),
-        boxShadow: `
-          0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(borderColor, 0.4)}, 0 0 21px ${getNeonHsla(borderColor, 0.2)},
-          inset 0 0 3px ${getNeonHsla(borderColor, 0.6)}, inset 0 0 8px ${getNeonHsla(borderColor, 0.4)}, inset 0 0 21px ${getNeonHsla(borderColor, 0.2)}
-        `
-      })
+
+      let i = 0;
+      let borderColor = getRandomHue();
+      $(".neon").each(function () {
+        if (i % 2 === 0) {
+          borderColor = getRandomHue();
+        }
+        $(this).css({
+          borderColor: getNeonHsla(borderColor, 1),
+          boxShadow: `
+          0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(
+            borderColor,
+            0.4
+          )}, 0 0 21px ${getNeonHsla(borderColor, 0.2)},
+          inset 0 0 3px ${getNeonHsla(
+            borderColor,
+            0.6
+          )}, inset 0 0 8px ${getNeonHsla(
+            borderColor,
+            0.4
+          )}, inset 0 0 21px ${getNeonHsla(borderColor, 0.2)}
+        `,
+        });
+
+        let textColor = getRandomHue();
+
+        while (Math.abs(borderColor - textColor) < 80) {
+          textColor = getRandomHue();
+        }
+
+        $(this)
+          .children("h1,h2")
+          .css({
+            color: getNeonHsla(textColor, 1),
+            textShadow: `0 0 3px ${getNeonHsla(
+              textColor,
+              0.6
+            )}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(
+              textColor,
+              0.2
+            )}`,
+          });
+
+        ++i;
+      });
     </script>
   </body>
 </html>
