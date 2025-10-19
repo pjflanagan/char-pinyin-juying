@@ -48,6 +48,9 @@
       .center {
         margin: 12px auto;
       }
+      .heading {
+        margin-top: 24px;
+      }
       h1 {
         margin: 0;
         width: fit-content;
@@ -61,6 +64,9 @@
         padding: 4px 7px 5px 10px;
         width: fit-content;
         letter-spacing: 6px;
+      }
+      h3 {
+        margin: 0;
       }
       .neon {
         border: 3px solid #35d240;
@@ -84,7 +90,7 @@
   </head>
   <body>
     <div class="container">
-      <div class="neon outer center large">
+      <div class="heading neon outer center large">
         <div class="neon inner large">
           <h1>方昕中文</h1>
         </div>
@@ -95,14 +101,12 @@
       </p>
 
       <!-- To Do List -->
-      <div class="neon outer small">
-        <div class="neon inner small">
-          <h2>每天任務</h2>
-        </div>
+      <div class="heading neon inner small">
+        <h2>每天任務</h2>
       </div>
       <div style="display: flex; flex-wrap: wrap">
         <div style="min-width: 194px">
-          <p>做所有這些</p>
+          <p class="heading">做所有這些</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
               <input
@@ -151,7 +155,7 @@
           </ul>
         </div>
         <div style="min-width: 194px">
-          <p>做一個的這些</p>
+          <p class="heading">做一個的這些</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
               <input
@@ -184,7 +188,7 @@
           </ul>
         </div>
         <div style="min-width: 194px">
-          <p>考慮這樣做</p>
+          <p class="heading">考慮這樣做</p>
           <ul style="list-style-type: none; padding-inline-start: 20px">
             <li>
               <input id="checkbox-song" type="checkbox" data-checklist="song" />
@@ -211,10 +215,8 @@
       </div>
 
       <!-- List of study resources -->
-      <div class="neon outer small">
-        <div class="neon inner small">
-          <h2>學習工具</h2>
-        </div>
+      <div class="heading neon inner small">
+        <h2>學習工具</h2>
       </div>
       <ul>
         <li>
@@ -256,10 +258,10 @@
           </span>
         </li>
       </ul>
-      <h4 id="videos">Videos</h4>
+      <h3 class="heading" id="videos">影片</h3>
       <div style="display: flex; flex-wrap: wrap">
         <div style="min-width: 340px">
-          <p>Stories</p>
+          <p class="heading">故事</p>
           <ul>
             <li>
               <a
@@ -294,7 +296,7 @@
           https://www.youtube.com/@YoyoChinese
           https://www.youtube.com/@TraditionalChinese
           -->
-          <p>Teachers</p>
+          <p class="heading">老師</p>
           <ul>
             <li>
               <a href="https://www.youtube.com/@EverydayChinese" target="_blank"
@@ -328,7 +330,7 @@
           </ul>
         </div>
       </div>
-      <h4 id="podcasts">Podcasts</h4>
+      <h3 class="heading" id="podcasts">Podcasts</h3>
       <ul>
         <li>
           <a
@@ -354,7 +356,7 @@
           >
         </li>
       </ul>
-      <h4>Learning Apps</h4>
+      <h3 class="heading">Apps</h3>
       <ul>
         <li>
           <a
@@ -390,7 +392,7 @@
           Memrise - <span>Good for basic phrases (subscription cancelled)</span>
         </li>
       </ul>
-      <!-- <h4 id="books">Bookshelf</h4>
+      <!-- <h3 id="books">Bookshelf</h3>
       <p>A few books I have to try and learn from.</p>
       <ul>
         <li>Space Heater by the Sea</li>
@@ -399,7 +401,7 @@
         <li>Sakamoto Days</li>
         <li>Diary of a Wimpy Kid (Simplified)</li>
       </ul> -->
-      <h4>Other</h4>
+      <h3 class="heading">其他</h3>
       <ul>
         <li>
           <a
@@ -431,7 +433,7 @@
 
       <!-- About me -->
       <hr style="margin-top: 80px; border-color: #999" />
-      <h4>About me</h4>
+      <h3 class="heading">我是</h3>
       <p>
         Hi, I'm Peter and I've been studying mandarin for a few years now. Every
         now and again I find it helpful to build a little web tool to help me
@@ -462,12 +464,9 @@
       }
 
       let i = 0;
-      let borderColor = getRandomHue();
-      $(".neon").each(function () {
-        if (i % 2 === 0) {
-          borderColor = getRandomHue();
-        }
-        $(this).css({
+      $(".heading").each(function () {
+        let borderColor = getRandomHue();
+        const borderCss = {
           borderColor: getNeonHsla(borderColor, 1),
           boxShadow: `
           0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(
@@ -482,26 +481,33 @@
             0.4
           )}, inset 0 0 21px ${getNeonHsla(borderColor, 0.2)}
         `,
-        });
+        };
 
         let textColor = getRandomHue();
-
         while (Math.abs(borderColor - textColor) < 80) {
           textColor = getRandomHue();
         }
+        const textCss = {
+          color: getNeonHsla(textColor, 1),
+          textShadow: `0 0 3px ${getNeonHsla(
+            textColor,
+            0.6
+          )}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(
+            textColor,
+            0.2
+          )}`,
+        };
 
-        $(this)
-          .children("h1,h2")
-          .css({
-            color: getNeonHsla(textColor, 1),
-            textShadow: `0 0 3px ${getNeonHsla(
-              textColor,
-              0.6
-            )}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(
-              textColor,
-              0.2
-            )}`,
+        if ($(this).hasClass("neon")) {
+          $(this).css({
+            ...borderCss,
+            ...textCss
           });
+        } else {
+          $(this).css(textCss);
+        }
+        $(this).children(".neon").css(borderCss);
+
 
         ++i;
       });
