@@ -1,7 +1,7 @@
 {
     "name": "方昕中文",
     "short_name": "方昕",
-    "theme_color": "#fff",
+    "theme_color": "#1c1c1c",
     "background_color": "#1c1c1c",
     "display": "standalone",
     "scope": "/",
