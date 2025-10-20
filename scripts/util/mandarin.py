@@ -26,7 +26,7 @@ REPLACE_PINYIN = [
 ]
 
 IGNORE_CHARACTERS = [
-    '了', '出'
+    '了', '出', '回'
 ]
 
 class Hanzi:

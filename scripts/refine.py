@@ -10,8 +10,8 @@ BASE_OUTPUT_HEADER = [("phrase", "english", "pinyin", "comments")]
 def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
     classIndex = 1
     allFlashcards = []
-    loadNextUnit = True
-    while loadNextUnit:
+    loadNextSet = True
+    while loadNextSet:
         fileName = getCsvFileName(flashcardType, flashcardName, classIndex)
         print("Loading file:", fileName)
         try:
@@ -21,9 +21,9 @@ def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
             classIndex += 1
         except:
             print("No file:", fileName)
-            loadNextUnit = False
-        if flashcardType != "unit":
-            loadNextUnit = False
+            loadNextSet = False
+        if flashcardType == "unit":
+            loadNextSet = False
     return allFlashcards
 
 

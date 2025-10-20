@@ -14651,7 +14651,7 @@ hanzi,trad,simp,pinyin,toneless,tone,zhuyin
 櫵,櫵,櫵,櫵,櫵,,
 㗮,㗮,㗮,㗮,㗮,,
 鿴,鿴,鿴,鿴,鿴,,
-齣,齣,出,chū,chu,1,ㄔㄨ
+齣,出,出,chū,chu,1,ㄔㄨ
 礃,礃,礃,zhǎng,zhang,3,ㄓㄤ
 躨,躨,躨,kúi,kui,2,ㄎㄨㄟ
 鉪,鉪,鉪,dì,di,4,ㄉㄧ
@@ -20080,7 +20080,7 @@ hanzi,trad,simp,pinyin,toneless,tone,zhuyin
 彩,彩,彩,cǎi,cai,3,ㄘㄞ
 憿,憿,憿,jiāo,jiao,1,ㄐㄧㄠ
 偍,偍,偍,tí,ti,2,ㄊㄧ
-瞭,瞭,了,liǎo,liao,3,ㄌㄧㄠ
+瞭,了,了,le,le,3,ㄌㄜ
 驎,驎,驎,lín,lin,2,ㄌㄧㄣ
 弭,弭,弭,mǐ,mi,3,ㄇㄧ
 䍊,䍊,䍊,jué,jue,2,ㄐㄩㄝ
@@ -20663,7 +20663,7 @@ hanzi,trad,simp,pinyin,toneless,tone,zhuyin
 衎,衎,衎,kàn,kan,4,ㄎㄢ
 璴,璴,璴,璴,璴,,
 儯,儯,儯,téng,teng,2,ㄊㄥ
-回,迴,回,húi,hui,2,ㄏㄨㄟ
+回,回,回,húi,hui,2,ㄏㄨㄟ
 㦧,㦧,㦧,cǎn,can,3,ㄘㄢ
 䐍,䐍,䐍,zhòu,zhou,4,ㄓㄡ
 摅,攄,摅,shū,shu,1,ㄕㄨ
@@ -21647,7 +21647,7 @@ hanzi,trad,simp,pinyin,toneless,tone,zhuyin
 爒,爒,爒,liào,liao,4,ㄌㄧㄠ
 椲,椲,椲,wěi,wei,3,ㄨㄟ
 棃,棃,棃,lí,li,2,ㄌㄧ
-迴,迴,回,húi,hui,2,ㄏㄨㄟ
+迴,回,回,húi,hui,2,ㄏㄨㄟ
 価,価,価,jià,jia,4,ㄐㄧㄚ
 衟,衟,衟,dào,dao,4,ㄉㄠ
 疀,疀,疀,chā,cha,1,ㄔㄚ
