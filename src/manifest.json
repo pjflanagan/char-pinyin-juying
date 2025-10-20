@@ -1,0 +1,17 @@
+{
+    "name": "方昕中文",
+    "short_name": "方昕",
+    "theme_color": "#fff",
+    "background_color": "#1c1c1c",
+    "display": "standalone",
+    "scope": "/",
+    "start_url": "https://flanny.app/study-mandarin",
+    "description": "A website for studying mandarin",
+    "orientation": "any",
+    "icons": [
+        {
+            "src": "https://flanny.app/study-mandarin/src/img/apple-touch-icon.png",
+            "sizes": "180x180"
+        }
+    ]
+}
