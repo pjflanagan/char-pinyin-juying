@@ -25,7 +25,7 @@ REPLACE_PINYIN = [
     ['v', 'ü'],
 ]
 
-IGNORE_CHARACTERS = [
+FORCE_SIMPLIFIED = [
     '了', '出', '回'
 ]
 
@@ -57,7 +57,7 @@ class Hanzi:
         return numbers[0] if numbers else None
     
     def getTraditional(char):
-        if char in IGNORE_CHARACTERS:
+        if char in FORCE_SIMPLIFIED:
             return char
         else:
             return HanziConv.toTraditional(char)

@@ -44,7 +44,7 @@
   width: 100%;
   font-size: 12px;
   text-align: center;
-  color: #999;
+  color: #ffffffa6;
   margin-bottom: 12px;
 }
 
@@ -52,13 +52,14 @@
   text-align: center;
   width: 100%;
   font-size: 48px;
+  /* TODO: fixed height, variable font size based on length */
 }
 
 #container #pinyin {
   text-align: center;
   width: 100%;
   font-size: 18px;
-  color: #aaa;
+  color: #ffffffbf;
 }
 
 #container #english {
@@ -66,7 +67,7 @@
   text-align: center;
   width: 100%;
   font-size: 12px;
-  color: #999;
+  color: #ffffffa6;
 }
 
 /* actions */
@@ -91,7 +92,8 @@
 /* TODO: flashcard colors */
 
 /* .red {
-
+  background:
+  color: 
 }
 
 .brown {
