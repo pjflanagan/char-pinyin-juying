@@ -98,6 +98,8 @@ class FlashcardPage {
 
   display() {
     const entry = this.flashcards[this.currentIndex];
+    $('#container').removeClass();
+    $('#container').addClass(entry.color);
     $('#count').text(`${this.currentIndex + 1} / ${this.flashcards.length}`);
     $('#known-button').text(`Known (${this.knownFlashcards.length})`);
     $('#hanzi').text(entry.phrase);

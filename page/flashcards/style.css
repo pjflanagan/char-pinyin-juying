@@ -36,15 +36,15 @@
   width: 94%;
   padding: 20px;
   max-width: 620px;
-  border-radius: 2px;
-  /* TODO: change the background for each word, they must all have a color and it picks from a pallet I define */
+  border-radius: 6px;
+    box-shadow: 0px 11px 23px #0004;
 }
 
 #container #count {
   width: 100%;
   font-size: 12px;
   text-align: center;
-  color: #ffffffa6;
+  opacity: 0.7;
   margin-bottom: 12px;
 }
 
@@ -59,7 +59,7 @@
   text-align: center;
   width: 100%;
   font-size: 18px;
-  color: #ffffffbf;
+  opacity: 0.9;
 }
 
 #container #english {
@@ -67,7 +67,7 @@
   text-align: center;
   width: 100%;
   font-size: 12px;
-  color: #ffffffa6;
+  opacity: 0.8;
 }
 
 /* actions */
@@ -89,81 +89,99 @@
   padding: 12px;
 }
 
-/* TODO: flashcard colors */
 
-/* .red {
-  background:
-  color: 
+.red {
+  background: #8e0202;
+  /* color: #eea7a7; */
 }
 
 .brown {
-
+  background: #701f04;
+  /* color: #ffc4a0; */
 }
 
 .orange {
-
+  background: #cf5c05;
+  /* color: #f3d3a4; */
 }
 
 .yellow {
-
+  background: #d7c03e;
+  /* color: #403a04; */
+  color: #000;
 }
 
 .lime {
-
+  background: #619a0c;
+  /* color: #ccf8ad; */
 }
 
 .green {
-
+  background: #228b06;
+  /* color: #b3f8ad; */
 }
 
 .teal {
-  
+  background: #29aa65;
+  /* color: #adf8c9; */
 }
 
 .cyan {
-
+  background: #1fa77e;
+  /* color: #adf8db; */
 }
 
 .light-blue {
-
+  background: #0d99a9;
+  /* color: #ade3f8; */
 }
 
 .blue {
+  background: #096498;
+  /* color: #ade3f8; */
 
 }
 
 .dark-blue {
-  
-}
-
-.pink {
-  background: hsl(338, 100%, 50%);
-}
-
-.hot-pink {
-  
+  background: #163595;
+  /* color: #ade3f8; */
 }
 
 .purple {
+  background: #451695;
+  /* color: #c7adf8; */
+}
 
+.pink {
+  background: #b60144;
+  /* color: #f3aec7; */
+}
+
+.hot-pink {
+  background: #b60192;
+  /* color: #f4a8e5; */
 }
 
 .white {
-
+  background: #ededed;
+  /* color: #151515 !important; */
+  color: #000;
 }
 
 .light-grey {
-
+  background: #b3b3b3;
+  /* color: #151515 !important; */
+  color: #000;
 }
 
 .grey {
-
+  background: #7f7f7f;
 }
 
 .dark-grey {
-
+  background: #434343;
 }
 
 .black {
-
-} */
+  background: #252525;
+}

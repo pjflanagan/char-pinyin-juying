@@ -22,7 +22,6 @@ PALLET = [
   'grey',
   'dark-grey',
   'black',
-  'none'
 ]
 
 def getRandomColor():
@@ -30,3 +29,7 @@ def getRandomColor():
 
 def isValidColor(color):
   return color in PALLET
+
+# CONSIDER:
+# ChatGPT prompt to get colors
+# 告訴我什麼顏色最能描述<phrase>，用一個英文單字回答
