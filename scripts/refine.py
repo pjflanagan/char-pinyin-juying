@@ -3,9 +3,17 @@ import sys
 from util.file import writeCsv, loadCsv
 from util.mandarin import Phrase, Hanzi
 from util.flashcards import getCsvFileName
+from util.color import isValidColor, getRandomColor
 
 SET_SIZE = 30
-BASE_OUTPUT_HEADER = [("phrase", "english", "pinyin", "comments")]
+
+BASE_OUTPUT_HEADER = [("phrase", "english", "pinyin", "color", "comments")]
+
+COL_INDEX_PHRASE = 0
+COL_INDEX_ENGLISH = 1
+COL_INDEX_PINYIN = 2
+COL_INDEX_COLOR = 3
+COL_INDEX_COMMENTS = 4
 
 def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
     classIndex = 1
@@ -30,8 +38,8 @@ def loadAllFlashcards(flashcardType: str, flashcardName: str) -> list:
 def refineEntry(entry):
     # english
     english = ''
-    if len(entry) > 1 and entry[1] != '':
-        english = entry[1]
+    if len(entry) > COL_INDEX_ENGLISH and entry[COL_INDEX_ENGLISH] != '':
+        english = entry[COL_INDEX_ENGLISH]
         print("English provided:", english, end=" - ")
     elif len(phrase) == 1:
         english = Hanzi.getEnglish(phrase)
@@ -42,24 +50,30 @@ def refineEntry(entry):
     
     # pinyin
     pinyin = ''
-    if len(entry) > 2 and entry[2] != '':
-        pinyin = entry[2]
+    if len(entry) > COL_INDEX_PINYIN and entry[COL_INDEX_PINYIN] != '':
+        pinyin = entry[COL_INDEX_PINYIN]
         print("Pinyin provided:", pinyin)
     else:
         pinyin = Phrase.getPinyin(phrase)
         print("Pinyin refined:", pinyin)
+    
+    # color
+    color = getRandomColor()
+    if len(entry) > COL_INDEX_COLOR and entry[COL_INDEX_COLOR] != '' and isValidColor(entry[COL_INDEX_COLOR]):
+        color = entry[COL_INDEX_COLOR]
         
     # comment
     comment = ''
-    if len(entry) > 3 and entry[3] != '':
-        comment = entry[3]
+    if len(entry) > COL_INDEX_COMMENTS and entry[COL_INDEX_COMMENTS] != '':
+        comment = entry[COL_INDEX_COMMENTS]
         
     return (
-                phrase,
-                english,
-                pinyin,
-                comment
-            )
+        phrase,
+        english,
+        pinyin,
+        color,
+        comment
+    )
     
 if __name__ == '__main__':
     
@@ -87,7 +101,7 @@ if __name__ == '__main__':
     classIndex = 1
     for entry in flashcards:
         try:
-            phrase = Phrase.getTraditional(entry[0])
+            phrase = Phrase.getTraditional(entry[COL_INDEX_PHRASE])
             print("Refining phrase:", phrase, end=" - ")
             
             # if there's a duplicate skip it

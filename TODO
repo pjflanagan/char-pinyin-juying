@@ -8,8 +8,10 @@
 ## General
 
 ## Printable
-- [ ] zhuyin on the flashcard
-- [ ] put the section in a new spot so it doesn't get cut off by bottom of the page
+- [ ] put the section vertical on the left so it doesn't get cut off by bottom of the page
+- [ ] Make the flashcard text resize to always be one line
+- [x] Make the flashcards print in color
+- [ ] zhuyin on the flashcard, underneath the pinyin
 
 ## Home
 - [ ] More links playlists, and the zhuyin diagram
@@ -19,3 +21,5 @@
 - [ ] Allow font toggle so I can see characters in different fonts
 
 ## Flashcards
+- [x] Make the flashcards have colors
+- [ ] Make the flashcard text resize to always be one line
