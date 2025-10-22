@@ -68,6 +68,7 @@ class FlashcardPage {
 
   next() {
     this.currentIndex = (this.currentIndex + 1) % this.flashcards.length;
+    // CONSIDER: a little shake animation?
     this.display();
     this.hide();
   }
