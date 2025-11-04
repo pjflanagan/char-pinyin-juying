@@ -150,22 +150,74 @@ function getHslColor(hue, sat, light, alpha) {
 }
 
 // ---------------------------------------------------------------------------
+// REDIRECT ------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+
+function getIsMobile() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
+}
+
+function getDeviceOS() {
+  if (/Android/.test(navigator.userAgent)) {
+    return "android";
+  } else if (/iPhone|iPhase|iPod/.test(navigator.userAgent)) {
+    return "ios";
+  }
+  return "unknown";
+}
+
+
+function handleRedirect({ web, ios, android }) {
+  console.log('handling redirect', { web, ios, android });
+  // 1) if this is not a mobile device, redirect to the webpage
+  if (!getIsMobile()) {
+    window.open(web, '_blank').focus();
+    return;
+  }
+
+  // 2) get the OS, if unknown redirect to page, otherwise determine which url to use
+  const os = getDeviceOS();
+  let appUrl = "";
+  switch (os) {
+    case "ios":
+      appUrl = ios;
+      break;
+    case "android":
+      appUrl = android;
+      break;
+    case "unknown":
+    default:
+      window.open(web, '_blank').focus();
+      return;
+  }
+
+  // 3) attempt to open the app, this will create a popup, add a listener for if the page is refocused to open the webpage instead
+  window.open(appUrl, '_blank').focus();
+}
+
+// ---------------------------------------------------------------------------
 // COMMON UI -----------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-function getRedirectUrl({ web, ios, android }) {
-  return `${getBaseUrl()}/page/redirect?web=${web}&ios=${ios}&android=${android}`;
-}
-
-window.onload = function() {
+window.onload = function () {
   $('#home-link').attr('href', getBaseUrl());
-  
-  $('a').each(function() {
+
+  $('a').each(function () {
     const web = $(this).attr('data-web');
-    const ios = $(this).attr('data-android');
-    const android = $(this).attr('data-ios');
+    const ios = $(this).attr('data-ios');
+    const android = $(this).attr('data-android');
+
     if (web && ios && android) {
-      $(this).attr('href', getRedirectUrl({ web, ios, android }));
+      $(this).on('click', function () {
+        handleRedirect({ web, ios, android });
+      });
+      $(this).css({
+        textDecoration: 'underline',
+        cursor: 'pointer'
+      });
     }
   })
 }
