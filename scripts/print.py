@@ -22,9 +22,6 @@ CARD_HEIGHT = PAGE_HEIGHT / CARD_ROWS
 # PAGE MODEL ----------------------------------------------
 # ---------------------------------------------------------
 
-# returns: { phrase, pinyin, english }
-# def makeCard():
-
 def getEmptyPage():
   return [[None for _ in range(CARD_COLUMNS)] for _ in range(CARD_ROWS)]
 
