@@ -173,17 +173,17 @@
   color: #000;
 }
 
-.light-grey {
+.light-grey, .light-gray {
   background: #b3b3b3;
   /* color: #151515 !important; */
   color: #000;
 }
 
-.grey {
+.grey, .gray {
   background: #7f7f7f;
 }
 
-.dark-grey {
+.dark-grey, .dark-gray {
   background: #434343;
 }
 
