@@ -1,4 +1,10 @@
 
+const ModeText = [
+  "汉字 → English",
+  "汉字 + pinyin → English",
+  "English → 汉字"
+]
+
 class FlashcardPage {
   constructor() {
     this.storageKey = '';
@@ -10,11 +16,12 @@ class FlashcardPage {
     this.currentIndex = 0;
     this.setName = null;
 
-    this.reverseMode = false;
+    this.mode = 0;
   }
 
-  toggleReverseMode() {
-    this.reverseMode = !this.reverseMode;
+  cycleMode() {
+    this.mode = (this.mode + 1) % ModeText.length;
+    $('#mode').text(ModeText[this.mode]);
     this.hide();
   }
 
@@ -74,24 +81,30 @@ class FlashcardPage {
   }
 
   hide() {
-    if (this.reverseMode) {
-      $("#hanzi").addClass('hidden');
-      $('#english').removeClass('hidden');
-    } else {
-      $("#hanzi").removeClass('hidden');
-      $('#english').addClass('hidden');
+    switch (this.mode) {
+      case 0: // hanzi -> english
+        $("#hanzi").removeClass('hidden');
+        $('#pinyin').addClass('hidden');
+        $('#english').addClass('hidden');
+        break;
+      case 1: // hanzi + pinyin -> english
+        $("#hanzi").removeClass('hidden');
+        $('#pinyin').removeClass('hidden');
+        $('#english').addClass('hidden');
+        break;
+      case 2: // english -> hanzi
+        $("#hanzi").addClass('hidden');
+        $('#pinyin').addClass('hidden');
+        $('#english').removeClass('hidden');
+        break;
     }
-    $('#pinyin').addClass('hidden');
     $('#reveal-or-next-button').text('Reveal');
     this.isHidden = true;
   }
 
   reveal() {
-    if (this.reverseMode) {
-      $('#hanzi').removeClass('hidden');
-    } else {
-      $('#english').removeClass('hidden');
-    }
+    $('#hanzi').removeClass('hidden');
+    $('#english').removeClass('hidden');
     $('#pinyin').removeClass('hidden');
     $('#reveal-or-next-button').text('Next');
     this.isHidden = false;
