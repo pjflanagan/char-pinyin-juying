@@ -6,7 +6,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, user-scalable=no"
     />
-    <link rel="manifest" href="./src/manifest.json">
+    <link rel="manifest" href="./src/manifest.json" />
     <title>方昕中文: Home</title>
     <link
       rel="apple-touch-icon"
@@ -255,7 +255,7 @@
         </li>
       </ul>
       <h3 class="heading" id="videos">影片</h3>
-      <div style="display: flex; flex-wrap: wrap; margin-bottom: -16px;">
+      <div style="display: flex; flex-wrap: wrap; margin-bottom: -16px">
         <div style="min-width: 340px">
           <!-- 
           TODO: after I watch some of these, sort them by what kind of content they have
@@ -378,9 +378,7 @@
         </li>
         <li>
           HelloChinese -
-          <span style="color: #999"
-            >Good for a change of pace (subscription ends December)</span
-          >
+          <span style="color: #999">Good for a change of pace</span>
         </li>
         <li style="text-decoration: line-through; color: #666">
           Memrise - <span>Good for basic phrases (subscription cancelled)</span>
@@ -495,13 +493,12 @@
         if ($(this).hasClass("neon")) {
           $(this).css({
             ...borderCss,
-            ...textCss
+            ...textCss,
           });
         } else {
           $(this).css(textCss);
         }
         $(this).children(".neon").css(borderCss);
-
 
         ++i;
       });
