@@ -5,53 +5,6 @@
 
 These are a few pages with helpful tools for learning mandarin.
 
-## Study
-
-To add and study a flashcard set follow these steps:
-
-### 1. Write flashcards
-
-If you are writing a single set unit (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/unit/<path-to-setName>.csv`
-
-If you are writing a class made of multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/class/<className>/<className>-<classSetIndex>.csv` file with the phrases you want.
-
-When making flashcards you can omit english and pinyin if you want.
-
-### 2. Refine flashcards
-
-If you are writing a class with multiple sets
-```bash
-$ scripts/refine.py class <className>
-$ scripts/refine.py class verbs
-```
-
-If you are writing a single set unit
-```bash
-$ scripts/refine.py unit <path-to-setName>
-$ scripts/refine.py unit songs/wu_bai_norweigan_forest
-``` 
-
-This will update missing data, remove duplicates, convert to traditional, and break into sub sets for 30. Flashcards are refined in place to limit the usage of the Google Translate API.
-
-### 3. Use flashcards
-
-Add a link to see your flashcards in `page/flashcards/index.html` on web.
-Or you can print your flashcards.
-
-If you are printing one set in a class, run print with a `<classSetIndex>`
-```bash
-$ scripts/print.py class <className> <classSetIndex>
-$ scripts/print.py class verbs 2
-```
-
-If you are printing a single set unit
-```bash
-$ scripts/print.py unit <path-to-setName>
-$ scripts/print.py unit songs/wu_bai_norweigan_forest
-``` 
-
-
-
 ## Repository Setup
 
 This repo is made up of a few parts.
@@ -72,6 +25,52 @@ This repo is made up of a few parts.
   - `lib` minified libraries
   - `img` public images
 
+
+## Study
+
+To add and study a flashcard set follow these steps:
+
+### 1. Write flashcards
+
+If you are writing a single `unit` set (for lyrics to a song, or names of towns), make a new file for that set `data/flashcards/unit/<path-to-setName>.csv`
+
+If you are writing a `class` made of multiple sets (for things like verbs or dishes), write in the most recent `data/flashcards/class/<className>/<className>-<classSetIndex>.csv` file with the phrases you want. You can go over 30 entries in this file.
+
+When making flashcards you can omit english and pinyin if you want.
+
+### 2. Refine flashcards
+
+If you are writing a single unit set
+```bash
+$ python3 scripts/refine.py unit <path-to-setName>
+$ python3 scripts/refine.py unit songs/wu_bai_norweigan_forest
+``` 
+
+If you are writing a class with multiple sets
+```bash
+$ python3 scripts/refine.py class <className>
+$ python3 scripts/refine.py class verbs
+```
+
+This will update missing data, remove duplicates, convert to traditional, and (if in class mode) break into sub sets of 30. Flashcards are refined in place to limit the usage of the Google Translate API.
+
+### 3. Use flashcards
+
+Add a link to see your flashcards in `page/flashcards/index.html` on web.
+You can also print your flashcards.
+
+If you are printing a single unit set
+```bash
+$ python3 scripts/print.py unit <path-to-setName>
+$ python3 scripts/print.py unit songs/wu_bai_norweigan_forest
+``` 
+
+If you are printing one set in a class, run print with a `<classSetIndex>`
+```bash
+$ python3 scripts/print.py class <className> <classSetIndex>
+$ python3 scripts/print.py class verbs 2
+```
+
 ## Develop
 
 Serve the webpage using:
@@ -80,7 +79,7 @@ Serve the webpage using:
 $ python3 -m http.server
 ```
 
-### Sources / Reference
+## Sources / Reference
 - https://github.com/guoyunhe/pinyin-json
 - https://github.com/tsroten/dragonmapper/blob/main/src/dragonmapper/data/transcriptions.csv
 - Get the pinyin from here: https://github.com/guoyunhe/pinyin-json/blob/master/hanzi-pinyin-table.json
