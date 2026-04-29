@@ -1,7 +1,7 @@
-
-
-zip:
+zip: manifest
 	zip out/src.zip -r src/*
 
-# process:
-# node process/process.js
+manifest:
+	cd .. && python3 scripts/gen_sets_manifest.py
+
+.PHONY: zip manifest

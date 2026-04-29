@@ -2,15 +2,8 @@
 const BASE_URL = 'https://pjflanagan.github.io/study-mandarin/';
 const DEFAULT_SET = 'all';
 
-const CLASS_SETS = [
-  'adjectives', 'basics', 'dining', 'dishes',
-  'foods', 'kitchen', 'phrases', 'time', 'verbs'
-];
-
-const SET_OPTIONS = [
-  { label: 'All', value: 'all' },
-  ...CLASS_SETS.map(s => ({ label: s.charAt(0).toUpperCase() + s.slice(1), value: s }))
-];
+// Loaded from data/flashcard-sets.json at runtime
+let SETS_MANIFEST = {};
 
 // ---------------------------------------------------------------------------
 // CSV parsing ----------------------------------------------------------------
@@ -43,27 +36,19 @@ function parseCsv(text) {
 // Fetch ----------------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
-async function fetchClassWords(className) {
-  const words = [];
-  for (let i = 1; i <= 30; i++) {
-    const url = `${BASE_URL}data/flashcards/class/${className}/${className}-${i}.csv`;
-    let response;
-    try {
-      response = await fetch(url);
-    } catch {
-      break;
-    }
-    if (!response.ok) break;
-    const text = await response.text();
-    words.push(...parseCsv(text).map(entry => ({ ...entry, set: className })));
-  }
-  return words;
+async function fetchSetsManifest() {
+  const response = await fetch('./flashcard-sets.json');
+  return response.json();
 }
 
 async function loadWords(selectedSet) {
-  const classNames = selectedSet === 'all' ? CLASS_SETS : [selectedSet];
-  const wordArrays = await Promise.all(classNames.map(fetchClassWords));
-  return wordArrays.flat();
+  const classNames = selectedSet === 'all' ? Object.keys(SETS_MANIFEST) : [selectedSet];
+  const className = classNames[Math.floor(Math.random() * classNames.length)];
+  const count = SETS_MANIFEST[className] || 1;
+  const index = Math.floor(Math.random() * count) + 1;
+  const response = await fetch(`${BASE_URL}data/flashcards/class/${className}/${className}-${index}.csv`);
+  const text = await response.text();
+  return parseCsv(text).map(entry => ({ ...entry, set: className }));
 }
 
 // ---------------------------------------------------------------------------
@@ -84,7 +69,14 @@ function updateCard(entry) {
 }
 
 function buildDropdown(selectedSet) {
-  SET_OPTIONS.forEach(({ label, value }) => {
+  const setOptions = [
+    { label: 'All', value: 'all' },
+    ...Object.keys(SETS_MANIFEST).map(s => ({
+      label: s.charAt(0).toUpperCase() + s.slice(1),
+      value: s
+    }))
+  ];
+  setOptions.forEach(({ label, value }) => {
     const selected = value === selectedSet ? 'selected' : '';
     $('#dropdown').append($(`<option ${selected}>`).val(value).html(label));
   });
@@ -102,8 +94,12 @@ function buildDropdown(selectedSet) {
 // ---------------------------------------------------------------------------
 
 (async function () {
-  const data = await new Promise(resolve => chrome.storage.sync.get('selectedSet', resolve));
-  const selectedSet = data.selectedSet || DEFAULT_SET;
+  const [manifest, storageData] = await Promise.all([
+    fetchSetsManifest(),
+    new Promise(resolve => chrome.storage.sync.get('selectedSet', resolve))
+  ]);
+  SETS_MANIFEST = manifest;
+  const selectedSet = storageData.selectedSet || DEFAULT_SET;
 
   buildDropdown(selectedSet);
 
