@@ -9,20 +9,7 @@
 }
 
 #actions {
-  position: fixed;
-  bottom: 140px;
-  width: 100%;
-  display: flex;
   justify-content: center;
-  left: 50%;
-  max-width: 800px;
-  transform: translateX(-50%);
-}
-
-#actions .action {
-  width: 33%;
-  text-align: center;
-  padding: 12px;
 }
 
 /* Character mod */
@@ -39,8 +26,3 @@
   color: #fff !important;
 }
 
-.hidden {
-  color: #0000 !important;
-  visibility: hidden;
-  opacity: 0;
-}
