@@ -28,10 +28,10 @@ function revealOrNext() {
 // DISPLAY
 
 function hide() {
-  $('.character .hanzi').each(function() {
+  $('.character .hanzi').each(function () {
     $(this).addClass('hidden');
   });
-  $('.pinyin').each(function() {
+  $('.pinyin').each(function () {
     $(this).addClass('hidden');
   });
   $('#reveal-or-next-button').text('Reveal');
@@ -39,10 +39,10 @@ function hide() {
 }
 
 function reveal() {
-  $('.character .hanzi').each(function() {
+  $('.character .hanzi').each(function () {
     $(this).removeClass('hidden');
   });
-  $('.pinyin').each(function() {
+  $('.pinyin').each(function () {
     $(this).removeClass('hidden');
   });
   $('#reveal-or-next-button').text('Next');
@@ -61,6 +61,13 @@ function display(text) {
 
 (async function () {
   const dictionary = await loadCsv('data/dictionary');
-  DICTIONARY = dictionary.filter(entry => entry.trad && entry.zhuyin && entry.pinyin);
+  const seen = new Set();
+  DICTIONARY = dictionary.filter(entry => {
+    if (!entry.trad || !entry.zhuyin || !entry.pinyin) return false;
+    const key = `${entry.zhuyin}-${entry.tone}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
   next();
 })();

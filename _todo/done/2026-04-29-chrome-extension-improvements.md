@@ -3,8 +3,6 @@
 # Chrome Extension
 
 
-## Claude To Do
-
 Make Chrome extension source from MY flashcard data
 
 - The chrome extension will have to expect a new data shape
@@ -38,8 +36,3 @@ Delete `chrome/src/data/words.js` and `chrome/src/data/lessons.js` — these are
 
 Remove `<script>` tags for `lessons.js` and `words.js`. No other structural changes — existing `#dropdown`, `#character`, `#pinyin`, `#english`, `#lesson` elements are reused.
 
----
-
-## Peter To Do
-- [ ] List the Chrome extension on the website
-- [ ] Make a backdated blog post about the chrome extension, also list it as an app in Flanny app
