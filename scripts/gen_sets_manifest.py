@@ -4,7 +4,9 @@ import json
 import re
 
 FLASHCARDS_CLASS_DIR = 'data/flashcards/class'
-OUTPUT_FILE = 'chrome/src/flashcard-sets.json'
+OUTPUT_FILES = [
+    'data/flashcard-sets.json',
+]
 
 def gen_sets_manifest():
     sets = {}
@@ -21,9 +23,10 @@ def gen_sets_manifest():
         if indices:
             sets[class_name] = max(indices)
 
-    with open(OUTPUT_FILE, 'w') as f:
-        json.dump(sets, f, indent=2)
-    print(f"Wrote {OUTPUT_FILE}:")
+    for output_file in OUTPUT_FILES:
+        with open(output_file, 'w') as f:
+            json.dump(sets, f, indent=2)
+        print(f"Wrote {output_file}:")
     for name, count in sets.items():
         print(f"  {name}: {count}")
 

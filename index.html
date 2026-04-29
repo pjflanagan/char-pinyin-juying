@@ -282,173 +282,13 @@
         </li>
       </ul>
       <h3 class="heading" id="videos">影片</h3>
-      <div style="display: flex; flex-wrap: wrap; margin-bottom: -16px">
-        <div style="min-width: 340px">
-          <!-- 
-          TODO: after I watch some of these, sort them by what kind of content they have
-          and put them in order of which I like best and which are easiest
-          https://www.youtube.com/@DANLIAOFreeToLearnChinese
-          https://www.youtube.com/@MandarinWithMissLin
-          https://www.youtube.com/@ChineseClass101
-          https://www.youtube.com/@YoyoChinese
-          https://www.youtube.com/@TraditionalChinese
-          -->
-          <p class="heading">老師</p>
-          <ul>
-            <li>
-              <a href="https://www.youtube.com/@EverydayChinese" target="_blank"
-                >Everyday Chinese</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/@GraceMandarinChinese"
-                target="_blank"
-                >Grace Mandarin Chinese</a
-              >
-            </li>
-            <li>
-              <a href="https://www.youtube.com/@MandarinCorner2" target="_blank"
-                >Mandarin Corner</a
-              >
-            </li>
-            <li>
-              <a href="https://www.youtube.com/@ShuoshuoChinese" target="_blank"
-                >Shuoshuo Chinese</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/@lazychinese-stories"
-                target="_blank"
-                >Lazy Chinese Stories</a
-              >
-            </li>
-          </ul>
-        </div>
-        <div style="min-width: 340px">
-          <p class="heading">故事</p>
-          <ul>
-            <li>
-              <a
-                href="https://www.youtube.com/@LittleFoxChinese"
-                target="_blank"
-                >Little Fox</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/@StorytimeinChinese"
-                target="_blank"
-                >Storytime in Chinese</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://www.youtube.com/@learningchinesewithstories"
-                target="_blank"
-                >Learning Chinese with Stories</a
-              >
-            </li>
-          </ul>
-        </div>
-      </div>
+      <div id="videos-container" style="display: flex; flex-wrap: wrap; margin-bottom: -16px"></div>
       <h3 class="heading" id="podcasts">Podcasts</h3>
-      <ul>
-        <li>
-          <a
-            href="https://open.spotify.com/show/6oPfmkjNYuORPUDNYYhi5f?si=a03a9fbbb5184028"
-            target="_blank"
-            >Melnyks Chinese</a
-          >
-          - <span style="color: #999">Intermediate</span>
-        </li>
-        <li>
-          <a
-            href="https://open.spotify.com/playlist/4PT18WrtpZuRpSz3kFPGAU?si=79422cf5cd694789"
-            target="_blank"
-            >Learn in your Car</a
-          >
-          - <span style="color: #999">Easy</span>
-        </li>
-        <li>
-          <a
-            href="https://open.spotify.com/playlist/7fWvtyy1o7WMEFmSddVU0D?si=44d364b30fef4291"
-            target="_blank"
-            >Nursery Rhymes</a
-          >
-        </li>
-      </ul>
+      <div id="podcasts-container"></div>
       <h3 class="heading">Apps</h3>
-      <ul>
-        <li>
-          <a
-            data-web="https://duchinese.net/"
-            data-ios="duchinese://"
-            data-android="duchinese://"
-          >
-            DuChinese
-          </a>
-          -
-          <span style="color: #999">Good for reading (subscribed)</span>
-        </li>
-        <li>
-          <a
-            data-web="https://duolingo.com/"
-            data-ios="duolingo://"
-            data-android="duolingo://"
-          >
-            Duolingo
-          </a>
-          -
-          <span style="color: #999">Good for grammar (free tier)</span>
-        </li>
-        <li>
-          HelloChinese -
-          <span style="color: #999">Good for a change of pace</span>
-        </li>
-        <li style="text-decoration: line-through; color: #666">
-          Memrise - <span>Good for basic phrases (subscription cancelled)</span>
-        </li>
-      </ul>
-      <!-- <h3 id="books">Bookshelf</h3>
-      <p>A few books I have to try and learn from.</p>
-      <ul>
-        <li>Space Heater by the Sea</li>
-        <li>Shark and Dolphin</li>
-        <li>Doraemon</li>
-        <li>Sakamoto Days</li>
-        <li>Diary of a Wimpy Kid (Simplified)</li>
-      </ul> -->
+      <div id="apps-container"></div>
       <h3 class="heading">其他</h3>
-      <ul>
-        <li>
-          <a
-            href="https://www.reddit.com/r/ChineseLanguage/comments/okonc2/the_ultimate_chinese_phrasebook_56000_phrases/"
-            target="_blank"
-          >
-            More Flashcards
-          </a>
-        </li>
-        <li>
-          <a href="https://www.mdnkids.com/BoPoMo/" target="_blank"
-            >Zhuyin Soundboard</a
-          >
-        </li>
-        <li>
-          <a href="https://danyopang.substack.com" target="_blank"
-            >Danyo Pang</a
-          >
-          -
-          <span style="color: #999">
-            I've not subscribed to his paid content but I did buy his book on
-            Taiwanese local phrases.
-          </span>
-        </li>
-        <li>
-          <a href="https://www.chineasy.com" target="_blank">Chineasy</a>
-        </li>
-      </ul>
+      <div id="other-container"></div>
 
       <!-- About me -->
       <hr style="margin-top: 80px; border-color: #999" />
@@ -485,53 +325,40 @@
         return getHslColor(hue, 72, 48, alpha);
       }
 
-      let i = 0;
-      $(".heading").each(function () {
-        let borderColor = getRandomHue();
-        const borderCss = {
-          borderColor: getNeonHsla(borderColor, 1),
-          boxShadow: `
-          0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(
-            borderColor,
-            0.4,
-          )}, 0 0 21px ${getNeonHsla(borderColor, 0.2)},
-          inset 0 0 3px ${getNeonHsla(
-            borderColor,
-            0.6,
-          )}, inset 0 0 8px ${getNeonHsla(
-            borderColor,
-            0.4,
-          )}, inset 0 0 21px ${getNeonHsla(borderColor, 0.2)}
-        `,
-        };
+      function applyNeonStyles() {
+        $(".heading").each(function () {
+          if ($(this).data('neon-applied')) return;
+          $(this).data('neon-applied', true);
 
-        let textColor = getRandomHue();
-        while (Math.abs(borderColor - textColor) < 80) {
-          textColor = getRandomHue();
-        }
-        const textCss = {
-          color: getNeonHsla(textColor, 1),
-          textShadow: `0 0 3px ${getNeonHsla(
-            textColor,
-            0.6,
-          )}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(
-            textColor,
-            0.2,
-          )}`,
-        };
+          let borderColor = getRandomHue();
+          const borderCss = {
+            borderColor: getNeonHsla(borderColor, 1),
+            boxShadow: `
+            0 0 3px ${getNeonHsla(borderColor, 0.6)}, 0 0 8px ${getNeonHsla(borderColor, 0.4)}, 0 0 21px ${getNeonHsla(borderColor, 0.2)},
+            inset 0 0 3px ${getNeonHsla(borderColor, 0.6)}, inset 0 0 8px ${getNeonHsla(borderColor, 0.4)}, inset 0 0 21px ${getNeonHsla(borderColor, 0.2)}
+          `,
+          };
 
-        if ($(this).hasClass("neon")) {
-          $(this).css({
-            ...borderCss,
-            ...textCss,
-          });
-        } else {
-          $(this).css(textCss);
-        }
-        $(this).children(".neon").css(borderCss);
+          let textColor = getRandomHue();
+          while (Math.abs(borderColor - textColor) < 80) {
+            textColor = getRandomHue();
+          }
+          const textCss = {
+            color: getNeonHsla(textColor, 1),
+            textShadow: `0 0 3px ${getNeonHsla(textColor, 0.6)}, 0 0 8px ${getNeonHsla(textColor, 0.4)}, 0 0 21px ${getNeonHsla(textColor, 0.2)}`,
+          };
 
-        ++i;
-      });
+          if ($(this).hasClass("neon")) {
+            $(this).css({ ...borderCss, ...textCss });
+          } else {
+            $(this).css(textCss);
+          }
+          $(this).children(".neon").css(borderCss);
+        });
+      }
+
+      applyNeonStyles();
     </script>
+    <script src="src/resources.js"></script>
   </body>
 </html>

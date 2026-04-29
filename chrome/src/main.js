@@ -37,7 +37,7 @@ function parseCsv(text) {
 // ---------------------------------------------------------------------------
 
 async function fetchSetsManifest() {
-  const response = await fetch('./flashcard-sets.json');
+  const response = await fetch(`${BASE_URL}data/flashcard-sets.json`);
   return response.json();
 }
 

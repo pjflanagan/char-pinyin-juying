@@ -5,9 +5,12 @@ const ModeText = [
   "English → 汉字"
 ]
 
+const FLASHCARD_SET_STORAGE_KEY = 'flanny-sm-flashcard-set-checkbox';
+
 class FlashcardPage {
   constructor() {
     this.storageKey = '';
+    this.checkedSets = StorageUtil.load(FLASHCARD_SET_STORAGE_KEY) || [];
 
     // state
     this.flashcards = [];
@@ -17,6 +20,40 @@ class FlashcardPage {
     this.setName = null;
 
     this.mode = 0;
+  }
+
+  async init() {
+    const response = await fetch(getBaseUrl() + 'data/flashcard-sets.json');
+    const classSets = await response.json();
+    this._buildClassSets(classSets);
+  }
+
+  _buildClassSets(classSets) {
+    const container = $('#class-sets');
+    for (const [name, maxIndex] of Object.entries(classSets)) {
+      const label = name.charAt(0).toUpperCase() + name.slice(1);
+      let html = `<p>${label}</p><ul style="list-style-type: none; padding-inline-start: 20px">`;
+      for (let i = 1; i <= maxIndex; i++) {
+        const unit = `${name}-${i}`;
+        const checked = this.checkedSets.includes(unit) ? 'checked' : '';
+        html += `<li>
+          <input ${checked} onclick="flashcardPage.toggleCheck('${unit}')" data-checkbox="${unit}" type="checkbox" />
+          <label><a onclick="flashcardPage.chooseSet('class/${name}/${unit}')">${unit}</a></label>
+        </li>`;
+      }
+      html += '</ul>';
+      container.append(html);
+    }
+  }
+
+  toggleCheck(unit) {
+    const isChecked = $(`[data-checkbox="${unit}"]`).is(':checked');
+    if (isChecked) {
+      this.checkedSets.push(unit);
+    } else {
+      this.checkedSets = this.checkedSets.filter(s => s !== unit);
+    }
+    StorageUtil.save(FLASHCARD_SET_STORAGE_KEY, this.checkedSets);
   }
 
   cycleMode() {
