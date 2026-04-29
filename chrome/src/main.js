@@ -1,62 +1,116 @@
 
-// LOAD
+const BASE_URL = 'https://pjflanagan.github.io/study-mandarin/';
+const DEFAULT_SET = 'all';
 
-const DEFAULT_LESSON_IDX = 12;
+const CLASS_SETS = [
+  'adjectives', 'basics', 'dining', 'dishes',
+  'foods', 'kitchen', 'phrases', 'time', 'verbs'
+];
 
-const load = new Promise(function(resolve, reject){
-  chrome.storage.sync.get('lessonIdx', function(data) {
-    const currentLessonIdx = parseInt(data.lessonIdx) || DEFAULT_LESSON_IDX;
-    resolve(currentLessonIdx);
-  });
-});
+const SET_OPTIONS = [
+  { label: 'All', value: 'all' },
+  ...CLASS_SETS.map(s => ({ label: s.charAt(0).toUpperCase() + s.slice(1), value: s }))
+];
 
-// GET RANDOM ENTRY
+// ---------------------------------------------------------------------------
+// CSV parsing ----------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-function getRandomEntry(currentLessonIdx) {
-  const learnedWords = [];
-  WORDS.forEach((word) => {
-    if(word.lesson <= currentLessonIdx) {
-      learnedWords.push(word);
+function parseCsv(text) {
+  const lines = text.trim().split('\n');
+  if (lines.length < 2) return [];
+  const headers = lines[0].split(',').map(h => h.trim());
+  return lines.slice(1).map(line => {
+    const fields = [];
+    let current = '';
+    let inQuotes = false;
+    for (const char of line) {
+      if (char === '"') {
+        inQuotes = !inQuotes;
+      } else if (char === ',' && !inQuotes) {
+        fields.push(current);
+        current = '';
+      } else {
+        current += char;
+      }
     }
-  });
-
-  const idx = Math.floor(Math.random() * learnedWords.length);
-  return learnedWords[idx];
+    fields.push(current);
+    return Object.fromEntries(headers.map((h, i) => [h, (fields[i] || '').trim()]));
+  }).filter(entry => entry.phrase);
 }
 
-// DISPLAY
+// ---------------------------------------------------------------------------
+// Fetch ----------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 
-function display({ currentLessonIdx, entry }) {
-  let lessonTitle = "";
-  LESSONS.forEach(({ title, idx }) => {
-    let selected = (idx === currentLessonIdx) ? 'selected' : '';
-    $('#dropdown').append($(`<option ${selected}>`).val(idx).html(title));
-    if(entry.lesson == idx) {
-      lessonTitle = title;
+async function fetchClassWords(className) {
+  const words = [];
+  for (let i = 1; i <= 30; i++) {
+    const url = `${BASE_URL}data/flashcards/class/${className}/${className}-${i}.csv`;
+    let response;
+    try {
+      response = await fetch(url);
+    } catch {
+      break;
     }
-  });
-  $('#dropdown').change(() => {
-    const newLessonIdx = $('#dropdown').val()
-    chrome.storage.sync.set({ 'lessonIdx': newLessonIdx });
-  });
+    if (!response.ok) break;
+    const text = await response.text();
+    words.push(...parseCsv(text).map(entry => ({ ...entry, set: className })));
+  }
+  return words;
+}
 
-  $('#container').click(() => {
-    window.location = `https://translate.google.com/#view=home&op=translate&sl=zh-CN&tl=en&text=${entry.word}`;
-  });
-  $('#character').text(entry.word);
+async function loadWords(selectedSet) {
+  const classNames = selectedSet === 'all' ? CLASS_SETS : [selectedSet];
+  const wordArrays = await Promise.all(classNames.map(fetchClassWords));
+  return wordArrays.flat();
+}
+
+// ---------------------------------------------------------------------------
+// Display --------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+function updateCard(entry) {
+  $('#character').text(entry.phrase);
   $('#pinyin').text(entry.pinyin);
   $('#english').text(entry.english);
-  $('#lesson').text(lessonTitle);
-  $('#splash').addClass('hidden');
+  $('#lesson').text(entry.set || '');
+  $('#container').off('click').on('click', () => {
+    window.open(
+      `https://translate.google.com?sl=zh-TW&tl=en&text=${encodeURIComponent(entry.phrase)}&op=translate`,
+      '_blank'
+    );
+  });
 }
 
-// MAIN
-
-(function() {
-  load.then((currentLessonIdx) => {
-    display({
-      currentLessonIdx,
-      entry: getRandomEntry(currentLessonIdx)
-    });
+function buildDropdown(selectedSet) {
+  SET_OPTIONS.forEach(({ label, value }) => {
+    const selected = value === selectedSet ? 'selected' : '';
+    $('#dropdown').append($(`<option ${selected}>`).val(value).html(label));
   });
+
+  $('#dropdown').change(async function () {
+    const newSet = $(this).val();
+    chrome.storage.sync.set({ selectedSet: newSet });
+    const words = await loadWords(newSet);
+    if (words.length) updateCard(words[Math.floor(Math.random() * words.length)]);
+  });
+}
+
+// ---------------------------------------------------------------------------
+// Main -----------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+
+(async function () {
+  const data = await new Promise(resolve => chrome.storage.sync.get('selectedSet', resolve));
+  const selectedSet = data.selectedSet || DEFAULT_SET;
+
+  buildDropdown(selectedSet);
+
+  const words = await loadWords(selectedSet);
+  if (words.length) {
+    updateCard(words[Math.floor(Math.random() * words.length)]);
+  }
+
+  $('#splash').addClass('hidden');
 })();
