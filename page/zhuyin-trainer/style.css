@@ -26,8 +26,3 @@
   color: #fff !important;
 }
 
-.hidden {
-  color: #0000 !important;
-  visibility: hidden;
-  opacity: 0;
-}

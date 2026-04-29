@@ -1,0 +1,56 @@
+#song-title {
+  font-size: 12px;
+  color: #999;
+}
+
+/* lyrics */
+
+#lyrics {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 24px 60px;
+}
+
+.lyric-line {
+  padding: 10px 0;
+  cursor: default;
+  display: inline-block;
+  width: 100%;
+}
+
+.lyric-hanzi {
+  font-size: 30px;
+  line-height: 1.4;
+  display: inline-block;
+}
+
+.lyric-pinyin {
+  font-size: 15px;
+  opacity: 0;
+  margin-top: 2px;
+  transition: opacity 0.15s;
+}
+
+#lyrics.show-pinyin .lyric-pinyin,
+#lyrics.show-both .lyric-pinyin {
+  opacity: 0.8;
+}
+
+.lyric-english {
+  font-size: 12px;
+  margin-top: 2px;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+#lyrics.show-both .lyric-english {
+  opacity: 0.7;
+}
+
+/* spotify widget */
+
+#spotify-widget {
+  max-width: 600px;
+  margin: 44px auto 0;
+  padding: 0 24px;
+}

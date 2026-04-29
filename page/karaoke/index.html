@@ -1,0 +1,46 @@
+<html>
+  <head>
+    <meta charSet="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="manifest" href="../../src/manifest.json">
+    <title>方昕中文: Karaoke</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="../../src/img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../../src/img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../../src/img/favicon-16x16.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../src/base.css" />
+    <link rel="stylesheet" href="../../src/modal.css" />
+    <link rel="stylesheet" href="../../src/colors.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="header">
+      <a id="home-link">Home</a>
+      <span id="song-title"></span>
+      <a onclick="karaokePage.openModal()">Change Song</a>
+      <a onclick="karaokePage.toggleMode()" id="pinyin-toggle">Hide Pinyin</a>
+    </div>
+    <div id="modal">
+      <div class="modal-content">
+        <h3>Choose a song</h3>
+        <ul id="modal-song-list"></ul>
+      </div>
+    </div>
+    <div id="spotify-widget" class="hidden"></div>
+    <div id="lyrics"></div>
+  </body>
+  <script src="../../src/lib/papaparse.min.js"></script>
+  <script src="../../src/util.js"></script>
+  <script src="karaoke.js"></script>
+  <script>
+    const karaokePage = new KaraokePage();
+    karaokePage.init();
+  </script>
+</html>

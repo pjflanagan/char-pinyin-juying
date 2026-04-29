@@ -9,6 +9,10 @@
   overflow-y: scroll;
 }
 
+#modal.hidden {
+  display: none;
+}
+
 #modal .modal-content {
   margin: 64px auto;
   max-width: 420px;

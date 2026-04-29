@@ -1,0 +1,21 @@
+.red { background: #8e0202; }
+.dark-red { background: #5a0101; }
+.brown { background: #701f04; }
+.tan { background: #cea553; color: #000; }
+.orange { background: #cf5c05; }
+.yellow { background: #d7c03e; color: #000; }
+.lime { background: #619a0c; }
+.green { background: #228b06; }
+.teal { background: #29aa65; }
+.cyan { background: #1fa77e; }
+.light-blue { background: #0d99a9; }
+.blue { background: #096498; }
+.dark-blue { background: #163595; }
+.purple { background: #451695; }
+.pink { background: #b60144; }
+.hot-pink { background: #b60192; }
+.white { background: #ededed; color: #000; }
+.light-grey, .light-gray { background: #b3b3b3; color: #000; }
+.grey, .gray { background: #7f7f7f; }
+.dark-grey, .dark-gray { background: #434343; }
+.black { background: #252525; }
