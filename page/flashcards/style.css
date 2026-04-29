@@ -1,34 +1,3 @@
-/* general */
-
-.hidden {
-  color: #0000 !important;
-  visibility: hidden;
-  opacity: 0;
-  pointer-events: none;
-}
-
-/* modal */
-
-#modal {
-  background: #1c1c1cef;
-  width: 100%;
-  height: 100%;
-  z-index: 50;
-  position: fixed;
-  top: 0;
-  padding: 24px;
-  overflow-y: scroll;
-}
-
-#modal .modal-content {
-  margin: 64px auto;
-  max-width: 420px;
-}
-
-#modal .modal-content a {
-  text-decoration: underline;
-}
-
 /* container */
 
 #container {
@@ -70,25 +39,7 @@
   opacity: 0.8;
 }
 
-/* actions */
-
-#actions {
-  position: fixed;
-  bottom: 140px;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  left: 50%;
-  max-width: 800px;
-  transform: translateX(-50%);
-}
-
-#actions .action {
-  width: 33%;
-  text-align: center;
-  padding: 12px;
-}
-
+/* colors */
 
 .red {
   background: #8e0202;
