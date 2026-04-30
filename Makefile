@@ -1,9 +1,11 @@
-.PHONY: help serve manifest refine print chrome-zip
+.PHONY: help serve manifest refine print lyrics chrome-zip
 
 help:
 	@echo "Usage:"
 	@echo "  make serve                          Start local dev server"
 	@echo "  make manifest                       Regenerate data/flashcard-sets.json"
+	@echo "  make lyrics file=<path>             Format a lyrics txt file to csv"
+	@echo "    e.g. make lyrics file=data/songs/lo_tayu_childhood.txt"
 	@echo "  make refine type=<unit|class> args=<args>  Refine a set"
 	@echo "    e.g. make refine type=unit args=songs/wu_bai_norweigan_forest"
 	@echo "    e.g. make refine type=class args=verbs"
@@ -17,6 +19,9 @@ serve:
 
 manifest:
 	python3 scripts/gen_sets_manifest.py
+
+lyrics:
+	python3 scripts/format_lyrics.py $(file)
 
 refine:
 	python3 scripts/refine.py $(type) $(args)
