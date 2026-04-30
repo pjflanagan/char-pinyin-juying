@@ -49,12 +49,6 @@ function buildWordBlocks(phrase, pinyinStr) {
   return result;
 }
 
-const SONGS = [
-  'wei_bird_if_i_could',
-  'wu_bai_norweigan_forest',
-  'wu_bai_reunited',
-];
-
 const MODES = [
   { label: 'Hide Pinyin', lyricClass: '' },
   { label: 'Show Pinyin', lyricClass: 'show-pinyin' },
@@ -64,34 +58,19 @@ const MODES = [
 class KaraokePage {
   constructor() {
     this.mode = 0;
-    this.songMeta = {};
+    this.songs = [];
   }
 
   async init() {
-    await Promise.all(SONGS.map(key => this.loadMeta(key)));
+    const resp = await fetch(`${getBaseUrl()}data/songs/_songs.json`);
+    this.songs = await resp.json();
     this.renderModal();
   }
 
-  formatKey(key) {
-    return key.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
-  }
-
-  async loadMeta(key) {
-    try {
-      const resp = await fetch(`${getBaseUrl()}data/songs/${key}.json`);
-      if (resp.ok) {
-        this.songMeta[key] = await resp.json();
-        return;
-      }
-    } catch {}
-    this.songMeta[key] = { title: this.formatKey(key) };
-  }
-
   renderModal() {
-    const items = SONGS.map(key => {
-      const { title, artist } = this.songMeta[key];
-      const label = artist ? `${title} — ${artist}` : title;
-      return `<li><a onclick="karaokePage.chooseSong('${key}')">${label}</a></li>`;
+    const items = this.songs.map(song => {
+      const label = song.artist ? `${song.title} — ${song.artist}` : song.title;
+      return `<li><a onclick="karaokePage.chooseSong('${song.csv}')">${label}</a></li>`;
     }).join('');
     $('#modal-song-list').html(items);
   }
@@ -105,7 +84,7 @@ class KaraokePage {
 
   async chooseSong(key) {
     $('#modal').addClass('hidden');
-    const { title, artist, spotify_url } = this.songMeta[key];
+    const { title, artist, spotify_url } = this.songs.find(s => s.csv === key) || {};
 
     $('#song-title').text(artist ? `${title} — ${artist}` : title);
 
