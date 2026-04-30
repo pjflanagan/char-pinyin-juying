@@ -19,12 +19,14 @@
     <link rel="stylesheet" href="style.css" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   </head>
-  <body>
+  <body class="has-header">
     <div id="header">
-      <a id="home-link">Home</a>
-      <span id="song-title"></span>
-      <a onclick="karaokePage.openModal()">Change Song</a>
-      <a onclick="karaokePage.toggleMode()" id="pinyin-toggle">Hide Pinyin</a>
+      <a id="home-link" class="header-back" href="#">&#8592;</a>
+      <span id="song-title" class="header-title"></span>
+      <div class="header-actions">
+        <a onclick="karaokePage.openModal()" class="header-action">Song</a>
+        <a onclick="karaokePage.toggleMode()" id="pinyin-toggle" class="header-action">Pinyin Off</a>
+      </div>
     </div>
     <div id="modal">
       <div class="modal-content">
@@ -41,5 +43,6 @@
   <script>
     const karaokePage = new KaraokePage();
     karaokePage.init();
+
   </script>
 </html>

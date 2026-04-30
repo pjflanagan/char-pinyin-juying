@@ -33,10 +33,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/1.0.40/jquery.csv.min.js"></script>
   </head>
-  <body onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
+  <body class="has-header" onload="focusInputEnd(event);" onclick="focusInputEnd(event);">
     <div id="header">
-      <a id="home-link">Home</a>
-      <a id="google-translate">Translate</a>
+      <a id="home-link" class="header-back" href="#">&#8592;</a>
+      <span class="header-title"></span>
+      <div class="header-actions">
+        <a id="google-translate" class="header-action">Translate</a>
+      </div>
     </div>
     <input
       id="hidden-input"

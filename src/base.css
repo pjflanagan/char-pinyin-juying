@@ -75,15 +75,62 @@ hr {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 12px;
-  font-size: 10px;
+  height: 48px;
+  padding: 0 12px;
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  background: rgba(12, 12, 12, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  z-index: 200;
 }
 
-#header a {
-  min-width: 0;
+.has-header {
+  padding-top: 48px;
+}
+
+.header-back {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 20px;
+  opacity: 0.7;
+  transition: opacity 0.15s;
+}
+
+.header-back:hover {
+  opacity: 1;
+}
+
+
+.header-title {
+  flex: 1;
   text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.header-actions {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.header-action {
+  font-size: 11px;
+  white-space: nowrap;
+  opacity: 0.6;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+
+.header-action:hover {
+  opacity: 1;
 }
 
 /* CHARACTER */

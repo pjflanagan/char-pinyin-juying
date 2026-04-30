@@ -1,5 +1,5 @@
 #song-title {
-  font-size: 12px;
+  font-size: 11px;
   color: #999;
 }
 
@@ -84,6 +84,6 @@
 
 #spotify-widget {
   max-width: 600px;
-  margin: 64px auto 28px;
+  margin: 16px auto 28px;
   padding: 0 24px;
 }

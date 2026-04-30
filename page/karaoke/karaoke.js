@@ -50,9 +50,9 @@ function buildWordBlocks(phrase, pinyinStr) {
 }
 
 const MODES = [
-  { label: 'Pinyin Hidden', lyricClass: '' },
-  { label: 'Pinyin Visible', lyricClass: 'show-pinyin' },
-  { label: 'Both Visible',   lyricClass: 'show-both' },
+  { label: 'Pinyin Off', lyricClass: '' },
+  { label: 'Pinyin On',  lyricClass: 'show-pinyin' },
+  { label: 'Show All',   lyricClass: 'show-both' },
 ];
 
 class KaraokePage {
