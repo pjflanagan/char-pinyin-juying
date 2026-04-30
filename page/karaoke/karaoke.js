@@ -1,3 +1,54 @@
+function countPinyinSyllables(group) {
+  const plain = group.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/-/g, '');
+  const initials = ['zh', 'ch', 'sh', 'b', 'p', 'm', 'f', 'd', 't', 'n', 'l', 'g', 'k', 'h', 'j', 'q', 'x', 'r', 'z', 'c', 's', 'y', 'w'];
+  let count = 0, i = 0;
+  while (i < plain.length) {
+    const prev = i;
+    count++;
+    for (const init of initials) {
+      if (plain.startsWith(init, i)) { i += init.length; break; }
+    }
+    while (i < plain.length && /[aeiouv]/.test(plain[i])) i++;
+    if (i < plain.length && plain[i] === 'n') {
+      i++;
+      if (i < plain.length && plain[i] === 'g') i++;
+    } else if (i < plain.length && plain[i] === 'r' && (i + 1 >= plain.length || !/[aeiouv]/.test(plain[i + 1]))) {
+      i++;
+    }
+    if (i === prev) i++;
+  }
+  return count;
+}
+
+function buildWordBlocks(phrase, pinyinStr) {
+  const isCJK = ch => /[㐀-鿿豈-﫿]/.test(ch);
+  if (!pinyinStr) return [...phrase].map(ch => ({ hanzi: ch, pinyin: '' }));
+
+  const groups = pinyinStr.trim().split(' ');
+  const result = [];
+  let ci = 0;
+
+  for (const group of groups) {
+    // Flush leading non-CJK characters as standalone blocks
+    while (ci < phrase.length && !isCJK(phrase[ci])) {
+      result.push({ hanzi: phrase[ci], pinyin: '' });
+      ci++;
+    }
+    let sylCount = countPinyinSyllables(group);
+    let hanzi = '';
+    let consumed = 0;
+    while (consumed < sylCount && ci < phrase.length) {
+      if (isCJK(phrase[ci])) consumed++;
+      hanzi += phrase[ci++];
+    }
+    if (hanzi) result.push({ hanzi, pinyin: group });
+  }
+  while (ci < phrase.length) {
+    result.push({ hanzi: phrase[ci++], pinyin: '' });
+  }
+  return result;
+}
+
 const SONGS = [
   'wei_bird_if_i_could',
   'wu_bai_norweigan_forest',
@@ -81,13 +132,18 @@ class KaraokePage {
   renderLyrics(lyrics) {
     const html = lyrics
       .filter(line => line.phrase)
-      .map(line => `
-        <div class="lyric-line ${line.color || ''}">
-          <div class="lyric-hanzi">${line.phrase}</div>
-          <div class="lyric-pinyin">${line.pinyin || ''}</div>
-          <div class="lyric-english">${line.english || ''}</div>
-        </div>
-      `).join('');
+      .map(line => {
+        const blocks = buildWordBlocks(line.phrase, line.pinyin);
+        const wordsHtml = blocks.map(({ hanzi, pinyin }) =>
+          `<div class="lyric-word"><div class="lyric-hanzi">${hanzi}</div><div class="lyric-pinyin">${pinyin}</div></div>`
+        ).join('');
+        return `
+          <div class="lyric-line ${line.color || ''}">
+            <div class="lyric-words">${wordsHtml}</div>
+            <div class="lyric-english">${line.english || ''}</div>
+          </div>
+        `;
+      }).join('');
     $('#lyrics').html(html);
     this.applyMode();
   }

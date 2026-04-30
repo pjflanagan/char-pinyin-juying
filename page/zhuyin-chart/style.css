@@ -31,7 +31,7 @@
 
 .grid-cell.empty { background: transparent; }
 
-.grid-cell:not(.empty):empty { opacity: 0.5; }
+.grid-cell:not(.empty):empty { opacity: 0.2; }
 
 #attribution {
   text-align: center;
