@@ -1,0 +1,42 @@
+#container {
+  margin: 48px auto;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+#grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.grid-row {
+  display: flex;
+  gap: 6px;
+}
+
+.grid-cell {
+  width: 72px;
+  height: 80px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.grid-cell.empty {
+  background: transparent;
+}
+
+.cell-zhuyin {
+  font-size: 36px;
+  line-height: 1;
+}
+
+.cell-english {
+  font-size: 12px;
+  opacity: 0.75;
+}
