@@ -38,3 +38,8 @@ async function init() {
 }
 
 init();
+
+function toggleEnglish() {
+  const hidden = document.getElementById('grid').classList.toggle('hide-english');
+  document.getElementById('toggle-english').textContent = hidden ? 'Show English' : 'Hide English';
+}
