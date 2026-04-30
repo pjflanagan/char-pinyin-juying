@@ -60,6 +60,26 @@
   opacity: 0.7;
 }
 
+.lyric-section {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.4;
+  padding: 18px 0 4px;
+}
+
+/* singer colors */
+
+.lyric-line.red    { color: #ff7070; }
+.lyric-line.blue   { color: #7ab0ff; }
+.lyric-line.green  { color: #7dcc7d; }
+.lyric-line.yellow { color: #e8cc40; }
+.lyric-line.purple { color: #cc80ff; }
+.lyric-line.pink   { color: #ff80cc; }
+.lyric-line.orange { color: #ffa040; }
+.lyric-line.teal   { color: #40d4a0; }
+
 /* spotify widget */
 
 #spotify-widget {

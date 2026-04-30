@@ -133,6 +133,9 @@ class KaraokePage {
     const html = lyrics
       .filter(line => line.phrase)
       .map(line => {
+        if (line.phrase.startsWith('#')) {
+          return `<div class="lyric-section">${line.phrase.slice(1).trim()}</div>`;
+        }
         const blocks = buildWordBlocks(line.phrase, line.pinyin);
         const wordsHtml = blocks.map(({ hanzi, pinyin }) =>
           `<div class="lyric-word"><div class="lyric-hanzi">${hanzi}</div><div class="lyric-pinyin">${pinyin}</div></div>`
