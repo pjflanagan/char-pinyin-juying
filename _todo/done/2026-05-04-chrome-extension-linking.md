@@ -1,6 +1,6 @@
 
 Chrome Store
-- [ ] Update again once I'm approved
+- [x] Update again once I'm approved
 
 Study Mandarin
 - [x] List the Chrome extension on the website

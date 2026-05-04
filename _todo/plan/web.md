@@ -1,6 +1,6 @@
 
 ## Home
-- [ ] Make a zhuyin diagram of my own
+- [x] Make a zhuyin diagram of my own
 
 ## Read
 - [ ] Allow font toggle so I can see characters in different fonts
