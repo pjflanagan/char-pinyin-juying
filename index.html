@@ -365,5 +365,10 @@
       applyNeonStyles();
     </script>
     <script src="src/resources.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('./sw.js');
+      }
+    </script>
   </body>
 </html>

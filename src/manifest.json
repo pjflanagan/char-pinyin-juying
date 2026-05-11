@@ -4,8 +4,8 @@
     "theme_color": "#1c1c1c",
     "background_color": "#1c1c1c",
     "display": "standalone",
-    "scope": "/",
-    "start_url": "https://flanny.app/study-mandarin",
+    "scope": "/study-mandarin/",
+    "start_url": "https://flanny.app/study-mandarin/",
     "description": "A website for studying mandarin",
     "orientation": "any",
     "icons": [
