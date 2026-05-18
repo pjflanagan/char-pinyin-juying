@@ -1,6 +1,7 @@
 #song-title {
   font-size: 11px;
   color: #999;
+  cursor: pointer;
 }
 
 /* lyrics */
@@ -44,8 +45,7 @@
   transition: opacity 0.15s;
 }
 
-#lyrics.show-pinyin .lyric-pinyin,
-#lyrics.show-both .lyric-pinyin {
+#lyrics.show-pinyin .lyric-pinyin {
   opacity: 0.8;
 }
 
@@ -56,7 +56,7 @@
   transition: opacity 0.15s;
 }
 
-#lyrics.show-both .lyric-english {
+#lyrics.show-english .lyric-english {
   opacity: 0.7;
 }
 

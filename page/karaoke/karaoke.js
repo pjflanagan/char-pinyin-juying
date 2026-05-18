@@ -49,15 +49,10 @@ function buildWordBlocks(phrase, pinyinStr) {
   return result;
 }
 
-const MODES = [
-  { label: 'Pinyin Off', lyricClass: '' },
-  { label: 'Pinyin On',  lyricClass: 'show-pinyin' },
-  { label: 'Show All',   lyricClass: 'show-both' },
-];
-
 class KaraokePage {
   constructor() {
-    this.mode = 0;
+    this.showPinyin = false;
+    this.showEnglish = false;
     this.songs = [];
   }
 
@@ -131,13 +126,20 @@ class KaraokePage {
   }
 
   applyMode() {
-    const { label, lyricClass } = MODES[this.mode];
-    $('#lyrics').removeClass('show-pinyin show-both').addClass(lyricClass);
-    $('#pinyin-toggle').text(label);
+    $('#lyrics')
+      .toggleClass('show-pinyin', this.showPinyin)
+      .toggleClass('show-english', this.showEnglish);
+    $('#pinyin-toggle').text(this.showPinyin ? 'Pinyin On' : 'Pinyin Off');
+    $('#english-toggle').text(this.showEnglish ? 'English On' : 'English Off');
   }
 
-  toggleMode() {
-    this.mode = (this.mode + 1) % MODES.length;
+  togglePinyin() {
+    this.showPinyin = !this.showPinyin;
+    this.applyMode();
+  }
+
+  toggleEnglish() {
+    this.showEnglish = !this.showEnglish;
     this.applyMode();
   }
 }

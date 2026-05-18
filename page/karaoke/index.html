@@ -27,10 +27,10 @@
   <body class="has-header">
     <div id="header">
       <a id="home-link" class="header-back" href="#">&#8592;</a>
-      <span id="song-title" class="header-title"></span>
+      <span id="song-title" class="header-title" onclick="karaokePage.openModal()"></span>
       <div class="header-actions">
-        <a onclick="karaokePage.openModal()" class="header-action">Song</a>
-        <a onclick="karaokePage.toggleMode()" id="pinyin-toggle" class="header-action">Pinyin Off</a>
+        <a onclick="karaokePage.toggleEnglish()" id="english-toggle" class="header-action">English Off</a>
+        <a onclick="karaokePage.togglePinyin()" id="pinyin-toggle" class="header-action">Pinyin Off</a>
       </div>
     </div>
     <div id="modal">
