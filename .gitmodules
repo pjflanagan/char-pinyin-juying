@@ -1,0 +1,3 @@
+[submodule "chinese"]
+	path = obsidian
+	url = https://github.com/TheNextGuy32/chinese.git
