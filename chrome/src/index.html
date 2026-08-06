@@ -1,18 +1,27 @@
+<!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8" />
 	<title>New Tab</title>
-	<link href="https://fonts.googleapis.com/css?family=Basic|Source+Sans+Pro:200,200i&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="./style.css?v=0.6">
-	<!-- <link rel="favicon" href="./favicon.png" /> -->
+	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Source+Sans+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="./style.css?v=0.7">
 </head>
 <body>
 	<div id="splash"></div>
 	<select id="dropdown"></select>
-	<div id="container" class="noselect">
-		<h1 id="character"></h1>
-		<h2 id="pinyin"></h2>
-		<p id="english"></p>
-		<p id="lesson"></p>
+	
+	<div id="app">
+		<div id="container" class="noselect">
+			<h1 id="character"></h1>
+			<h2 id="pinyin"></h2>
+			<p id="english"></p>
+			<p id="lesson"></p>
+		</div>
+
+		<div id="actions" class="noselect">
+			<a id="reveal-or-next-button">Reveal</a>
+			<a id="google-translate" target="_blank">Translate</a>
+		</div>
 	</div>
 
 	<script src="./package/jquery.min.js"></script>

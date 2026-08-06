@@ -1,9 +1,11 @@
-
 const BASE_URL = 'https://pjflanagan.github.io/study-mandarin/';
 const DEFAULT_SET = 'all';
 
 // Loaded from data/flashcard-sets.json at runtime
 let SETS_MANIFEST = {};
+let wordsList = [];
+let currentEntry = null;
+let isHidden = true;
 
 // ---------------------------------------------------------------------------
 // CSV parsing ----------------------------------------------------------------
@@ -52,20 +54,61 @@ async function loadWords(selectedSet) {
 }
 
 // ---------------------------------------------------------------------------
-// Display --------------------------------------------------------------------
+// Display & Flow -------------------------------------------------------------
 // ---------------------------------------------------------------------------
 
 function updateCard(entry) {
+  currentEntry = entry;
+  
   $('#character').text(entry.phrase);
   $('#pinyin').text(entry.pinyin);
   $('#english').text(entry.english);
   $('#lesson').text(entry.set || '');
-  $('#container').off('click').on('click', () => {
-    window.open(
-      `https://translate.google.com?sl=zh-TW&tl=en&text=${encodeURIComponent(entry.phrase)}&op=translate`,
-      '_blank'
-    );
-  });
+  
+  // Set translation link
+  const translateUrl = `https://translate.google.com?sl=zh-TW&tl=en&text=${encodeURIComponent(entry.phrase)}&op=translate`;
+  $('#google-translate').attr('href', translateUrl);
+
+  // Set color card styling
+  $('#container').removeClass();
+  if (entry.color) {
+    $('#container').addClass(entry.color);
+  } else {
+    $('#container').addClass('gray');
+  }
+
+  hideCardDetails();
+}
+
+function hideCardDetails() {
+  isHidden = true;
+  $('#pinyin').addClass('hidden');
+  $('#english').addClass('hidden');
+  $('#lesson').addClass('hidden');
+  $('#reveal-or-next-button').text('Reveal');
+}
+
+function revealCardDetails() {
+  isHidden = false;
+  $('#pinyin').removeClass('hidden');
+  $('#english').removeClass('hidden');
+  $('#lesson').removeClass('hidden');
+  $('#reveal-or-next-button').text('Next');
+}
+
+function handleRevealOrNext() {
+  if (isHidden) {
+    revealCardDetails();
+  } else {
+    nextWord();
+  }
+}
+
+function nextWord() {
+  if (wordsList && wordsList.length > 0) {
+    const entry = wordsList[Math.floor(Math.random() * wordsList.length)];
+    updateCard(entry);
+  }
 }
 
 function buildDropdown(selectedSet) {
@@ -84,8 +127,8 @@ function buildDropdown(selectedSet) {
   $('#dropdown').change(async function () {
     const newSet = $(this).val();
     chrome.storage.sync.set({ selectedSet: newSet });
-    const words = await loadWords(newSet);
-    if (words.length) updateCard(words[Math.floor(Math.random() * words.length)]);
+    wordsList = await loadWords(newSet);
+    nextWord();
   });
 }
 
@@ -103,10 +146,18 @@ function buildDropdown(selectedSet) {
 
   buildDropdown(selectedSet);
 
-  const words = await loadWords(selectedSet);
-  if (words.length) {
-    updateCard(words[Math.floor(Math.random() * words.length)]);
-  }
+  wordsList = await loadWords(selectedSet);
+  nextWord();
+
+  // Attach handlers
+  $('#container').off('click').on('click', () => {
+    handleRevealOrNext();
+  });
+
+  $('#reveal-or-next-button').off('click').on('click', (e) => {
+    e.stopPropagation();
+    handleRevealOrNext();
+  });
 
   $('#splash').addClass('hidden');
 })();
