@@ -106,7 +106,15 @@ function handleRevealOrNext() {
 
 function nextWord() {
   if (wordsList && wordsList.length > 0) {
-    const entry = wordsList[Math.floor(Math.random() * wordsList.length)];
+    if (wordsList.length === 1) {
+      updateCard(wordsList[0]);
+      return;
+    }
+    let entry = null;
+    do {
+      entry = wordsList[Math.floor(Math.random() * wordsList.length)];
+    } while (currentEntry && entry.phrase === currentEntry.phrase);
+    
     updateCard(entry);
   }
 }

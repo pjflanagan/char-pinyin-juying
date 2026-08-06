@@ -50,7 +50,7 @@ html, body {
   justify-content: center;
   gap: 32px;
   width: 100%;
-  max-width: 600px;
+  max-width: 700px;
   padding: 20px;
   box-sizing: border-box;
 }
@@ -60,23 +60,21 @@ html, body {
 #container {
   text-align: center;
   width: 100%;
-  max-width: 460px;
+  max-width: 840px;
   padding: 50px 30px;
   border-radius: 12px;
   box-shadow: 0px 15px 35px rgba(0, 0, 0, 0.45);
   cursor: pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
   box-sizing: border-box;
 }
 
 #container:hover {
-  transform: translateY(-2px);
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.55);
 }
 
 #character {
   font-family: 'Noto Sans TC', 'Noto Sans SC', sans-serif;
-  font-size: 110px;
+  font-size: 84px;
   margin: 0;
   line-height: 1.1;
   font-weight: 500;
@@ -105,23 +103,19 @@ html, body {
   letter-spacing: 0.05em;
 }
 
-#pinyin, #english, #lesson {
-  transition: opacity 0.25s ease-in-out, visibility 0.25s ease-in-out;
-}
-
 /* UTILS */
 
 .hidden {
-  opacity: 0 !important;
   visibility: hidden !important;
-  pointer-events: none;
+  opacity: 0 !important;
+  pointer-events: none !important;
 }
 
 /* ACTIONS */
 
 #actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   gap: 24px;
   width: 100%;
 }
@@ -136,17 +130,14 @@ html, body {
   border-radius: 30px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background-color: rgba(255, 255, 255, 0.03);
-  transition: color 0.2s, background-color 0.2s, border-color 0.2s, transform 0.1s;
+  min-width: 84px;
+  text-align: center;
 }
 
 #actions a:hover {
   color: #FFF;
   border-color: rgba(255, 255, 255, 0.4);
   background-color: rgba(255, 255, 255, 0.08);
-}
-
-#actions a:active {
-  transform: scale(0.97);
 }
 
 #reveal-or-next-button {
@@ -184,7 +175,6 @@ html, body {
   cursor: pointer;
   outline: none;
   z-index: 10;
-  transition: color 0.2s, background-color 0.2s;
 }
 
 #dropdown:hover {
